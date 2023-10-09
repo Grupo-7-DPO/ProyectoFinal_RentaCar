@@ -9,6 +9,7 @@ import Loader.RentaCar;
 public class ConsolaRentaCar {
 
 	
+	
 	private static RentaCar renta_carros;
 	
 	public static void main(String[] args) {
