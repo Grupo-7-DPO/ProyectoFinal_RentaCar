@@ -1,0 +1,4 @@
+id;placa;marca;modelo;tipo
+001;CVV701;mazda;3;pequeño
+002;JLK872;wolkswagen;voyage;pequeño
+003;EBS342;nissan;kicks;suv

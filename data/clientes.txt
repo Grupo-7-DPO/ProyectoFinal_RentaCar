@@ -1,0 +1,3 @@
+nombre apellido;contacto;fecha_nacimiento;nacionalidad 
+Mateo Velasquez;3162087809;2/05/2002;colombiano 
+Simon Paez;3108153522;3/07/1998;español 
