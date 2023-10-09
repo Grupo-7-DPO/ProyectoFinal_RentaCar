@@ -67,6 +67,7 @@ public class LoaderRentaCar {
 				Empleado empleado = new Empleado(nombre, tipo);
 				todos_empleados.add(empleado);
 			}
+			linea_us = br_empleados.readLine();
 		}
 		
 		BufferedReader br_sedes= new BufferedReader(new FileReader(archivo_sedes));
@@ -82,6 +83,7 @@ public class LoaderRentaCar {
 			
 			Sede sede = new Sede(nombre, hora_apertura, hora_cierre, dias_atencion, ubicacion);
 			sedes.put(nombre, sede);
+			linea_sd = br_sedes.readLine();
 		}
 		
 		BufferedReader br_clientes= new BufferedReader(new FileReader(archivo_clientes));
@@ -96,6 +98,7 @@ public class LoaderRentaCar {
 			
 			Cliente cliente = new Cliente(nombre, contacto, fecha_nacimiento, nacionalidad);
 			clientes.add(cliente);
+			linea_cl = br_clientes.readLine();
 		}
 		br_clientes.close();
 		br_sedes.close();

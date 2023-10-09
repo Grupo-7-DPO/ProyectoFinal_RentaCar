@@ -13,7 +13,7 @@ public class ConsolaRentaCar {
 	private static RentaCar renta_carros;
 	
 	public static void main(String[] args) {
-		System.out.println("¡¡¡Bienvenido a nuestra renta de carros!!!");
+		
 		try {
 	        cargarArchivos();
 	    } catch (FileNotFoundException e) {
@@ -21,6 +21,7 @@ public class ConsolaRentaCar {
 	    } catch (IOException e) {
 	        System.out.println("Error de I/O: " + e.getMessage());
 	    }
+		System.out.println("¡¡¡Bienvenido a nuestra renta de carros!!!");
 		boolean continuar = true;
 		
 	}
