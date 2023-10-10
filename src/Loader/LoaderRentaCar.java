@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import Model.Vehiculo;
 import Model.Cliente;
 import Model.Empleado;
+import Model.LicenciaConduccion;
 import Model.Sede;
+import Model.TarjetaCredito;
 import Model.Usuario;
 
 public class LoaderRentaCar {
@@ -33,7 +35,12 @@ public class LoaderRentaCar {
 			String marca = partes_vh[2];
 			String modelo = partes_vh[3];
 			String tipo = partes_vh[4];
-			Vehiculo vehiculo = new Vehiculo(id, placa, marca, modelo, tipo);
+			String color = partes_vh[5];
+			String transmision = partes_vh[6];
+			String capacidad = partes_vh[7];
+			String estado = partes_vh[8];
+			
+			Vehiculo vehiculo = new Vehiculo(id, placa, marca, modelo, tipo, color, transmision, capacidad, estado);
 			total_vehiculos.add(vehiculo);
 			linea_vh = br_vehiculos.readLine();
 			
@@ -95,8 +102,20 @@ public class LoaderRentaCar {
 			String contacto = partes_cl[1];
 			String fecha_nacimiento = partes_cl[2];
 			String nacionalidad = partes_cl[3];
+			String imagen_cedula = partes_cl[4];
+			String numero_licencia = partes_cl[5];
+			String pais_licencia = partes_cl[6];
+			String fecha_vencimiento_pase = partes_cl[7];
+			String imagen_pase = partes_cl[8];
+			String tipo_tarjeta = partes_cl[9];
+			String numero_tarjeta = partes_cl[10];
+			String fecha_vencimiento_tarjeta = partes_cl[11];
+			String username = partes_cl[12];
 			
-			Cliente cliente = new Cliente(nombre, contacto, fecha_nacimiento, nacionalidad);
+			LicenciaConduccion licencia = new LicenciaConduccion(numero_licencia, pais_licencia, fecha_vencimiento_pase, imagen_pase);
+			TarjetaCredito tarjeta = new TarjetaCredito(tipo_tarjeta, numero_tarjeta, fecha_vencimiento_tarjeta);
+			
+			Cliente cliente = new Cliente(nombre, contacto, fecha_nacimiento, nacionalidad, imagen_cedula, licencia, tarjeta, username);
 			clientes.add(cliente);
 			linea_cl = br_clientes.readLine();
 		}

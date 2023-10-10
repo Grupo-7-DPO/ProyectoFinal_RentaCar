@@ -29,4 +29,11 @@ public class RentaCar {
 		this.clientes = clientes;
 	}
 
+	public List<Usuario> getUsuarios(){
+		return this.usuarios;
+	}
+	
+	public List<Cliente> getClientes(){
+		return this.clientes;
+	}
 }

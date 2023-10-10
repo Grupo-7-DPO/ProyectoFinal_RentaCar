@@ -12,4 +12,20 @@ public class Usuario {
 		this.user = user;
 		this.password = password;
 	}
+
+	public String getTipo() {
+		return this.tipo;
+	}
+	
+	public String getUser() {
+		return this.user;
+	}
+	
+	public String getPassword() {
+		return this.password;
+	}
+
+	public String getNombre() {
+		return this.nombre;
+	}
 }

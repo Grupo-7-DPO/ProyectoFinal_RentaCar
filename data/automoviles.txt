@@ -1,4 +1,4 @@
-id;placa;marca;modelo;tipo
-001;CVV701;mazda;3;pequeño
-002;JLK872;wolkswagen;voyage;pequeño
-003;EBS342;nissan;kicks;suv
+id;placa;marca;modelo;tipo;color;transmisión;capacidad;estado
+001;CVV701;mazda;3;pequeño;azul;manual;5;disponible
+002;JLK872;wolkswagen;voyage;pequeño;rojo;automatico;5;disponible
+003;EBS342;nissan;kicks;suv;nergo;manual;7;disponible

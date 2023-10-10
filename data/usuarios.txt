@@ -6,3 +6,4 @@ Samuel Amaya;A;s.amaya4;hola1234*
 Juan Baron;E;j.baron;futbol321
 Mateo Velasquez;C;m.velasquez;derecha**
 Simon Paez;C;s.paez;hol@123
+Samuel Amaya;C;Papaia23;Yoperreosola
