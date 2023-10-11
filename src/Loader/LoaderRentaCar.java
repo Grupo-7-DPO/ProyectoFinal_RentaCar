@@ -26,6 +26,7 @@ public class LoaderRentaCar {
 		List<Cliente> clientes = new ArrayList<>();
 		
 		BufferedReader br_vehiculos = new BufferedReader(new FileReader(archivo_automoviles));
+		br_vehiculos.readLine();
 		String linea_vh = br_vehiculos.readLine();
 		while(linea_vh != null)
 		{
@@ -59,6 +60,7 @@ public class LoaderRentaCar {
 		}
 		
 		BufferedReader br_empleados = new BufferedReader(new FileReader(archivo_usuarios));
+		br_empleados.readLine();
 		String linea_us = br_empleados.readLine();
 		while(linea_us != null)
 		{
@@ -78,6 +80,7 @@ public class LoaderRentaCar {
 		}
 		
 		BufferedReader br_sedes= new BufferedReader(new FileReader(archivo_sedes));
+		br_sedes.readLine();
 		String linea_sd = br_sedes.readLine();
 		while(linea_sd != null)
 		{
@@ -94,6 +97,7 @@ public class LoaderRentaCar {
 		}
 		
 		BufferedReader br_clientes= new BufferedReader(new FileReader(archivo_clientes));
+		br_clientes.readLine();
 		String linea_cl = br_clientes.readLine();
 		while(linea_cl != null)
 		{

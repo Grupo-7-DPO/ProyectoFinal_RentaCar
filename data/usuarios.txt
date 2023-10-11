@@ -9,3 +9,4 @@ Simon Paez;C;s.paez;hol@123
 Samuel Amaya;C;Papaia23;Yoperreosola
 Sherk;C;SoySherk;Fionateamo
 Diana Rodriguez;C;d.rodriguez;sancarlos87
+Santiago Arenas;C;s.arenasr;sapo123

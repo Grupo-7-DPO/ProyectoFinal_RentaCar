@@ -4,3 +4,4 @@ Simon Paez;3108153522;3/07/1998;español;cedula2.png;1204456789;colombia;07/12/2
 Samuel Amaya;564564315;27/04/2004;Colombiano;;5866365652;;5866365652;Peru;15/06/2027;licencia.png;mastercard;564654648463;09/2030;Papaia23
 Sherk Papasito;3489657105;10/09/2000;Colombiano;si;01458795485;si;01458795485;Colombia;10/05/2029;Si;visa;4578954102220145;06/2027;SoySherk
 Diana Rodriguez;1234567890;28/03/1995;Colombiana;cedula_diana.png;123456562310;cedula_diana.png;123456562310;Colombia;23/08/2030;pase_diana.png;visa;12345667892510;09/2027;d.rodriguez
+Santiago Arenas;3185604813;26/09/2003;Colombiano;foto.png;1005296614;foto.png;1005296614;Colombia;20/10/2034;licencia.png;visa;99662245220;09/2025;s.arenasr
