@@ -7,3 +7,5 @@ Juan Baron;E;j.baron;futbol321
 Mateo Velasquez;C;m.velasquez;derecha**
 Simon Paez;C;s.paez;hol@123
 Samuel Amaya;C;Papaia23;Yoperreosola
+Sherk;C;SoySherk;Fionateamo
+Diana Rodriguez;C;d.rodriguez;sancarlos87
