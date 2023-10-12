@@ -43,7 +43,6 @@ public class LoaderRentaCar {
 			
 			Vehiculo vehiculo = new Vehiculo(id, placa, marca, modelo, tipo, color, transmision, capacidad, estado);
 			total_vehiculos.add(vehiculo);
-			linea_vh = br_vehiculos.readLine();
 			
 			List<Vehiculo> lista = new ArrayList<>();
 			
@@ -73,7 +72,7 @@ public class LoaderRentaCar {
 			Usuario usuario = new Usuario(nombre, tipo, user, password);
 			usuarios.add(usuario);
 			if(tipo.equals("AG") | tipo.equals("A") | tipo.equals("E")) {
-				Empleado empleado = new Empleado(nombre, tipo);
+				Empleado empleado = new Empleado(nombre, tipo, user, password);
 				todos_empleados.add(empleado);
 			}
 			linea_us = br_empleados.readLine();

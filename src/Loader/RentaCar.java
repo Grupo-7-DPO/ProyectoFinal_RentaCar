@@ -1,8 +1,10 @@
 package Loader;
 
 import java.io.BufferedWriter;
+
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -13,6 +15,7 @@ import Model.Sede;
 import Model.TarjetaCredito;
 import Model.Usuario;
 import Model.Vehiculo;
+import Model.Admin;
 
 public class RentaCar {
 
@@ -34,6 +37,7 @@ public class RentaCar {
 		this.clientes = clientes;
 	}
 
+	//Getters
 	public List<Usuario> getUsuarios(){
 		return this.usuarios;
 	}
@@ -42,9 +46,34 @@ public class RentaCar {
 		return this.clientes;
 	}
 	
-	public List<Vehiculo> getVehiculo(){
+	public List<Vehiculo> getInventarioGeneral(){
+		//System.out.println(this.total_vehiculos);
 		return this.total_vehiculos;
 	}
+	
+	//Setters
+	public boolean elimEmpleado(String username, String password) throws IOException {
+		Usuario user = encontrarUsuario(username,password);
+		if (!user.equals(null)) {
+			usuarios.remove(user);
+			writeArchivoUsuario();
+			return true;
+		}
+		return false;
+			
+	}
+	
+	public List<Vehiculo> getInventarioDisponible(){
+		List<Vehiculo> invDispo = new ArrayList<>(total_vehiculos);
+		for (Vehiculo car : total_vehiculos)
+			if (!car.getEstado().equals("disponible"))
+			{
+				invDispo.remove(car);
+			}
+		//System.out.println(total_vehiculos);
+		return invDispo;
+	}
+
 	
 	public Usuario encontrarUsuario(String username, String password) {
 		// esto busca en la lista general de usuarios y encuentra si un usuario existe o no. Si no retorna null y si si retorna el usuario
@@ -119,6 +148,11 @@ public class RentaCar {
 	public void crearUsuarioCliente(String nombre, String tipo, String username, String password) {
 		Usuario nuevo_usuario = new Usuario(nombre, tipo, username, password);
 		this.usuarios.add(nuevo_usuario);
+		if(tipo.equals("AG") | tipo.equals("A") | tipo.equals("E")) {
+			Empleado empleado = new Empleado(nombre, tipo, username, password);
+			todos_empleados.add(empleado);
+			//System.out.println(todos_empleados.toString());
+		}
 		try {
 			modificarArchivoUsuario(nuevo_usuario);
 		} catch (IOException e) {
@@ -138,5 +172,25 @@ public class RentaCar {
 		
 		br.write("\n" + nombre + ";" + tipo + ";" + username + ";" + password);
 		br.close();
+	}
+	
+	private void writeArchivoUsuario() throws IOException {
+		FileWriter file = new FileWriter("./data/usuarios.txt");
+		BufferedWriter br = new BufferedWriter(file);
+		for (Usuario nuevo_usuario : usuarios) {
+			String nombre = nuevo_usuario.getNombre();
+			String tipo = nuevo_usuario.getTipo();
+			String username = nuevo_usuario.getUser();
+			String password = nuevo_usuario.getPassword();
+			
+			br.write("\n" + nombre + ";" + tipo + ";" + username + ";" + password);
+		}
+		
+		br.close();
+	}
+	
+	
+	public void crearVehiculo(String placa, String marca, String modelo, String tipo, String trans, String capacidad, String estado) {
+		Vehiculo newCar = new Vehiculo(placa,marca,modelo,tipo,trans,capacidad,estado);
 	}
 }

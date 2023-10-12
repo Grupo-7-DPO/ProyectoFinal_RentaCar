@@ -4,6 +4,7 @@ public class Vehiculo {
 
 	String id;
 	String placa;
+	String marca;
 	String modelo;
 	String tipo;
 	String color;
@@ -20,5 +21,13 @@ public class Vehiculo {
 		this.transmision = transmision;
 		this.capacidad = capacidad;
 		this.estado = estado;
+	}
+	
+	public String getEstado() {
+		return this.estado;
+	}
+	
+	public String getCar() {
+		return placa +" "+ tipo + " "+ capacidad +" "+ marca +" " + modelo+" "+ estado ;
 	}
 }

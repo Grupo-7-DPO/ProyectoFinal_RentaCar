@@ -1,11 +1,13 @@
 package Consola;
 
 import java.io.BufferedReader;
+
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 
 import Loader.LoaderRentaCar;
@@ -14,6 +16,7 @@ import Model.Cliente;
 import Model.LicenciaConduccion;
 import Model.TarjetaCredito;
 import Model.Usuario;
+import Model.Vehiculo;
 
 public class ConsolaRentaCar {
 
@@ -22,7 +25,7 @@ public class ConsolaRentaCar {
 	private static RentaCar renta_carros;
 	private static Usuario usuario_actual;
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		
 		try {
 	        cargarArchivos();
@@ -66,8 +69,89 @@ public class ConsolaRentaCar {
 		
 	}
 
-	private static void consolaAdminG() {
+	private static void consolaAdminG() throws IOException {
 		// TODO Auto-generated method stub
+		boolean continuar = true;
+		while (continuar) {
+			System.out.println("\n1. Revisar carros del inventario general");
+			System.out.println("2. Revisar carros disponibles");
+			System.out.println("3. Revisar carros disponibles en una sede");
+			System.out.println("4. Crear una reserva");
+			System.out.println("5. Gestionar/Eliminar una reserva");
+			System.out.println("6. Añadir carro al inventario");
+			System.out.println("7. Elminar carro del inventario");
+			System.out.println("8. Crear seguro");
+			System.out.println("9. Crear empleado");
+			System.out.println("10. Eliminar empleado");
+			System.out.println("11. Alquiler");
+			System.out.println("12. Recibir automovil");
+			System.out.println("13. Cambiar estado automovil");
+			System.out.println("0. Log Out");
+			String choice = input("Elige una opcion");
+			
+			if (choice.equals("1")) {
+				List<Vehiculo>inv = renta_carros.getInventarioGeneral();
+				System.out.println("PLACA  TIPO  CAPACIDAD  MODELO  MARCA  ESTADO");
+				for (Vehiculo car : inv)
+					System.out.println(car.getCar());
+			}
+			
+			if (choice.equals("2")) {
+				List<Vehiculo>inv = renta_carros.getInventarioDisponible();
+				System.out.println("PLACA  TIPO  CAPACIDAD  MODELO  MARCA  ESTADO");
+				for (Vehiculo car : inv)
+					System.out.println(car.getCar());
+			}
+			if (choice.equals("6"))
+			{
+				
+				String placa = input("Escribe la placa");
+				String marca = input("Escibe la marca");
+				String modelo = input("Escribe el modelo");
+				String tipo = input("Escribe el tipo");
+				String trans = input("Escribe la transmision");
+				String capacidad = input("Escribe la capacidad");
+				String estado = input("Escribe el estado");
+				
+				renta_carros.crearVehiculo(placa,marca,modelo,tipo,trans,capacidad,estado);
+				
+			}
+			
+			if (choice.equals("9")) {
+				boolean user_valido = true;
+				String nombre = input("\nEscribe el nombre del empleado");
+				String tipo = "E";
+				String username = null;
+				while (user_valido) {
+					username = input("\nEscribe tu nombre de usuario");
+					if (renta_carros.encontrarUsername(username)) {
+						System.out.println("\nEste nombre de usuario ya está en uso\n");
+					}
+					else {
+						user_valido = false;
+					}
+				}
+				String password = input("Escribe su contraseña");
+				renta_carros.crearUsuarioCliente(nombre, tipo, username, password);
+				System.out.println("\n¡¡Cuenta creada correctamente!!\n");
+			}
+			
+			if (choice.equals("10")) {
+				String user = input("\nEscribe el usuario del empleado");
+				String pass = input("Escribe la contraseña");
+				boolean resp = renta_carros.elimEmpleado(user,pass); 
+				if (resp == true) {
+					System.out.println("El empleado fue elimnado");
+				}
+				else {System.out.println("No se pudo elimnar el empleado");}
+			}
+			
+			if (choice.equals("0")) {
+				continuar = false;
+			}
+		}
+		
+		
 		
 	}
 

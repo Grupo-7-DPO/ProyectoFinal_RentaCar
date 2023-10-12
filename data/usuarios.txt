@@ -1,4 +1,5 @@
-nombre apellido;tipo;usuario;contraseña
+
+Admin;AG;admin;123
 Mario Ordoñez;AG;m.ordoñez;contraseña*
 Ignacio Chaparro;A;i.chaparro;hola1234
 Santiago Arenas;A;s.arenas3;odioaqui
@@ -10,3 +11,4 @@ Samuel Amaya;C;Papaia23;Yoperreosola
 Sherk;C;SoySherk;Fionateamo
 Diana Rodriguez;C;d.rodriguez;sancarlos87
 Santiago Arenas;C;s.arenasr;sapo123
+juandiego;E;j.diego;123

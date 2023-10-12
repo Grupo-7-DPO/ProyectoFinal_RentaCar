@@ -1,13 +1,12 @@
 package Model;
 
-public class Empleado {
+public class Empleado extends Usuario{
 
-	String nombre;
-	String cargo;
-	
-	public Empleado(String nombre, String cargo) {
-		this.nombre = nombre;
-		this.cargo = cargo;
+	public Empleado(String nombre, String tipo, String user, String password) {
+		super(nombre, tipo, user, password);
+		// TODO Auto-generated constructor stub
 	}
+	
+
 
 }
