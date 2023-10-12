@@ -1,0 +1,4 @@
+nombre;precio_por_dia_dolares
+todo riesgo;10
+contra rayones;3
+contra terremotos;1

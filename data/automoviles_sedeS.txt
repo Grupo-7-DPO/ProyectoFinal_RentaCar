@@ -1,0 +1,6 @@
+placa;tipo
+XSW234;lujo
+PLO789;van
+TGF123;todoterreno
+UJI654;lujo
+WER890;van

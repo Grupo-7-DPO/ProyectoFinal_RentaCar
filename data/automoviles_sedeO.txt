@@ -1,0 +1,6 @@
+placa;tipo
+FDZ543;económico
+BHN378;suv
+ZXC879;lujo
+RTY906;todoterreno
+LKP456;económico

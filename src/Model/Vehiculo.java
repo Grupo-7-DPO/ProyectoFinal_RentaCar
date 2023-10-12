@@ -2,7 +2,6 @@ package Model;
 
 public class Vehiculo {
 
-	String id;
 	String placa;
 	String modelo;
 	String tipo;
@@ -11,8 +10,8 @@ public class Vehiculo {
 	String capacidad;
 	String estado;
 	
-	public Vehiculo(String id, String placa, String marca, String modelo, String tipo, String color, String transmision, String capacidad, String estado){
-		this.id = id;
+	public Vehiculo(String placa, String marca, String modelo, String tipo, String color, String transmision, String capacidad, String estado){
+
 		this.modelo = modelo;
 		this.placa = placa;
 		this.tipo = tipo;
