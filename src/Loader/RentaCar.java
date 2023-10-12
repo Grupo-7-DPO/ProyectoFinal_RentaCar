@@ -89,6 +89,10 @@ public class RentaCar {
 			
 	}
 	
+	public List<Vehiculo> getInventarioGeneral(){
+		return total_vehiculos;
+	}
+	
 	public List<Vehiculo> getInventarioDisponible(){
 		List<Vehiculo> invDispo = new ArrayList<>(total_vehiculos);
 		for (Vehiculo car : total_vehiculos)
@@ -265,8 +269,8 @@ public class RentaCar {
 	}
 	
 	
-	public void crearVehiculo(String placa, String marca, String modelo, String tipo, String trans, String capacidad, String estado) {
-		Vehiculo newCar = new Vehiculo(placa,marca,modelo,tipo,trans,capacidad,estado);
+	public void crearVehiculo(String placa, String marca, String modelo, String tipo, String color, String trans, String capacidad, String estado) {
+		Vehiculo newCar = new Vehiculo(placa,marca,modelo,tipo,color,trans,capacidad,estado);
 	}
 
 	public String crearId() {

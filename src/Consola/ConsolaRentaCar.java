@@ -57,7 +57,7 @@ public class ConsolaRentaCar {
 		
 	}
 	
-	private static void consolaCliente() {
+	private static void consolaCliente() throws IOException {
 		boolean continuar = true;
 		
 		while(continuar) {
@@ -131,11 +131,12 @@ public class ConsolaRentaCar {
 				String marca = input("Escibe la marca");
 				String modelo = input("Escribe el modelo");
 				String tipo = input("Escribe el tipo");
+				String color = input("Escribe el color");
 				String trans = input("Escribe la transmision");
 				String capacidad = input("Escribe la capacidad");
 				String estado = input("Escribe el estado");
 				
-				renta_carros.crearVehiculo(placa,marca,modelo,tipo,trans,capacidad,estado);
+				renta_carros.crearVehiculo(placa,marca,modelo,tipo,color,trans,capacidad,estado);
 				
 			}
 			
