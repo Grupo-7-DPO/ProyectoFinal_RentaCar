@@ -8,22 +8,29 @@ import java.util.List;
 import java.util.ArrayList;
 
 import Model.Vehiculo;
+import Model.Categoria;
 import Model.Cliente;
 import Model.Empleado;
 import Model.LicenciaConduccion;
+import Model.Reserva;
 import Model.Sede;
+import Model.Seguro;
 import Model.TarjetaCredito;
 import Model.Usuario;
 
 public class LoaderRentaCar {
 
-	public static RentaCar cargar_archivos(String archivo_automoviles, String archivo_clientes, String archivo_sedes, String archivo_usuarios) throws IOException, FileNotFoundException{
+	public static RentaCar cargar_archivos(String archivo_automoviles, String archivo_clientes, String archivo_sedes, String archivo_usuarios, String archivo_reservas, String archivo_seguros, String archivo_categorias) throws IOException, FileNotFoundException{
 		HashMap <String, List<Vehiculo>> tipos_vehiculos = new HashMap<>();
+		List<String> nombre_sedes = new ArrayList<>();
 		List<Vehiculo> total_vehiculos = new ArrayList<>();
 		List<Empleado> todos_empleados = new ArrayList<>();
 		List<Usuario> usuarios = new ArrayList<>();
 		HashMap <String, Sede> sedes = new HashMap<>();
 		List<Cliente> clientes = new ArrayList<>();
+		List<Reserva> reservas = new ArrayList<>();
+		List<Seguro> seguros = new ArrayList<>();
+		List<Categoria> categorias = new ArrayList<>();
 		
 		BufferedReader br_vehiculos = new BufferedReader(new FileReader(archivo_automoviles));
 		br_vehiculos.readLine();
@@ -31,17 +38,16 @@ public class LoaderRentaCar {
 		while(linea_vh != null)
 		{
 			String[] partes_vh = linea_vh.split(";");
-			String id = partes_vh[0];
-			String placa = partes_vh[1];
-			String marca = partes_vh[2];
-			String modelo = partes_vh[3];
-			String tipo = partes_vh[4];
-			String color = partes_vh[5];
-			String transmision = partes_vh[6];
-			String capacidad = partes_vh[7];
-			String estado = partes_vh[8];
+			String placa = partes_vh[0];
+			String marca = partes_vh[1];
+			String modelo = partes_vh[2];
+			String tipo = partes_vh[3];
+			String color = partes_vh[4];
+			String transmision = partes_vh[5];
+			String capacidad = partes_vh[6];
+			String estado = partes_vh[7];
 			
-			Vehiculo vehiculo = new Vehiculo(id, placa, marca, modelo, tipo, color, transmision, capacidad, estado);
+			Vehiculo vehiculo = new Vehiculo(placa, marca, modelo, tipo, color, transmision, capacidad, estado);
 			total_vehiculos.add(vehiculo);
 			
 			List<Vehiculo> lista = new ArrayList<>();
@@ -92,6 +98,7 @@ public class LoaderRentaCar {
 			
 			Sede sede = new Sede(nombre, hora_apertura, hora_cierre, dias_atencion, ubicacion);
 			sedes.put(nombre, sede);
+			nombre_sedes.add(nombre);
 			linea_sd = br_sedes.readLine();
 		}
 		
@@ -122,12 +129,67 @@ public class LoaderRentaCar {
 			clientes.add(cliente);
 			linea_cl = br_clientes.readLine();
 		}
+		
+		BufferedReader br_reservas = new BufferedReader(new FileReader(archivo_reservas));
+		br_reservas.readLine();
+		String linea_rs = br_reservas.readLine();
+		while(linea_rs != null)
+		{
+			String[] partes_rs = linea_rs.split(";");
+			String id = partes_rs[0];
+			String usuario = partes_rs[1];
+			String tipo_carro = partes_rs[2];
+			String sede_recogida = partes_rs[3];
+			String fecha_recogida = partes_rs[4];
+			String hora_recogida = partes_rs[5];
+			String sede_entrega = partes_rs[6];
+			String fecha_entrega = partes_rs[7];
+			String hora_entrega = partes_rs[8];
+			String pago = partes_rs[9];
+			String seguro = partes_rs[10];
+			
+			Reserva reserva = new Reserva(id, usuario, tipo_carro, sede_recogida, fecha_recogida, hora_recogida, sede_entrega, fecha_entrega, hora_entrega, pago, seguro);
+			reservas.add(reserva);
+			linea_rs = br_reservas.readLine();
+		}
+		
+		BufferedReader br_seguros = new BufferedReader(new FileReader(archivo_seguros));
+		br_seguros.readLine();
+		String linea_sgr = br_seguros.readLine();
+		while(linea_sgr != null)
+		{
+			String[] partes_sgr = linea_sgr.split(";");
+			String nombre = partes_sgr[0];
+			int precio = Integer.parseInt(partes_sgr[1]);
+			
+			Seguro seguro = new Seguro(nombre, precio);
+			seguros.add(seguro);
+			linea_sgr = br_seguros.readLine();
+		}
+		
+		BufferedReader br_categoria = new BufferedReader(new FileReader(archivo_categorias));
+		br_categoria.readLine();
+		String linea_cat = br_categoria.readLine();
+		while(linea_cat != null)
+		{
+			String[] partes_cat = linea_cat.split(";");
+			String nombre = partes_cat[0];
+			int precio = Integer.parseInt(partes_cat[1]);
+			
+			Categoria categoria = new Categoria(nombre, precio);
+			categorias.add(categoria);
+			linea_cat = br_categoria.readLine();
+		}
+		
+		br_categoria.close();
+		br_seguros.close();
+		br_reservas.close();
 		br_clientes.close();
 		br_sedes.close();
 		br_empleados.close();
 		br_vehiculos.close();
 		
-		RentaCar renta_car = new RentaCar(tipos_vehiculos, total_vehiculos, todos_empleados, usuarios, sedes, clientes);
+		RentaCar renta_car = new RentaCar(tipos_vehiculos, total_vehiculos, todos_empleados, usuarios, sedes, clientes, reservas, nombre_sedes, seguros, categorias);
 		return renta_car;
 	}
 }

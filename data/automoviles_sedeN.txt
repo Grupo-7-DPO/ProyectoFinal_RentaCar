@@ -1,0 +1,6 @@
+placa;tipo
+CVV701;pequeño
+JLK872;pequeño
+EBS342;suv
+RGT561;económico
+LMO223;todoterreno

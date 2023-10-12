@@ -1,2 +1,4 @@
 nombre;hora_apertura;hora_cierre;dias de atencion;ubicacion
 Sede norte;6:00;18:00;1111100;Avenida Parkway
+Sede occidente;6:00;18:00;1111100;Avenida Lleras
+Sede sur;6:00;18:00;1111100;Avenida Parkway

@@ -1,5 +1,16 @@
-id;placa;marca;modelo;tipo;color;transmisión;capacidad;estado
-001;CVV701;mazda;3;pequeño;azul;manual;5;disponible
-002;JLK872;wolkswagen;voyage;pequeño;rojo;automatico;5;disponible
-003;EBS342;nissan;kicks;suv;nergo;manual;7;lavado
-004;EBZ342;nissan;kicks;luxury;azul;manual;7;disponible
+placa;marca;modelo;tipo;color;transmisión;capacidad;estado
+CVV701;mazda;3;pequeño;azul;manual;5;disponible
+JLK872;volkswagen;voyage;pequeño;rojo;automatico;5;disponible
+EBS342;nissan;kicks;suv;negro;manual;7;disponible
+RGT561;ford;fiesta;económico;verde;manual;5;disponible
+LMO223;toyota;rav4;todoterreno;blanco;automatico;5;disponible
+FDZ543;honda;civic;económico;gris;manual;5;disponible
+BHN378;chevrolet;equinox;suv;plateado;automatico;7;disponible
+ZXC879;audi;a3;lujo;dorado;automatico;5;disponible
+RTY906;bmw;x3;todoterreno;azul oscuro;automatico;5;disponible
+LKP456;hyundai;sonata;económico;amarillo;manual;5;disponible
+XSW234;mercedes-benz;gle;lujo;negro;automatico;7;disponible
+PLO789;kia;sedona;van;rojo cereza;automatico;8;disponible
+TGF123;jeep;wrangler;todoterreno;naranja;manual;5;disponible
+UJI654;lexus;ls;lujo;perlado;automatico;5;disponible
+WER890;dodge;caravan;van;verde oscuro;automatico;8;disponible

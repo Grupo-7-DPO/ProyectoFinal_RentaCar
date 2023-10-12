@@ -1,0 +1,2 @@
+id;usuario;tipo_carro;sede_recogida;fecha_recogida;hora_recogida;sede_entrega;fecha_entrega;hora_entrega;pago;seguro
+2335;m.velasquez;pequeño;Sede norte;6/12/2021;6:00;Sede norte;27/12/2021;13:00;pagado;todo riesgo

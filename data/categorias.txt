@@ -1,0 +1,7 @@
+tipo;precio_por_dia
+pequeño;50
+económico;40
+todoterreno;70
+suv;80
+lujo;100
+van;85
