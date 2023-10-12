@@ -131,6 +131,7 @@ public class ConsolaRentaCar {
 		int opcion_elegida_sede_ent = Integer.parseInt(input("\nEliga la opción que deseas"))-1;
 		String sede_entrega= lista_nombre_sedes.get(opcion_elegida_sede_ent);
 		
+		
 		String fecha_entrega = input("Ingrese la fecha en que va a entregar el vehiculo(dd/mm/aaaa)");
 		String hora_entrega = input("Ingrese la hora a la que va a entregar el vehiculo(hh:mm)");
 		
