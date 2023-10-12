@@ -69,6 +69,10 @@ public class RentaCar {
 		return this.nombre_sedes;
 	}
 	
+	public List<Vehiculo> getVehiculo(){
+		return this.total_vehiculos;
+	}
+	
 	public Usuario encontrarUsuario(String username, String password) {
 		// esto busca en la lista general de usuarios y encuentra si un usuario existe o no. Si no retorna null y si si retorna el usuario
 		List<Usuario> lista = this.usuarios;
