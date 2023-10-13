@@ -130,28 +130,6 @@ public class LoaderRentaCar {
 			linea_cl = br_clientes.readLine();
 		}
 		
-		BufferedReader br_reservas = new BufferedReader(new FileReader(archivo_reservas));
-		br_reservas.readLine();
-		String linea_rs = br_reservas.readLine();
-		while(linea_rs != null)
-		{
-			String[] partes_rs = linea_rs.split(";");
-			String id = partes_rs[0];
-			String usuario = partes_rs[1];
-			String tipo_carro = partes_rs[2];
-			String sede_recogida = partes_rs[3];
-			String fecha_recogida = partes_rs[4];
-			String hora_recogida = partes_rs[5];
-			String sede_entrega = partes_rs[6];
-			String fecha_entrega = partes_rs[7];
-			String hora_entrega = partes_rs[8];
-			String pago = partes_rs[9];
-			String seguro = partes_rs[10];
-			
-			Reserva reserva = new Reserva(id, usuario, tipo_carro, sede_recogida, fecha_recogida, hora_recogida, sede_entrega, fecha_entrega, hora_entrega, pago, seguro);
-			reservas.add(reserva);
-			linea_rs = br_reservas.readLine();
-		}
 		
 		BufferedReader br_seguros = new BufferedReader(new FileReader(archivo_seguros));
 		br_seguros.readLine();
@@ -181,6 +159,30 @@ public class LoaderRentaCar {
 			linea_cat = br_categoria.readLine();
 		}
 		
+		
+		BufferedReader br_reservas = new BufferedReader(new FileReader(archivo_reservas));
+		br_reservas.readLine();
+		String linea_rs = br_reservas.readLine();
+		while(linea_rs != null)
+		{
+			String[] partes_rs = linea_rs.split(";");
+			String id = partes_rs[0];
+			String usuario = partes_rs[1];
+			Categoria tipo_carro = lookForCategoria(partes_rs[2], categorias);
+			String sede_recogida = partes_rs[3];
+			String fecha_recogida = partes_rs[4];
+			String hora_recogida = partes_rs[5];
+			String sede_entrega = partes_rs[6];
+			String fecha_entrega = partes_rs[7];
+			String hora_entrega = partes_rs[8];
+			String pago = partes_rs[9];
+			Seguro seguro = lookForSeguro(partes_rs[10], seguros);
+			
+			Reserva reserva = new Reserva(id, usuario, tipo_carro, sede_recogida, fecha_recogida, hora_recogida, sede_entrega, fecha_entrega, hora_entrega, pago, seguro);
+			reservas.add(reserva);
+			linea_rs = br_reservas.readLine();
+		}
+		
 		br_categoria.close();
 		br_seguros.close();
 		br_reservas.close();
@@ -191,5 +193,27 @@ public class LoaderRentaCar {
 		
 		RentaCar renta_car = new RentaCar(tipos_vehiculos, total_vehiculos, todos_empleados, usuarios, sedes, clientes, reservas, nombre_sedes, seguros, categorias);
 		return renta_car;
+	}
+
+	private static Seguro lookForSeguro(String seguro_buscado, List<Seguro> lista_seguros) {
+		Seguro seguro_encontrado = null;
+		
+		for (Seguro seguro_iteracion : lista_seguros) {
+			if(seguro_iteracion.getNombre().equals(seguro_buscado)) {
+				seguro_encontrado = seguro_iteracion;
+			}
+		}
+		return seguro_encontrado;
+	}
+
+	private static Categoria lookForCategoria(String categoria_buscada, List<Categoria> lista_categorias) {
+		Categoria categoria_encontrado = null;
+		
+		for (Categoria categoria_iteracion : lista_categorias) {
+			if(categoria_iteracion.getNombre().equals(categoria_buscada)) {
+				categoria_encontrado = categoria_iteracion;
+			}
+		}
+		return categoria_encontrado;
 	}
 }

@@ -183,7 +183,7 @@ public class ConsolaRentaCar {
 		String id = renta_carros.crearId();
 		String usuario = usuario_actual.getUser();
 		
-		
+		System.out.println("\nEstas son las opciones de categorias de vehiculos que tenemos por el momento\n");
 		List<Categoria> lista_categorias = renta_carros.getCategorias();
 		int numero = 1;
 		for (Categoria categoria_iteracion : lista_categorias) {
@@ -221,9 +221,10 @@ public class ConsolaRentaCar {
 		String hora_entrega = input("Ingrese la hora a la que va a entregar el vehiculo(hh:mm)");
 		
 		System.out.println("\n¿Deseas agregar algun seguro?");
-		System.out.println("\n1. Si\n2.No");
+		System.out.println("\n1. Si\n2. No");
 		String elegir_seguro = input("\nElige alguna opcion");
 		Seguro seguro = null;
+		System.out.println("\nEstos son los seguros que tenemos disponibles por el momento\n");
 		if(elegir_seguro.equals("1") | elegir_seguro.equals("Si")) {
 			List<Seguro> lista_seguros = renta_carros.getSeguros();
 			numero = 1;
@@ -234,10 +235,15 @@ public class ConsolaRentaCar {
 			int opcion_elegida_seguro = Integer.parseInt(input("\nEliga la opción que deseas"))-1;
 			seguro = lista_seguros.get(opcion_elegida_seguro);
 		}
+		
 		long precio = renta_carros.calcularTarifaReserva(fecha_recogida, fecha_entrega, tipo, seguro);
 		
-		System.out.println("Tu reserva tendria un valor de " + precio);
+		System.out.println("\nTu reserva tendria un valor total de " + precio);
+		System.out.println("\nEl valor que debes cancelar a continuacion es de " + precio*0.3 + "$");
+		System.out.println("\nCuando reclames tu reserva deberás cancelar el 70% restante");
 		
+		renta_carros.crearReserva(id, usuario, tipo, sede_recogida, fecha_recogida, hora_recogida, sede_entrega, fecha_entrega, hora_entrega, "pagado", seguro);
+		System.out.println("\n¡Reserva creada correctamente!");
 		
 	}
 	
@@ -251,8 +257,8 @@ public class ConsolaRentaCar {
 		}
 		else {
 			Usuario usuario_reserva = renta_carros.encontrarUsuarioConUsername(reserva_buscada.getUsername());
-			System.out.println("\nLa reserva con id " + id + " a nombre de " + usuario_reserva.getNombre() + " tiene asignada\nun vehiculo tipo"
-								+ reserva_buscada.getTipo() + " para ser recogido en la " + reserva_buscada.getSedeRecogida() + "\nel dia " + reserva_buscada.getDiaRecogida()
+			System.out.println("\nLa reserva con id " + id + " a nombre de " + usuario_reserva.getNombre() + " tiene asignada\nun vehiculo tipo "
+								+ reserva_buscada.getTipo().getNombre() + " para ser recogido en la " + reserva_buscada.getSedeRecogida() + "\nel dia " + reserva_buscada.getDiaRecogida()
 								+ " a la hora " + reserva_buscada.getHoraRecogida() + "\ny ser entregado el dia " + reserva_buscada.getDiaEntrega() 
 								+ " a la hora " + reserva_buscada.getHoraEntrega() + "\n");
 		}

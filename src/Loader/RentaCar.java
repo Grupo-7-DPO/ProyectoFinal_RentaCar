@@ -239,6 +239,41 @@ public class RentaCar {
 		}
 	 }
 	
+	public void crearReserva(String id, String usuario, Categoria tipo, String sede_recogida, String fecha_recogida, String hora_recogida, String sede_entrega, String fecha_entrega, String hora_entrega, String pago, Seguro seguro) {
+		Reserva nueva_reserva = new Reserva(id, usuario, tipo, sede_recogida, fecha_recogida, hora_recogida, sede_entrega, fecha_entrega, hora_entrega, "pagado", seguro);
+		this.reservas.add(nueva_reserva);
+		
+		try {
+			modificarArchivoReservas(nueva_reserva);
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
+	private void modificarArchivoReservas(Reserva nueva_reserva) throws IOException {
+		FileWriter file = new FileWriter("./data/reservas.txt", true);
+		BufferedWriter br = new BufferedWriter(file);
+		
+		String id = nueva_reserva.getId();
+		String usuario = nueva_reserva.getUsername();
+		String tipo = nueva_reserva.getTipo().getNombre();
+		String sede_recogida = nueva_reserva.getSedeRecogida();
+		String fecha_recogida = nueva_reserva.getDiaRecogida();
+		String hora_recogida = nueva_reserva.getHoraRecogida();
+		String sede_entrega = nueva_reserva.getSedeEntrega();
+		String fecha_entrega = nueva_reserva.getDiaEntrega();
+		String hora_entrega = nueva_reserva.getHoraEntrega();
+		String pago = nueva_reserva.getPago();
+		String seguro = nueva_reserva.getSeguro().getNombre();
+		
+		br.write("\n" + id + ";" + usuario + ";" + tipo + ";" + sede_recogida + ";" + fecha_recogida + ";"
+				+ hora_recogida + ";" + sede_entrega + ";" + fecha_entrega + ";" + hora_entrega + ";"
+				+ pago + ";" + seguro);
+		br.close();
+		
+	}
+
 	private void modificarArchivoUsuario(Usuario nuevo_usuario) throws IOException { 
 		//Este metodo va a modificar ek archivo de usuarios, recibiendo como parametro el usuario nuevo
 		FileWriter file = new FileWriter("./data/usuarios.txt", true);
