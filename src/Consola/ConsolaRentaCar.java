@@ -105,12 +105,22 @@ public class ConsolaRentaCar {
 				crearReserva(true);
 			}
 			else if (opcion.equals("3")) {
-				
+				comenzarReserva();
+			}
+			else if (opcion.equals("4")) {
+				recibirCarroReservado();
+			}
+			else if(opcion.equals("5")) {
+				cambiarEstadoCarro("limpieza");
+			}
+			else if(opcion.equals("6")) {
+				cambiarEstadoCarro("mantenimiento");
 			}
 		}
 
 	}
 
+	
 	private static void consolaAdmin() {
 		// TODO Auto-generated method stub
 		
@@ -290,6 +300,18 @@ public class ConsolaRentaCar {
 		
 	}
 	
+	private static void comenzarReserva() {
+		
+	}
+	
+	private static void recibirCarroReservado() {
+		
+	}
+	
+	private static void cambiarEstadoCarro(String estado) {
+		
+	}
+	
 	private static void consultarReserva() {
 		String id = input("\nEscribe el id de tu reserva");
 		Reserva reserva_buscada = renta_carros.encontrarReserva(id);
@@ -300,10 +322,15 @@ public class ConsolaRentaCar {
 		}
 		else {
 			Usuario usuario_reserva = renta_carros.encontrarUsuarioConUsername(reserva_buscada.getUsername());
-			System.out.println("\nLa reserva con id " + id + " a nombre de " + usuario_reserva.getNombre() + " tiene asignada\nun vehiculo tipo "
-								+ reserva_buscada.getTipo().getNombre() + " para ser recogido en la " + reserva_buscada.getSedeRecogida() + "\nel dia " + reserva_buscada.getDiaRecogida()
-								+ " a la hora " + reserva_buscada.getHoraRecogida() + "y ser entregado el dia " + reserva_buscada.getDiaEntrega() 
-								+ " a la hora " + reserva_buscada.getHoraEntrega() + "\n");
+			
+			System.out.println("\nReserva a nombre de " + usuario_reserva.getNombre() + " con id " + id + "\n");
+			System.out.println("Tipo de Carro: " + reserva_buscada.getTipo().getNombre() + "\n");
+			System.out.println("Sede para ser recogido: " + reserva_buscada.getSedeRecogida());
+			System.out.println("Fecha: " + reserva_buscada.getDiaRecogida());
+			System.out.println("Hora: " + reserva_buscada.getHoraRecogida());
+			System.out.println("\nSede para ser entregado: " + reserva_buscada.getSedeEntrega());
+			System.out.println("Fecha: " + reserva_buscada.getDiaEntrega());
+			System.out.println("Hora: " + reserva_buscada.getHoraEntrega() + "\n");
 		}
 		
 	}
