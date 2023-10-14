@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 import Model.Vehiculo;
+import Model.Admin;
 import Model.Categoria;
 import Model.Cliente;
 import Model.Empleado;
@@ -77,10 +78,23 @@ public class LoaderRentaCar {
 			
 			Usuario usuario = new Usuario(nombre, tipo, user, password);
 			usuarios.add(usuario);
-			if(tipo.equals("AG") | tipo.equals("A") | tipo.equals("E")) {
-				Empleado empleado = new Empleado(nombre, tipo, user, password);
+			
+			if (tipo.equals("E")) {
+				String sede = partes_us[4];
+				Empleado empleado = new Empleado (nombre, tipo, user, password, sede);
 				todos_empleados.add(empleado);
 			}
+			else if (tipo.equals("A")){
+				String sede = partes_us[4];
+				Admin admin = new Admin (nombre, tipo, user, password, sede);
+				todos_empleados.add(admin);
+			}
+			else if (tipo.equals("AG")) {
+				String sede = null;
+				Empleado adminG = new Empleado (nombre, tipo, user, password, sede);
+				todos_empleados.add(adminG);
+			}
+			
 			linea_us = br_empleados.readLine();
 		}
 		

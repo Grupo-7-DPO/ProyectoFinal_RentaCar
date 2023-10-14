@@ -81,7 +81,7 @@ public class RentaCar {
 	public boolean elimEmpleado(String username, String password) throws IOException {
 		Usuario user = encontrarUsuario(username,password);
 		if (!user.equals(null)) {
-			usuarios.remove(user);
+			this.usuarios.remove(user);
 			writeArchivoUsuario();
 			return true;
 		}
@@ -227,17 +227,23 @@ public class RentaCar {
 	public void crearUsuarioCliente(String nombre, String tipo, String username, String password) {
 		Usuario nuevo_usuario = new Usuario(nombre, tipo, username, password);
 		this.usuarios.add(nuevo_usuario);
-		if(tipo.equals("AG") | tipo.equals("A") | tipo.equals("E")) {
-			Empleado empleado = new Empleado(nombre, tipo, username, password);
-			todos_empleados.add(empleado);
-			//System.out.println(todos_empleados.toString());
-		}
 		try {
 			modificarArchivoUsuario(nuevo_usuario);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	 }
+	
+	public void crearUsuarioAdminEmpleado(String nombre, String tipo, String username, String password, String sede) {
+		Empleado empleado = new Empleado(nombre, tipo, username, password, sede);
+		this.todos_empleados.add(empleado);
+		try {
+			modificarArchivoUsuarioEmpleadoAdmin(empleado);
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+	}
 	
 	public void crearReserva(String id, String usuario, Categoria tipo, String sede_recogida, String fecha_recogida, String hora_recogida, String sede_entrega, String fecha_entrega, String hora_entrega, String pago, Seguro seguro) {
 		Reserva nueva_reserva = new Reserva(id, usuario, tipo, sede_recogida, fecha_recogida, hora_recogida, sede_entrega, fecha_entrega, hora_entrega, "pagado", seguro);
@@ -265,7 +271,13 @@ public class RentaCar {
 		String fecha_entrega = nueva_reserva.getDiaEntrega();
 		String hora_entrega = nueva_reserva.getHoraEntrega();
 		String pago = nueva_reserva.getPago();
-		String seguro = nueva_reserva.getSeguro().getNombre();
+		String seguro;
+		if (nueva_reserva.getSeguro() == null) {
+			seguro = "null";
+		}
+		else {
+			seguro = nueva_reserva.getSeguro().getNombre();
+		}
 		
 		br.write("\n" + id + ";" + usuario + ";" + tipo + ";" + sede_recogida + ";" + fecha_recogida + ";"
 				+ hora_recogida + ";" + sede_entrega + ";" + fecha_entrega + ";" + hora_entrega + ";"
@@ -285,6 +297,21 @@ public class RentaCar {
 		String password = nuevo_usuario.getPassword();
 		
 		br.write("\n" + nombre + ";" + tipo + ";" + username + ";" + password);
+		br.close();
+	}
+	
+	public void modificarArchivoUsuarioEmpleadoAdmin(Empleado nuevo_usuario) throws IOException { 
+		//Este metodo va a modificar ek archivo de usuarios, recibiendo como parametro el usuario nuevo
+		FileWriter file = new FileWriter("./data/usuarios.txt", true);
+		BufferedWriter br = new BufferedWriter(file);
+		
+		String nombre = nuevo_usuario.getNombre();
+		String tipo = nuevo_usuario.getTipo();
+		String username = nuevo_usuario.getUser();
+		String password = nuevo_usuario.getPassword();
+		String sede = nuevo_usuario.getSede();
+		
+		br.write("\n" + nombre + ";" + tipo + ";" + username + ";" + password + ";" + sede);
 		br.close();
 	}
 	
