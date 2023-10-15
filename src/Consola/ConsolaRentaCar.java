@@ -135,8 +135,9 @@ public class ConsolaRentaCar {
 				String trans = input("Escribe la transmision");
 				String capacidad = input("Escribe la capacidad");
 				String estado = input("Escribe el estado");
+				String sede = input("Escriba la sede");
 				
-				renta_carros.crearVehiculo(placa,marca,modelo,tipo,color,trans,capacidad,estado);
+				renta_carros.crearVehiculo(placa,marca,modelo,tipo,color,trans,capacidad,estado,sede);
 				
 			}
 			

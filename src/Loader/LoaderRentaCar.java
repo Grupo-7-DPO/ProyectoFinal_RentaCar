@@ -46,8 +46,9 @@ public class LoaderRentaCar {
 			String transmision = partes_vh[5];
 			String capacidad = partes_vh[6];
 			String estado = partes_vh[7];
+			String sede = partes_vh[8];
 			
-			Vehiculo vehiculo = new Vehiculo(placa, marca, modelo, tipo, color, transmision, capacidad, estado);
+			Vehiculo vehiculo = new Vehiculo(placa, marca, modelo, tipo, color, transmision, capacidad, estado,sede);
 			total_vehiculos.add(vehiculo);
 			
 			List<Vehiculo> lista = new ArrayList<>();

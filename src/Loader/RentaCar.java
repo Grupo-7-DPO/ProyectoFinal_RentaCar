@@ -156,6 +156,18 @@ public class RentaCar {
 		
 		return se_encontro;
 	}
+	
+	public Vehiculo encontrarVehiculo(String placa) {
+		Vehiculo findCar = null;
+		List<Vehiculo> cars = this.total_vehiculos;
+		
+		for (Vehiculo car : cars) {
+			if(car.getPlaca().equals(placa)) {
+				findCar = car;
+			}
+		}
+		return findCar;
+	}
 	public void crearCliente(String nombre, String contacto, String fecha_nacimiento, String nacionalidad, String imagen_documento, String numero_licencia, String pais_licencia,
 			String fecha_vencimiento_pase, String imagen_pase, String tipo_tarjeta, String numero_tarjeta, String fecha_vencimiento_tarjeta, String username) {
 		TarjetaCredito tarjeta = new TarjetaCredito(tipo_tarjeta, numero_tarjeta, fecha_vencimiento_tarjeta);
@@ -269,8 +281,32 @@ public class RentaCar {
 	}
 	
 	
-	public void crearVehiculo(String placa, String marca, String modelo, String tipo, String color, String trans, String capacidad, String estado) {
-		Vehiculo newCar = new Vehiculo(placa,marca,modelo,tipo,color,trans,capacidad,estado);
+	public void crearVehiculo(String placa, String marca, String modelo, String tipo, String color, String trans, String capacidad, String estado, String sede) throws IOException {
+		Vehiculo newCar = new Vehiculo(placa,marca,modelo,tipo,color,trans,capacidad,estado,sede);
+		this.total_vehiculos.add(newCar);
+		writeArchivoVehiculo();
+		
+	}
+	
+	public void writeArchivoVehiculo() throws IOException {
+		FileWriter file = new FileWriter("./data/automoviles.txt");
+		BufferedWriter br = new BufferedWriter(file);
+		br.write("placa;marca;modelo;tipo;color;trasnmision;capacidad;estado;sede");
+		for (Vehiculo newCar : this.total_vehiculos) {
+			String placa = newCar.getPlaca();
+			String marca = newCar.getMarca();
+			String modelo = newCar.getModelo();
+			String tipo = newCar.getTipo();
+			String color = newCar.getColor();
+			String trans = newCar.getTrans();
+			String capacidad = newCar.getCapacidad();
+			String estado = newCar.getEstado();
+			String sede = newCar.getSede();
+			
+			br.write("\n"+ placa +";"+ marca + ";"+ modelo +";"+ tipo +";" + color+";"+ trans +";"+ capacidad + ";" + estado+";" +sede);
+		}
+		
+		br.close();
 	}
 
 	public String crearId() {
