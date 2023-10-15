@@ -6,7 +6,7 @@ public class Cliente {
 	String contacto;
 	String fecha_nacimiento;
 	String nacionalidad;
-	String imagen_cedula;
+ 	String imagen_cedula;
 	LicenciaConduccion licencia;
 	TarjetaCredito tarjeta;
 	String username;

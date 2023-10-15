@@ -197,9 +197,19 @@ public class LoaderRentaCar {
 			String fecha_entrega = partes_rs[7];
 			String hora_entrega = partes_rs[8];
 			String pago = partes_rs[9];
-			Seguro seguro = lookForSeguro(partes_rs[10], seguros);
+			Seguro seguro = null;
 			
-			Reserva reserva = new Reserva(id, usuario, tipo_carro, sede_recogida, fecha_recogida, hora_recogida, sede_entrega, fecha_entrega, hora_entrega, pago, seguro);
+			if (partes_rs[1] != "null") {
+				seguro = lookForSeguro(partes_rs[10], seguros);
+			}
+			
+			Vehiculo carro = null;
+			
+			if(partes_rs[11] != "null") {
+				carro = lookForCarro(partes_rs[11], total_vehiculos);
+			}
+			
+			Reserva reserva = new Reserva(id, usuario, tipo_carro, sede_recogida, fecha_recogida, hora_recogida, sede_entrega, fecha_entrega, hora_entrega, pago, seguro, carro);
 			reservas.add(reserva);
 			linea_rs = br_reservas.readLine();
 		}
@@ -214,6 +224,19 @@ public class LoaderRentaCar {
 		
 		RentaCar renta_car = new RentaCar(tipos_vehiculos, total_vehiculos, todos_empleados, usuarios, sedes, clientes, reservas, nombre_sedes, seguros, categorias);
 		return renta_car;
+	}
+
+	private static Vehiculo lookForCarro(String placa_carro_buscado, List<Vehiculo> lista_vehiculos) {
+		Vehiculo carro_encontrado = null;
+		
+		for (Vehiculo vehiculo_iteracion : lista_vehiculos) {
+			if(vehiculo_iteracion.getPlaca().equals(placa_carro_buscado)) {
+				carro_encontrado = vehiculo_iteracion;
+			}
+		}
+		
+		return carro_encontrado;
+	
 	}
 
 	private static Seguro lookForSeguro(String seguro_buscado, List<Seguro> lista_seguros) {

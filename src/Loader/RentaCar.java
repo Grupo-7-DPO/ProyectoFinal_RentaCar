@@ -9,6 +9,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
@@ -230,6 +231,47 @@ public class RentaCar {
         return ChronoUnit.DAYS.between(fecha1, fecha2);
     }
 	
+	public Vehiculo comenzarReserva(String sede, Categoria tipo, Reserva reserva) {
+		List<Vehiculo> lista_vehiculos = this.total_vehiculos;
+		Vehiculo carro_asignado = null;
+		
+		for (Vehiculo carro_iteracion : lista_vehiculos) {
+			if (carro_iteracion.getTipo().equals(tipo.getNombre()) && carro_iteracion.getSede().equals(sede) && carro_iteracion.getEstado().equals("disponible")) {
+				carro_asignado = carro_iteracion;
+			}
+		}
+		
+		if (carro_asignado == null) {
+			for (Vehiculo carro_iteracion : lista_vehiculos) {
+				if (carro_iteracion.getSede().equals(sede) && carro_iteracion.getEstado().equals("disponible")) {
+					carro_asignado = carro_iteracion;
+				}
+			}
+		}
+		
+		List<Reserva> lista_reservas = reservas;
+		
+		Iterator<Reserva> iterator = lista_reservas.iterator();
+		while (iterator.hasNext()) {
+		    Reserva reserva_iteracion = iterator.next();
+		    if (reserva_iteracion.getId().equals(reserva.getId())) {
+		        iterator.remove();
+		    }
+		}
+		reserva.setCarro(carro_asignado);
+		reservas.add(reserva);
+		this.reservas = lista_reservas;
+		
+		try {
+			writeArchivoReservas();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return carro_asignado;
+	}
+	
 	private void modificarArchivoClientes(Cliente nuevo_cliente) throws IOException {
 		FileWriter file = new FileWriter("./data/clientes.txt", true);
 		BufferedWriter br = new BufferedWriter(file);
@@ -282,7 +324,7 @@ public class RentaCar {
 	}
 	
 	public void crearReserva(String id, String usuario, Categoria tipo, String sede_recogida, String fecha_recogida, String hora_recogida, String sede_entrega, String fecha_entrega, String hora_entrega, String pago, Seguro seguro) {
-		Reserva nueva_reserva = new Reserva(id, usuario, tipo, sede_recogida, fecha_recogida, hora_recogida, sede_entrega, fecha_entrega, hora_entrega, "pagado", seguro);
+		Reserva nueva_reserva = new Reserva(id, usuario, tipo, sede_recogida, fecha_recogida, hora_recogida, sede_entrega, fecha_entrega, hora_entrega, "pagado", seguro, null);
 		this.reservas.add(nueva_reserva);
 		
 		try {
@@ -314,10 +356,11 @@ public class RentaCar {
 		else {
 			seguro = nueva_reserva.getSeguro().getNombre();
 		}
+		String carro = "null";
 		
 		br.write("\n" + id + ";" + usuario + ";" + tipo + ";" + sede_recogida + ";" + fecha_recogida + ";"
 				+ hora_recogida + ";" + sede_entrega + ";" + fecha_entrega + ";" + hora_entrega + ";"
-				+ pago + ";" + seguro);
+				+ pago + ";" + seguro + ";" + carro);
 		br.close();
 		
 	}
@@ -366,6 +409,37 @@ public class RentaCar {
 		br.close();
 	}
 	
+	private void writeArchivoReservas() throws IOException{
+		FileWriter file = new FileWriter("./data/reservas.txt");
+		BufferedWriter br = new BufferedWriter(file);
+		for (Reserva nueva_reserva : reservas) {
+			String id = nueva_reserva.getId();
+			String user = nueva_reserva.getUsername();
+			String tipo = nueva_reserva.getTipo().getNombre();
+			String sede_recogida = nueva_reserva.getSedeRecogida();
+			String fecha_recogida = nueva_reserva.getDiaRecogida();
+			String hora_recogida = nueva_reserva.getHoraRecogida();
+			String sede_entrega = nueva_reserva.getSedeEntrega();
+			String fecha_entrega = nueva_reserva.getDiaEntrega();
+			String hora_entrega = nueva_reserva.getHoraEntrega();
+			String pago = nueva_reserva.getPago();
+			String seguro = "null";
+			if (nueva_reserva.getSeguro() != null) {
+				seguro = nueva_reserva.getSeguro().getNombre();
+			}
+			String carro = "null";
+			if(nueva_reserva.getCarro() != null) {
+				carro = nueva_reserva.getCarro().getPlaca();
+			}
+			
+			
+			br.write("\n" + id + ";" + user + ";" + tipo + ";" + sede_recogida + ";" + fecha_recogida + ";" + 
+						hora_recogida + ";" + sede_entrega + ";" + fecha_entrega + ";" + hora_entrega
+						+ ";" + pago + ";" + seguro + ";" + carro);
+		}
+		
+		br.close();
+	}
 	
 	public boolean crearVehiculo(String placa, String marca, String modelo, String tipo, String color, String trans, String capacidad, String estado, String sede) throws IOException {
 		Vehiculo newCar = new Vehiculo(placa,marca,modelo,tipo,color,trans,capacidad,estado,sede);

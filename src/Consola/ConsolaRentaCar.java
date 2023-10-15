@@ -106,7 +106,17 @@ public class ConsolaRentaCar {
 				crearReserva(true);
 			}
 			else if (opcion.equals("3")) {
-				comenzarReserva();
+				System.out.println("\n¿En que sede te encuentras?");
+				List<String> lista_nombre_sedes = renta_carros.getNombreSedes();
+				int numero = 1;
+				for (String nombre_sede : lista_nombre_sedes) {
+					System.out.println(numero + ". " + nombre_sede);
+					numero++;
+				}
+				int opcion_elegida_sede = Integer.parseInt(input("\nEliga la opción que deseas"))-1;
+				String sede = lista_nombre_sedes.get(opcion_elegida_sede);
+				
+				comenzarReserva(sede);
 			}
 			else if (opcion.equals("4")) {
 				recibirCarroReservado();
@@ -242,8 +252,6 @@ public class ConsolaRentaCar {
 			}
 		}
 		
-		
-		
 	}
 
 	
@@ -323,26 +331,51 @@ public class ConsolaRentaCar {
 		}
 		
 		if (usuario_actual.getTipo().equals("C")) {
-			System.out.println("\nEl valor que debes cancelar a continuacion es de " + Math.round((precio*0.3)) + "$");
+			System.out.println("\nEl valor que debes cancelar a continuacion es de " + Math.round(precio*0.3 * 100.0) / 100.0 + "$");
 			System.out.println("\nCuando reclames tu reserva deberás cancelar el 70% restante");
 		}
 		
-		renta_carros.crearReserva(id, usuario, tipo, sede_recogida, fecha_recogida, hora_recogida, sede_entrega, fecha_entrega, hora_entrega, "30% pagado", seguro);
+		renta_carros.crearReserva(id, usuario, tipo, sede_recogida, fecha_recogida, hora_recogida, sede_entrega, fecha_entrega, hora_entrega, "pagado", seguro);
 		
 		
 	}
 	
-	private static void comenzarReserva() {
+	private static void comenzarReserva(String sede_empleado) {
 		String id_reserva = input("Escribe el id de la reserva");
 		String nombre = input("Escribe a nombre de quien está la reserva");
 		
 		Usuario usuario_reserva = renta_carros.encontrarUsuarioConNombre(nombre);
 		Reserva reserva = renta_carros.encontrarReserva(id_reserva);
 		
-		if (usuario_reserva.getUser().equals(reserva.getUsername())) {
-			
+		if (reserva != null && usuario_reserva != null) {
+			if (usuario_reserva.getUser().equals(reserva.getUsername()) && reserva.getSedeRecogida().equals(sede_empleado)) {
+				String sede = reserva.getSedeRecogida();
+				Categoria tipo = reserva.getTipo();
+				long precio = renta_carros.calcularTarifaReserva(reserva.getDiaRecogida(), reserva.getDiaEntrega() , reserva.getTipo(), reserva.getSeguro());
+				
+				System.out.println("\nDebe pagar el saldo restante de " + Math.round(precio*0.7 * 100.0) / 100.0 + "$");
+				
+				Vehiculo carro_asignado = renta_carros.comenzarReserva(sede, tipo, reserva);
+				
+				if (carro_asignado != null) {
+					System.out.println("Carro asignado: "+ carro_asignado.getMarca() + " " + carro_asignado.getModelo());
+					System.out.println("Placa: " + carro_asignado.getPlaca());
+					System.out.println("Color: " + carro_asignado.getColor());
+					System.out.println("Tipo: " + carro_asignado.getTipo());
+				}
+				else {
+					System.out.println("\nLo sentimos, no tenemos carros disponibles por el momento");
+				}
+				
+			}
+			else if (!reserva.getSedeRecogida().equals(sede_empleado)) {
+				System.out.println("El carro debe ser recogido en la sede " + reserva.getSedeRecogida());
+				System.out.println("No en la sede " + sede_empleado);
+			}
 		}
-		
+		else {
+			System.out.println("ERROR: No existe una reserva con id " + id_reserva + " a nombre de " + nombre);
+		}
 		
 		
 	}
@@ -368,13 +401,27 @@ public class ConsolaRentaCar {
 			Usuario usuario_reserva = renta_carros.encontrarUsuarioConUsername(reserva_buscada.getUsername());
 			
 			System.out.println("\nReserva a nombre de " + usuario_reserva.getNombre() + " con id " + id + "\n");
-			System.out.println("Tipo de Carro: " + reserva_buscada.getTipo().getNombre() + "\n");
+			System.out.println("Tipo de Carro: " + reserva_buscada.getTipo().getNombre());
+			if (reserva_buscada.getSeguro() != null) {
+				System.out.println("Seguro: " + reserva_buscada.getSeguro().getNombre() + "\n");
+			}
+			else {
+				System.out.println("Seguro: ninguno");
+			}
 			System.out.println("Sede para ser recogido: " + reserva_buscada.getSedeRecogida());
 			System.out.println("Fecha: " + reserva_buscada.getDiaRecogida());
 			System.out.println("Hora: " + reserva_buscada.getHoraRecogida());
 			System.out.println("\nSede para ser entregado: " + reserva_buscada.getSedeEntrega());
 			System.out.println("Fecha: " + reserva_buscada.getDiaEntrega());
 			System.out.println("Hora: " + reserva_buscada.getHoraEntrega() + "\n");
+			if (reserva_buscada.getCarro() != null) {
+				System.out.println("Carro asignado: " + reserva_buscada.getCarro().getMarca() + " " + reserva_buscada.getCarro().getModelo());
+				System.out.println("Placa: " + reserva_buscada.getCarro().getPlaca());
+			}
+			else {
+				System.out.println("Carro asignado: ninguno");
+			}
+			
 		}
 		
 	}
