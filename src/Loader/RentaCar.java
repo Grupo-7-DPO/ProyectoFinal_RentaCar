@@ -231,46 +231,6 @@ public class RentaCar {
         return ChronoUnit.DAYS.between(fecha1, fecha2);
     }
 	
-	public Vehiculo comenzarReserva(String sede, Categoria tipo, Reserva reserva) {
-		List<Vehiculo> lista_vehiculos = this.total_vehiculos;
-		Vehiculo carro_asignado = null;
-		
-		for (Vehiculo carro_iteracion : lista_vehiculos) {
-			if (carro_iteracion.getTipo().equals(tipo.getNombre()) && carro_iteracion.getSede().equals(sede) && carro_iteracion.getEstado().equals("disponible")) {
-				carro_asignado = carro_iteracion;
-			}
-		}
-		
-		if (carro_asignado == null) {
-			for (Vehiculo carro_iteracion : lista_vehiculos) {
-				if (carro_iteracion.getSede().equals(sede) && carro_iteracion.getEstado().equals("disponible")) {
-					carro_asignado = carro_iteracion;
-				}
-			}
-		}
-		
-		List<Reserva> lista_reservas = reservas;
-		
-		Iterator<Reserva> iterator = lista_reservas.iterator();
-		while (iterator.hasNext()) {
-		    Reserva reserva_iteracion = iterator.next();
-		    if (reserva_iteracion.getId().equals(reserva.getId())) {
-		        iterator.remove();
-		    }
-		}
-		reserva.setCarro(carro_asignado);
-		reservas.add(reserva);
-		this.reservas = lista_reservas;
-		
-		try {
-			writeArchivoReservas();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return carro_asignado;
-	}
 	
 	private void modificarArchivoClientes(Cliente nuevo_cliente) throws IOException {
 		FileWriter file = new FileWriter("./data/clientes.txt", true);
@@ -331,6 +291,91 @@ public class RentaCar {
 			modificarArchivoReservas(nueva_reserva);
 		} catch (IOException e) {
 			
+			e.printStackTrace();
+		}
+	}
+	
+	public Vehiculo comenzarReserva(String sede, Categoria tipo, Reserva reserva) {
+		List<Vehiculo> lista_vehiculos = total_vehiculos;
+		Vehiculo carro_asignado = null;
+		
+		for (Vehiculo carro_iteracion : lista_vehiculos) {
+			if (carro_iteracion.getTipo().equals(tipo.getNombre()) && carro_iteracion.getSede().equals(sede) && carro_iteracion.getEstado().equals("disponible")) {
+				carro_asignado = carro_iteracion;
+			}
+		}
+		
+		if (carro_asignado == null) {
+			for (Vehiculo carro_iteracion : lista_vehiculos) {
+				if (carro_iteracion.getSede().equals(sede) && carro_iteracion.getEstado().equals("disponible")) {
+					carro_asignado = carro_iteracion;
+				}
+			}
+		}
+		
+		
+		Iterator<Reserva> iterator = reservas.iterator();
+		while (iterator.hasNext()) {
+		    Reserva reserva_iteracion = iterator.next();
+		    if (reserva_iteracion.getId().equals(reserva.getId())) {
+		        iterator.remove();
+		    }
+		}
+		reserva.setCarro(carro_asignado);
+		reservas.add(reserva);
+		
+		try {
+			writeArchivoReservas();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return carro_asignado;
+	}
+	
+	public void terminarReserva(Reserva reserva_eliminar) {
+		String placa_carro = reserva_eliminar.getCarro().getPlaca();
+		
+		Iterator<Reserva> iterator = reservas.iterator();
+		while (iterator.hasNext()) {
+		    Reserva reserva_iteracion = iterator.next();
+		    if (reserva_iteracion.getId().equals(reserva_eliminar.getId())) {
+		        iterator.remove();
+		    }
+		}
+		
+		try {
+			writeArchivoReservas();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cambiarEstadoCarro("limpieza", placa_carro);
+		try {
+			cambiarSedeVehiculo(placa_carro, reserva_eliminar.getSedeEntrega());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void cambiarEstadoCarro(String estado, String placa) {
+		Iterator<Vehiculo> iterator = total_vehiculos.iterator();
+		Vehiculo carro = null;
+		while (iterator.hasNext()) {
+		    Vehiculo vehiculo_iteracion = iterator.next();
+		    if (vehiculo_iteracion.getPlaca().equals(placa)) {
+		    	carro = vehiculo_iteracion;
+		        iterator.remove();
+		    }
+		}
+		carro.setEstado(estado);
+		total_vehiculos.add(carro);
+		try {
+			writeArchivoVehiculo();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
