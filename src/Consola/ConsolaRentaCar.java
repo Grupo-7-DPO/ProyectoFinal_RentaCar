@@ -152,26 +152,31 @@ public class ConsolaRentaCar {
 			System.out.println("9. Crear empleado");
 			System.out.println("10. Eliminar empleado");
 			System.out.println("11. Alquiler");
-			System.out.println("12. Recibir automovil");
+			System.out.println("12. Recibir automovil reservado");
 			System.out.println("13. Cambiar estado automovil");
 			System.out.println("0. Log Out");
 			String choice = input("Elige una opcion");
 			
-			if (choice.equals("1")) {
+			if (choice.equals("0")) {
+				continuar = false;
+				main(null);
+			}
+			
+			else if (choice.equals("1")) {
 				List<Vehiculo>inv = renta_carros.getInventarioGeneral();
 				System.out.println("PLACA  TIPO  CAPACIDAD  MODELO  MARCA  ESTADO");
 				for (Vehiculo car : inv)
 					System.out.println(car.getCar());
 			}
 			
-			if (choice.equals("2")) {
+			else if (choice.equals("2")) {
 				List<Vehiculo>inv = renta_carros.getInventarioDisponible();
 				System.out.println("PLACA  TIPO  CAPACIDAD  MODELO  MARCA  ESTADO");
 				for (Vehiculo car : inv)
 					System.out.println(car.getCar());
 			}
 			
-			if (choice.equals("3")) {
+			else if (choice.equals("3")) {
 				String name = input("Ingresa el nombre de la sede");
 				List<Vehiculo>inv = renta_carros.getInventarioDispSede(name);
 				if (inv.size()>1) {
@@ -183,11 +188,11 @@ public class ConsolaRentaCar {
 				
 			}
 			
-			if (choice.equals("4")) {
+			else if (choice.equals("4")) {
 				
 			}
 			
-			if (choice.equals("6"))
+			else if (choice.equals("6"))
 			{
 				
 				String placa = input("Escribe la placa");
@@ -206,18 +211,18 @@ public class ConsolaRentaCar {
 			
 			
 			
-			if (choice.equals("7"))
+			else if (choice.equals("7"))
 			{
 				String placa = input("Escribe la placa");
 				renta_carros.eliminarVehiculo(placa);
 				
 			}
-			if (choice.equals("8"))
+			else if (choice.equals("8"))
 			{
 				
 				
 			}
-			if (choice.equals("9")) {
+			else if (choice.equals("9")) {
 				boolean user_valido = true;
 				String nombre = input("\nEscribe el nombre del empleado");
 				String tipo = "E";
@@ -237,7 +242,7 @@ public class ConsolaRentaCar {
 				System.out.println("\n¡¡Cuenta creada correctamente!!\n");
 			}
 			
-			if (choice.equals("10")) {
+			else if (choice.equals("10")) {
 				String user = input("\nEscribe el usuario del empleado");
 				String pass = input("Escribe la contraseña");
 				boolean resp = renta_carros.elimEmpleado(user,pass); 
@@ -246,10 +251,11 @@ public class ConsolaRentaCar {
 				}
 				else {System.out.println("No se pudo elimnar el empleado");}
 			}
-			
-			if (choice.equals("0")) {
-				continuar = false;
+			else if (choice.equals("11")) {
+				recibirCarroReservado();
 			}
+			
+			
 		}
 		
 	}

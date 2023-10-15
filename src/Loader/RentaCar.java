@@ -502,6 +502,23 @@ public class RentaCar {
 		
 		br.close();
 	}
+	
+	public void crearSeguro(String nombre, int precio) {
+		Seguro newSeguro = new Seguro(nombre,precio);
+		this.seguros.add(newSeguro);
+		
+	}
+	public void writeArchivoSeguro() throws IOException {
+		FileWriter file = new FileWriter("./data/seguros.txt");
+		BufferedWriter br = new BufferedWriter(file);
+		br.write("nombre;precio_por_dia_dolares");
+		for (Seguro seg : this.seguros) {
+			String nombre = seg.getNombre();
+			int precio = seg.getPrecio();
+			br.write("\n"+nombre+";"+String.valueOf(precio));
+		}
+		br.close();
+	}
 
 	public String crearId() {
 		Random random = new Random();
