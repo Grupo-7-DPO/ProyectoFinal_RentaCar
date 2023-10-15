@@ -60,8 +60,9 @@ public class ConsolaRentaCar {
 	private static void consolaCliente() throws IOException {
 		boolean continuar = true;
 		
-		while(continuar) {
-			System.out.println("0. Cerrar Sesion");
+		while(continuar) {  
+			
+			System.out.println("\n0. Cerrar Sesion");
 			System.out.println("1. Crear nueva reserva");
 			System.out.println("2. Verificar tu reserva");
 			String opcion = input("\nSeleccione la opcion que desea");
@@ -85,7 +86,7 @@ public class ConsolaRentaCar {
 		boolean continuar = true;
 		
 		while(continuar) {
-			System.out.println("0. Cerrar Sesion");
+			System.out.println("\n0. Cerrar Sesion");
 			System.out.println("1. Nueva reserva"); //Cuando un cliente no tiene reserva y llega al lugar por un carro
 			System.out.println("2. Nueva reserva especial"); //Para llevar el carro de una sede a otra
 			System.out.println("3. Comenzar reserva");
@@ -111,7 +112,7 @@ public class ConsolaRentaCar {
 				recibirCarroReservado();
 			}
 			else if(opcion.equals("5")) {
-				cambiarEstadoCarro("limpieza");
+				cambiarEstadoCarro("disponible");
 			}
 			else if(opcion.equals("6")) {
 				cambiarEstadoCarro("mantenimiento");
@@ -295,16 +296,28 @@ public class ConsolaRentaCar {
 			System.out.println("\nCuando reclames tu reserva deberás cancelar el 70% restante");
 		}
 		
-		renta_carros.crearReserva(id, usuario, tipo, sede_recogida, fecha_recogida, hora_recogida, sede_entrega, fecha_entrega, hora_entrega, "pagado", seguro);
+		renta_carros.crearReserva(id, usuario, tipo, sede_recogida, fecha_recogida, hora_recogida, sede_entrega, fecha_entrega, hora_entrega, "30% pagado", seguro);
 		
 		
 	}
 	
 	private static void comenzarReserva() {
+		String id_reserva = input("Escribe el id de la reserva");
+		String nombre = input("Escribe a nombre de quien está la reserva");
+		
+		Usuario usuario_reserva = renta_carros.encontrarUsuarioConNombre(nombre);
+		Reserva reserva = renta_carros.encontrarReserva(id_reserva);
+		
+		if (usuario_reserva.getUser().equals(reserva.getUsername())) {
+			
+		}
+		
+		
 		
 	}
 	
 	private static void recibirCarroReservado() {
+		String id = input("Escriba el id de la reserva");
 		
 	}
 	

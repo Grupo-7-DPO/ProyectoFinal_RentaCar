@@ -104,6 +104,17 @@ public class RentaCar {
 		return invDispo;
 	}
 
+	public Usuario encontrarUsuarioConNombre(String nombre) {
+		List<Usuario> lista = this.usuarios;
+		Usuario usuario_buscado = null;
+		
+		for(Usuario usuario: lista) {
+			if (usuario.getNombre().equals(nombre)) {
+				usuario_buscado = usuario;
+			}
+		}
+		return usuario_buscado;
+	}
 	
 	public Usuario encontrarUsuario(String username, String password) {
 		// esto busca en la lista general de usuarios y encuentra si un usuario existe o no. Si no retorna null y si si retorna el usuario
