@@ -160,6 +160,23 @@ public class ConsolaRentaCar {
 				for (Vehiculo car : inv)
 					System.out.println(car.getCar());
 			}
+			
+			if (choice.equals("3")) {
+				String name = input("Ingresa el nombre de la sede");
+				List<Vehiculo>inv = renta_carros.getInventarioDispSede(name);
+				if (inv.size()>1) {
+					System.out.println("PLACA  TIPO  CAPACIDAD  MODELO  MARCA  ESTADO");
+					for (Vehiculo car : inv)
+						System.out.println(car.getCar());
+				}
+				else { System.out.println("No se econtro la sede");}
+				
+			}
+			
+			if (choice.equals("4")) {
+				
+			}
+			
 			if (choice.equals("6"))
 			{
 				
@@ -171,11 +188,25 @@ public class ConsolaRentaCar {
 				String trans = input("Escribe la transmision");
 				String capacidad = input("Escribe la capacidad");
 				String estado = input("Escribe el estado");
+				String sede = input("Escriba la sede");
 				
-				renta_carros.crearVehiculo(placa,marca,modelo,tipo,color,trans,capacidad,estado);
+				renta_carros.crearVehiculo(placa,marca,modelo,tipo,color,trans,capacidad,estado,sede);
 				
 			}
 			
+			
+			
+			if (choice.equals("7"))
+			{
+				String placa = input("Escribe la placa");
+				renta_carros.eliminarVehiculo(placa);
+				
+			}
+			if (choice.equals("8"))
+			{
+				
+				
+			}
 			if (choice.equals("9")) {
 				boolean user_valido = true;
 				String nombre = input("\nEscribe el nombre del empleado");

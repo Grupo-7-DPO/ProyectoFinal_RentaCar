@@ -1,4 +1,5 @@
 nombre apellido;tipo;usuario;contraseña;sede
+admin;AG;admin;123
 Mario Ordoñez;AG;m.ordoñez;contraseña*
 Ignacio Chaparro;A;i.chaparro;hola1234;Sede norte
 Santiago Arenas;A;s.arenas3;odioaqui;Sede

@@ -47,8 +47,9 @@ public class LoaderRentaCar {
 			String transmision = partes_vh[5];
 			String capacidad = partes_vh[6];
 			String estado = partes_vh[7];
+			String sede = partes_vh[8];
 			
-			Vehiculo vehiculo = new Vehiculo(placa, marca, modelo, tipo, color, transmision, capacidad, estado);
+			Vehiculo vehiculo = new Vehiculo(placa, marca, modelo, tipo, color, transmision, capacidad, estado,sede);
 			total_vehiculos.add(vehiculo);
 			
 			List<Vehiculo> lista = new ArrayList<>();
@@ -109,8 +110,14 @@ public class LoaderRentaCar {
 			String hora_cierre = partes_sd[2];
 			String dias_atencion = partes_sd[3];
 			String ubicacion = partes_sd[4];
+			List<Vehiculo> carros_sede = new ArrayList<Vehiculo>();
+			for (Vehiculo car : total_vehiculos) {
+				if (car.getSede().equals(nombre)) {
+					carros_sede.add(car);
+				}
+			}
 			
-			Sede sede = new Sede(nombre, hora_apertura, hora_cierre, dias_atencion, ubicacion);
+			Sede sede = new Sede(nombre, hora_apertura, hora_cierre, dias_atencion, ubicacion,carros_sede);
 			sedes.put(nombre, sede);
 			nombre_sedes.add(nombre);
 			linea_sd = br_sedes.readLine();

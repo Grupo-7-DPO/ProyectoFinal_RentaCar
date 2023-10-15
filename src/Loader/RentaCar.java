@@ -103,6 +103,16 @@ public class RentaCar {
 		//System.out.println(total_vehiculos);
 		return invDispo;
 	}
+	
+	public List<Vehiculo> getInventarioDispSede(String name){
+		Sede sede =sedes.get(name);
+		List<Vehiculo>invDispo = new ArrayList<>();
+		if (!sede.equals(null)) {
+			invDispo = sede.getInventarioDisponible();
+		}
+		return invDispo;
+	}
+	
 
 	public Usuario encontrarUsuarioConNombre(String nombre) {
 		List<Usuario> lista = this.usuarios;
@@ -167,6 +177,21 @@ public class RentaCar {
 		
 		return se_encontro;
 	}
+	
+	public Vehiculo encontrarVehiculo(String placa) {
+		Vehiculo findCar = null;
+		List<Vehiculo> cars = this.total_vehiculos;
+		
+		for (Vehiculo car : cars) {
+			if(car.getPlaca().equals(placa)) {
+				findCar = car;
+			}
+		}
+		return findCar;
+	}
+	
+	
+	
 	public void crearCliente(String nombre, String contacto, String fecha_nacimiento, String nacionalidad, String imagen_documento, String numero_licencia, String pais_licencia,
 			String fecha_vencimiento_pase, String imagen_pase, String tipo_tarjeta, String numero_tarjeta, String fecha_vencimiento_tarjeta, String username) {
 		TarjetaCredito tarjeta = new TarjetaCredito(tipo_tarjeta, numero_tarjeta, fecha_vencimiento_tarjeta);
@@ -342,8 +367,66 @@ public class RentaCar {
 	}
 	
 	
-	public void crearVehiculo(String placa, String marca, String modelo, String tipo, String color, String trans, String capacidad, String estado) {
-		Vehiculo newCar = new Vehiculo(placa,marca,modelo,tipo,color,trans,capacidad,estado);
+	public boolean crearVehiculo(String placa, String marca, String modelo, String tipo, String color, String trans, String capacidad, String estado, String sede) throws IOException {
+		Vehiculo newCar = new Vehiculo(placa,marca,modelo,tipo,color,trans,capacidad,estado,sede);
+		Sede site = sedes.get(sede);
+		if (!site.equals(null))
+		{
+			site.addVehiculo(newCar);
+			this.total_vehiculos.add(newCar);
+			writeArchivoVehiculo();
+			return true;
+		}
+		return false;
+		
+	}
+	
+	public boolean eliminarVehiculo(String placa) throws IOException {
+		Vehiculo elimCar = encontrarVehiculo(placa);
+		String sede = elimCar.getSede();
+		Sede site = sedes.get(sede);
+		if (!elimCar.equals(null)&&!site.equals(null)) {
+			total_vehiculos.remove(elimCar);
+			site.removeVehiculo(elimCar);
+			writeArchivoVehiculo();
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean cambiarSedeVehiculo(String placa,String sede) throws IOException {
+		Vehiculo car = encontrarVehiculo(placa);
+		Sede sedeOld = sedes.get(car.getSede());
+		Sede sedeNew = sedes.get(sede);
+		if (!car.equals(null)&&!sedeOld.equals(null)&&!sedeNew.equals(null)) {
+			sedeOld.removeVehiculo(car);
+			car.setSede(sede);
+			sedeNew.addVehiculo(car);
+			writeArchivoVehiculo();
+			return true;
+		}
+		return false;
+	}
+	
+	public void writeArchivoVehiculo() throws IOException {
+		FileWriter file = new FileWriter("./data/automoviles.txt");
+		BufferedWriter br = new BufferedWriter(file);
+		br.write("placa;marca;modelo;tipo;color;trasnmision;capacidad;estado;sede");
+		for (Vehiculo newCar : this.total_vehiculos) {
+			String placa = newCar.getPlaca();
+			String marca = newCar.getMarca();
+			String modelo = newCar.getModelo();
+			String tipo = newCar.getTipo();
+			String color = newCar.getColor();
+			String trans = newCar.getTrans();
+			String capacidad = newCar.getCapacidad();
+			String estado = newCar.getEstado();
+			String sede = newCar.getSede();
+			
+			br.write("\n"+ placa +";"+ marca + ";"+ modelo +";"+ tipo +";" + color+";"+ trans +";"+ capacidad + ";" + estado+";" +sede);
+		}
+		
+		br.close();
 	}
 
 	public String crearId() {
@@ -351,4 +434,8 @@ public class RentaCar {
 		String id = Integer.toString(random.nextInt(9999));
 		return id;
 	}
+	
+	
+	
+	
 }
