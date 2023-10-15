@@ -2,9 +2,15 @@ package Model;
 
 public class Empleado extends Usuario{
 
-	public Empleado(String nombre, String tipo, String user, String password) {
+	String sede;
+	
+	public Empleado(String nombre, String tipo, String user, String password, String sede) {
 		super(nombre, tipo, user, password);
-		// TODO Auto-generated constructor stub
+		this.sede = sede;
+	}
+
+	public String getSede() {
+		return this.getSede();
 	}
 	
 

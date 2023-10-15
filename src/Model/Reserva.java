@@ -4,7 +4,7 @@ public class Reserva {
 	
 	String id;
 	String usuario;
-	String tipo_carro;
+	Categoria tipo_carro;
 	String sede_recogida;
 	String fecha_recogida;
 	String hora_recogida;
@@ -12,9 +12,9 @@ public class Reserva {
 	String fecha_entrega;
 	String hora_entrega;
 	String pago;
-	String seguro;
+	Seguro seguro;
 	
-	public Reserva(String id, String usuario, String tipo_carro, String sede_recogida, String fecha_recogida, String hora_recogida, String sede_entrega, String fecha_entrega, String hora_entrega, String pago, String seguro) {
+	public Reserva(String id, String usuario, Categoria tipo_carro, String sede_recogida, String fecha_recogida, String hora_recogida, String sede_entrega, String fecha_entrega, String hora_entrega, String pago, Seguro seguro) {
 		this.id = id;
 		this.usuario = usuario;
 		this.tipo_carro = tipo_carro;
@@ -33,7 +33,7 @@ public class Reserva {
 		return this.id;
 	}
 
-	public String getTipo() {
+	public Categoria getTipo() {
 
 		return this.tipo_carro;
 	}
@@ -68,7 +68,15 @@ public class Reserva {
 		return this.usuario;
 	}
 	
-	public String getSeguro() {
+	public Seguro getSeguro() {
 		return this.seguro;
+	}
+
+	public String getSedeEntrega() {
+		return this.sede_entrega;
+	}
+
+	public String getPago() {
+		return this.pago;
 	}
 }

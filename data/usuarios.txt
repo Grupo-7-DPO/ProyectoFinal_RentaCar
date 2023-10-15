@@ -1,14 +1,12 @@
-
-Admin;AG;admin;123
+nombre apellido;tipo;usuario;contraseña;sede
 Mario Ordoñez;AG;m.ordoñez;contraseña*
-Ignacio Chaparro;A;i.chaparro;hola1234
-Santiago Arenas;A;s.arenas3;odioaqui
-Samuel Amaya;A;s.amaya4;hola1234*
-Juan Baron;E;j.baron;futbol321
+Ignacio Chaparro;A;i.chaparro;hola1234;Sede norte
+Santiago Arenas;A;s.arenas3;odioaqui;Sede
+Samuel Amaya;A;s.amaya4;hola1234*;Sede occidente
+Juan Baron;E;j.baron;futbol321;Sede norte
 Mateo Velasquez;C;m.velasquez;derecha**
 Simon Paez;C;s.paez;hol@123
 Samuel Amaya;C;Papaia23;Yoperreosola
 Sherk;C;SoySherk;Fionateamo
 Diana Rodriguez;C;d.rodriguez;sancarlos87
-Santiago Arenas;C;s.arenasr;sapo123
-juandiego;E;j.diego;123
+Felipe Páez;C;f.paezp2;123456

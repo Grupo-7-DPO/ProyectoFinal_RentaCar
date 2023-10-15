@@ -1,2 +1,4 @@
 id;usuario;tipo_carro;sede_recogida;fecha_recogida;hora_recogida;sede_entrega;fecha_entrega;hora_entrega;pago;seguro
 2335;m.velasquez;pequeño;Sede norte;6/12/2021;6:00;Sede norte;27/12/2021;13:00;pagado;todo riesgo
+7292;Papaia23;lujo;Sede norte;10/12/2023;13:00;Sede sur;12/12/2023;13:00;pagado;todo riesgo
+1674;f.paezp2;lujo;Sede norte;14/10/2023;11:00;Sede norte;15/10/2023;12:00;pagado;contra terremotos
