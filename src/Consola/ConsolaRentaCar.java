@@ -122,10 +122,12 @@ public class ConsolaRentaCar {
 				recibirCarroReservado();
 			}
 			else if(opcion.equals("5")) {
-				cambiarEstadoCarro("disponible");
+				String placa = input("Escribe la placa del carro");
+				cambiarEstadoCarro("disponible", placa);
 			}
 			else if(opcion.equals("6")) {
-				cambiarEstadoCarro("mantenimiento");
+				String placa = input("Escribe la placa del carro");
+				cambiarEstadoCarro("mantenimiento", placa);
 			}
 		}
 
@@ -368,6 +370,7 @@ public class ConsolaRentaCar {
 					System.out.println("Placa: " + carro_asignado.getPlaca());
 					System.out.println("Color: " + carro_asignado.getColor());
 					System.out.println("Tipo: " + carro_asignado.getTipo());
+					cambiarEstadoCarro("reservado", carro_asignado.getPlaca());
 				}
 				else {
 					System.out.println("\nLo sentimos, no tenemos carros disponibles por el momento");
@@ -388,11 +391,18 @@ public class ConsolaRentaCar {
 	
 	private static void recibirCarroReservado() {
 		String id = input("Escriba el id de la reserva");
+		Reserva reserva = renta_carros.encontrarReserva(id);
+		String placa = reserva.getCarro().getPlaca();
+		renta_carros.terminarReserva(reserva);
+		
+		System.out.println("\nReserva cerrada correctamente");
+		System.out.println("Carro " + placa + " puesto en limpieza correctamente");
 		
 	}
 	
-	private static void cambiarEstadoCarro(String estado) {
-		
+	private static void cambiarEstadoCarro(String estado, String placa) {
+		renta_carros.cambiarEstadoCarro(estado, placa);
+		System.out.println("\nCarro " + placa + " puesto en " + estado + " correctamente");
 	}
 	
 	private static void consultarReserva() {

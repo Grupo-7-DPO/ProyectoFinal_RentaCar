@@ -75,4 +75,9 @@ public class Vehiculo {
 	public void setSede(String sede) {
 		this.sede = sede;
 	}
+
+	public void setEstado(String estado2) {
+		this.estado = estado2;
+		
+	}
 }
