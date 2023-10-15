@@ -1,4 +1,4 @@
-placa;marca;modelo;tipo;color;transmisión;capacidad;estado;sede
+placa;marca;modelo;tipo;color;transmision;capacidad;estado;sede
 CVV701;mazda;3;pequeño;azul;manual;5;disponible;Sede norte
 JLK872;volkswagen;voyage;pequeño;rojo;automatico;5;disponible;Sede norte
 EBS342;nissan;kicks;suv;negro;manual;7;disponible;Sede norte

@@ -16,6 +16,7 @@ public class Vehiculo {
 
 		this.modelo = modelo;
 		this.placa = placa;
+		this.marca = marca;
 		this.tipo = tipo;
 		this.color = color;
 		this.transmision = transmision;
@@ -69,5 +70,9 @@ public class Vehiculo {
 	
 	public String getSede(){
 		return this.sede;
+	}
+	
+	public void setSede(String sede) {
+		this.sede = sede;
 	}
 }
