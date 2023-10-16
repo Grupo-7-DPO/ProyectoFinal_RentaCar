@@ -457,6 +457,7 @@ public class RentaCar {
 	private void writeArchivoReservas() throws IOException{
 		FileWriter file = new FileWriter("./data/reservas.txt");
 		BufferedWriter br = new BufferedWriter(file);
+		br.write("id;user;tipo;sede_recogida;fecha_recogida;hora_recogida;sede_entrega;fecha_entrega;hora_entrega;pago;seguro;carro");
 		for (Reserva nueva_reserva : reservas) {
 			String id = nueva_reserva.getId();
 			String user = nueva_reserva.getUsername();
