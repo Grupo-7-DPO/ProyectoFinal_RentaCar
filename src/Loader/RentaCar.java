@@ -442,6 +442,7 @@ public class RentaCar {
 	private void writeArchivoUsuario() throws IOException {
 		FileWriter file = new FileWriter("./data/usuarios.txt");
 		BufferedWriter br = new BufferedWriter(file);
+		br.write("nombre;apellido;tipo;usuario;contraseña;sede");
 		for (Usuario nuevo_usuario : usuarios) {
 			String nombre = nuevo_usuario.getNombre();
 			String tipo = nuevo_usuario.getTipo();
