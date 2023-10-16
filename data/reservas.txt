@@ -1,3 +1,4 @@
 
 7292;Papaia23;lujo;Sede norte;10/12/2023;13:00;Sede sur;12/12/2023;13:00;pagado;todo riesgo;null
 1674;f.paezp2;lujo;Sede norte;14/10/2023;11:00;Sede norte;15/10/2023;12:00;pagado;contra terremotos;null
+6779;admin;van;Sede sur;26/09/2023;13:00;Sede occidente;28/09/2023;13:00;pagado;null;null

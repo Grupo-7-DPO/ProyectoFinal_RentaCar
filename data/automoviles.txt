@@ -12,5 +12,5 @@ PLO789;kia;sedona;van;rojo cereza;automatico;8;disponible; Sede sur
 TGF123;jeep;wrangler;todoterreno;naranja;manual;5;disponible; Sede sur
 UJI654;lexus;ls;lujo;perlado;automatico;5;disponible; Sede sur
 WER890;dodge;caravan;van;verde oscuro;automatico;8;disponible; Sede sur
-JLK872;volkswagen;voyage;pequeño;rojo;automatico;5;disponible;Sede norte
-CVV701;mazda;3;pequeño;azul;manual;5;disponible;Sede norte
+CVV701;mazda;3;pequeño;azul;manual;5;limpieza;Sede sur
+JLK872;volkswagen;voyage;pequeño;rojo;automatico;5;limpieza;Sede occidente

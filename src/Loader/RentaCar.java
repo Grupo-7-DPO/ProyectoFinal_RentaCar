@@ -548,10 +548,10 @@ public class RentaCar {
 		br.close();
 	}
 	
-	public void crearSeguro(String nombre, int precio) {
+	public void crearSeguro(String nombre, int precio) throws IOException {
 		Seguro newSeguro = new Seguro(nombre,precio);
 		this.seguros.add(newSeguro);
-		
+		writeArchivoSeguro();
 	}
 	public void writeArchivoSeguro() throws IOException {
 		FileWriter file = new FileWriter("./data/seguros.txt");
