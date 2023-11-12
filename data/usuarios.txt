@@ -1,6 +1,8 @@
 nombre;apellido;tipo;usuario;contraseña;sede
 admin;AG;admin;123
+ad;AG;ad;123
 emp;E;emp;123;Sede norte
+cliente;C;cli;123
 Mario Ordoñez;AG;m.ordoñez;contraseña*
 Ignacio Chaparro;A;i.chaparro;hola1234;Sede norte
 Santiago Arenas;A;s.arenas3;odioaqui;Sede norte
