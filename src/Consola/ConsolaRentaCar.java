@@ -88,6 +88,7 @@ public class ConsolaRentaCar {
 	}
 
 	static void consolaEmpleado() throws IOException {
+		
 		boolean continuar = true;
 		
 		while(continuar) {
@@ -255,8 +256,10 @@ public class ConsolaRentaCar {
 		}
 	}
 
-	static void consolaAdminG() throws IOException {
+	static void consolaAdminG(){
 		// TODO Auto-generated method stub
+		ConsolaAdminG consolaAdminG = new ConsolaAdminG(frame, usuario_actual, renta_carros);
+		/*
 		boolean continuar = true;
 		while (continuar) {
 			System.out.println("\n1. Revisar carros del inventario general");
@@ -412,6 +415,8 @@ public class ConsolaRentaCar {
 			
 			
 		}
+		*/
+		
 		
 	}
 
