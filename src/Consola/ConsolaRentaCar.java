@@ -87,8 +87,8 @@ public class ConsolaRentaCar {
 		
 	}
 
-	static void consolaEmpleado() throws IOException {
-		
+	static void consolaEmpleado(){
+		/*
 		boolean continuar = true;
 		
 		while(continuar) {
@@ -136,12 +136,14 @@ public class ConsolaRentaCar {
 				cambiarEstadoCarro("mantenimiento", placa);
 			}
 		}
+		*/
 
 	}
 
 	
-	static void consolaAdmin() throws IOException {
+	static void consolaAdmin(){
 		// TODO Auto-generated method stub
+		/*
 		boolean continuar = true;
 		while (continuar) {
 			System.out.println("\n1. Revisar carros del inventario general");
@@ -254,6 +256,7 @@ public class ConsolaRentaCar {
 				System.out.println("Ingrese una opcion valida");
 			}
 		}
+		*/
 	}
 
 	static void consolaAdminG(){

@@ -124,28 +124,13 @@ public class LoginPage implements ActionListener {
 	private void usuarioIniciado() {
 		ConsolaRentaCar.setUsuario(this.usuario);
 		if (this.usuario.getTipo().equals("AG")) {
-			try {
-				ConsolaRentaCar.consolaAdminG();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			ConsolaRentaCar.consolaAdminG();
 		}
 		else if (this.usuario.getTipo().equals("A")) {
-			try {
-				ConsolaRentaCar.consolaAdmin();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			ConsolaRentaCar.consolaAdmin();
 		}
 		else if (this.usuario.getTipo().equals("E")) {
-			try {
-				ConsolaRentaCar.consolaEmpleado();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			ConsolaRentaCar.consolaEmpleado();
 		}
 		else if (this.usuario.getTipo().equals("C")) {
 				ConsolaRentaCar.consolaCliente();
