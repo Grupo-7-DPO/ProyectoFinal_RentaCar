@@ -10,6 +10,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JFrame;
+
 import Loader.LoaderRentaCar;
 import Loader.RentaCar;
 import Model.Categoria;
@@ -25,8 +27,12 @@ public class ConsolaRentaCar {
 
 	
 	
+	
+	
+	
 	private static RentaCar renta_carros;
 	private static Usuario usuario_actual;
+	private static JFrame frame = new JFrame();
 	
 	public static void main(String[] args) throws IOException {
 		
@@ -37,27 +43,26 @@ public class ConsolaRentaCar {
 	    } catch (IOException e) {
 	        System.out.println("Error de I/O: " + e.getMessage());
 	    }
-		System.out.println("\n¡¡¡Bienvenido a nuestra renta de carros!!!");
-		usuario_actual = login();
-		System.out.println("\nBienvenido " + usuario_actual.getNombre());
+		System.out.println("Ingresa");
+		login();
 		
-		if (usuario_actual.getTipo().equals("AG")) {
-			consolaAdminG();
-		}
-		else if (usuario_actual.getTipo().equals("A")) {
-			consolaAdmin();
-		}
-		else if (usuario_actual.getTipo().equals("E")) {
-			consolaEmpleado();
-		}
-		else if (usuario_actual.getTipo().equals("C")) {
-			consolaCliente();
-		}
-		
+//		if (usuario_actual.getTipo().equals("AG")) {
+//			consolaAdminG();
+//		}
+//		else if (usuario_actual.getTipo().equals("A")) {
+//			consolaAdmin();
+//		}
+//		else if (usuario_actual.getTipo().equals("E")) {
+//			consolaEmpleado();
+//		}
+//		else if (usuario_actual.getTipo().equals("C")) {
+//			consolaCliente();
+//		}
+//		
 		
 	}
 	
-	private static void consolaCliente() throws IOException {
+	static void consolaCliente() throws IOException {
 		boolean continuar = true;
 		
 		while(continuar) {  
@@ -82,7 +87,7 @@ public class ConsolaRentaCar {
 		
 	}
 
-	private static void consolaEmpleado() throws IOException {
+	static void consolaEmpleado() throws IOException {
 		boolean continuar = true;
 		
 		while(continuar) {
@@ -134,7 +139,7 @@ public class ConsolaRentaCar {
 	}
 
 	
-	private static void consolaAdmin() throws IOException {
+	static void consolaAdmin() throws IOException {
 		// TODO Auto-generated method stub
 		boolean continuar = true;
 		while (continuar) {
@@ -250,7 +255,7 @@ public class ConsolaRentaCar {
 		}
 	}
 
-	private static void consolaAdminG() throws IOException {
+	static void consolaAdminG() throws IOException {
 		// TODO Auto-generated method stub
 		boolean continuar = true;
 		while (continuar) {
@@ -594,35 +599,8 @@ public class ConsolaRentaCar {
 		renta_carros = LoaderRentaCar.cargar_archivos("./data/automoviles.txt", "./data/clientes.txt", "./data/sedes.txt", "./data/usuarios.txt", "./data/reservas.txt", "./data/seguros.txt", "./data/categorias.txt");
 	}
 	
-	private static Usuario login() {
-		boolean continuar = true;
-		Usuario usuario = null;
-		
-		while (continuar) {
-			System.out.println("\n1. Iniciar Sesión");
-			System.out.println("2. Crear una cuenta\n");
-			String eleccion = input("Elige una opción");
-			if (eleccion.equals("1")) {
-				String username = input("Usuario");
-				String password = input("Contraseña");
-				usuario = renta_carros.encontrarUsuario(username, password);
-				if (usuario == null) {
-					System.out.println("\nERROR: Usuario o contraseña incorrectos\n Si no tienes una cuenta creada, elige la opcion 2\n");
-				}
-				else {
-					continuar = false;
-				}
-			}
-			else if (eleccion.equals("2")) {
-				usuario = crearUsuarioCliente();
-				continuar = false;
-			}
-			else {
-				System.out.println("Elige una opción valida");
-			}
-		}
-		
-		return usuario;
+	private static void login() {
+		LoginPage loginPage = new LoginPage(renta_carros, frame);
 	}
 	
 	
@@ -683,5 +661,9 @@ public class ConsolaRentaCar {
 		}
 		return null;
 	
+	}
+
+	public static void setUsuario(Usuario usuario) {
+		usuario_actual = usuario;
 	}
 }
