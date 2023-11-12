@@ -416,7 +416,7 @@ public class ConsolaRentaCar {
 	}
 
 	
-	private static void crearReserva(boolean especial) {
+	protected static void crearReserva(boolean especial) {
 		String id = renta_carros.crearId();
 		String usuario;
 		if (usuario_actual.getTipo().equals("C")) {
@@ -558,40 +558,41 @@ public class ConsolaRentaCar {
 		System.out.println("\nCarro " + placa + " puesto en " + estado + " correctamente");
 	}
 	
-	private static void consultarReserva() {
-		String id = input("\nEscribe el id de tu reserva");
-		Reserva reserva_buscada = renta_carros.encontrarReserva(id);
-		
-		
-		if(reserva_buscada == null) {
-			System.out.println("\nLo sentimos, tu reserva con id " + id + " no fue encontrada\n");
-		}
-		else {
-			Usuario usuario_reserva = renta_carros.encontrarUsuarioConUsername(reserva_buscada.getUsername());
-			
-			System.out.println("\nReserva a nombre de " + usuario_reserva.getNombre() + " con id " + id + "\n");
-			System.out.println("Tipo de Carro: " + reserva_buscada.getTipo().getNombre());
-			if (reserva_buscada.getSeguro() != null) {
-				System.out.println("Seguro: " + reserva_buscada.getSeguro().getNombre() + "\n");
-			}
-			else {
-				System.out.println("Seguro: ninguno");
-			}
-			System.out.println("Sede para ser recogido: " + reserva_buscada.getSedeRecogida());
-			System.out.println("Fecha: " + reserva_buscada.getDiaRecogida());
-			System.out.println("Hora: " + reserva_buscada.getHoraRecogida());
-			System.out.println("\nSede para ser entregado: " + reserva_buscada.getSedeEntrega());
-			System.out.println("Fecha: " + reserva_buscada.getDiaEntrega());
-			System.out.println("Hora: " + reserva_buscada.getHoraEntrega() + "\n");
-			if (reserva_buscada.getCarro() != null) {
-				System.out.println("Carro asignado: " + reserva_buscada.getCarro().getMarca() + " " + reserva_buscada.getCarro().getModelo());
-				System.out.println("Placa: " + reserva_buscada.getCarro().getPlaca());
-			}
-			else {
-				System.out.println("Carro asignado: ninguno");
-			}
-			
-		}
+	protected static void consultarReserva() {
+		ConsultarReserva consultarReserva = new ConsultarReserva(frame, usuario_actual, renta_carros);
+//		String id = input("\nEscribe el id de tu reserva");
+//		Reserva reserva_buscada = renta_carros.encontrarReserva(id);
+//		
+//		
+//		if(reserva_buscada == null) {
+//			System.out.println("\nLo sentimos, tu reserva con id " + id + " no fue encontrada\n");
+//		}
+//		else {
+//			Usuario usuario_reserva = renta_carros.encontrarUsuarioConUsername(reserva_buscada.getUsername());
+//			
+//			System.out.println("\nReserva a nombre de " + usuario_reserva.getNombre() + " con id " + id + "\n");
+//			System.out.println("Tipo de Carro: " + reserva_buscada.getTipo().getNombre());
+//			if (reserva_buscada.getSeguro() != null) {
+//				System.out.println("Seguro: " + reserva_buscada.getSeguro().getNombre() + "\n");
+//			}
+//			else {
+//				System.out.println("Seguro: ninguno");
+//			}
+//			System.out.println("Sede para ser recogido: " + reserva_buscada.getSedeRecogida());
+//			System.out.println("Fecha: " + reserva_buscada.getDiaRecogida());
+//			System.out.println("Hora: " + reserva_buscada.getHoraRecogida());
+//			System.out.println("\nSede para ser entregado: " + reserva_buscada.getSedeEntrega());
+//			System.out.println("Fecha: " + reserva_buscada.getDiaEntrega());
+//			System.out.println("Hora: " + reserva_buscada.getHoraEntrega() + "\n");
+//			if (reserva_buscada.getCarro() != null) {
+//				System.out.println("Carro asignado: " + reserva_buscada.getCarro().getMarca() + " " + reserva_buscada.getCarro().getModelo());
+//				System.out.println("Placa: " + reserva_buscada.getCarro().getPlaca());
+//			}
+//			else {
+//				System.out.println("Carro asignado: ninguno");
+//			}
+//			
+//		}
 		
 	}
 	
@@ -599,7 +600,7 @@ public class ConsolaRentaCar {
 		renta_carros = LoaderRentaCar.cargar_archivos("./data/automoviles.txt", "./data/clientes.txt", "./data/sedes.txt", "./data/usuarios.txt", "./data/reservas.txt", "./data/seguros.txt", "./data/categorias.txt");
 	}
 	
-	private static void login() {
+	protected static void login() {
 		LoginPage loginPage = new LoginPage(renta_carros, frame);
 	}
 	
@@ -663,7 +664,7 @@ public class ConsolaRentaCar {
 	
 	}
 
-	public static void setUsuario(Usuario usuario) {
+	protected static void setUsuario(Usuario usuario) {
 		usuario_actual = usuario;
 	}
 }
