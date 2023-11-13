@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -26,6 +25,7 @@ import javax.swing.border.Border;
 
 import Loader.RentaCar;
 import Model.Reserva;
+import Model.Seguro;
 import Model.Usuario;
 
 public class ConsultarReserva implements ActionListener{
@@ -40,6 +40,7 @@ public class ConsultarReserva implements ActionListener{
 	JTextField idReservaText = new JTextField(15);
 	JButton buscarButton = new JButton("Buscar");
 	JButton botonAtras = new JButton();
+	JButton botonAtrasConsulta = new JButton();
 	ImageIcon imageAtras = new ImageIcon("./imagenes/boton_atras.png");
 	
 	
@@ -132,14 +133,13 @@ public class ConsultarReserva implements ActionListener{
 		else if(e.getSource()==botonAtras) {
 			ConsolaRentaCar.consolaCliente();
 		}
+		else if(e.getSource()==botonAtrasConsulta) {
+			ConsolaRentaCar.consultarReserva();
+		}
 		
 	}
 	
 	private void reservaEncontrada() {
-		Font topicFont = new Font("Times New Roman", Font.BOLD, 20);
-		Color topicColor = new Color(0xFF5757);
-		Color infoColor = new Color(0xFFCDCD);
-		Font infoFont = new Font("Times New Roman", Font.PLAIN, 20);
 		
 		frame.getContentPane().removeAll();
 		frame.repaint();
@@ -154,57 +154,78 @@ public class ConsultarReserva implements ActionListener{
 		titulo.setText("Reserva a nombre de " + usuarioActual.getNombre() + " con id " + reserva.getId());
 		frame.add(titulo, BorderLayout.NORTH);
 		
-		JPanel panelCentral = new JPanel(new GridLayout(7,2,10,10));
+		JPanel panelCentral = new JPanel(new GridLayout(8,2,10,10));
 		panelCentral.setBorder(BorderFactory.createLineBorder(Color.WHITE, 20));
 		
 		
-		JLabel categoriaLabel = crearLabelTabla("CATEGORIA");
+		JLabel categoriaLabel = crearLabelTabla("Categoria");
 		String categoriaStr = reserva.getTipo().getNombre();
 		JLabel categoriaInfo = crearInfoTabla(categoriaStr);
 		panelCentral.add(categoriaLabel);
 		panelCentral.add(categoriaInfo);
 		
-		JLabel sedeRecogidaLabel = crearLabelTabla("SEDE RECOGIDA");
+		JLabel sedeRecogidaLabel = crearLabelTabla("Sede Recogida");
 		String sedeRecogidaStr = reserva.getSedeRecogida();
 		JLabel sedeRecogidaInfo = crearInfoTabla(sedeRecogidaStr);
 		panelCentral.add(sedeRecogidaLabel);
 		panelCentral.add(sedeRecogidaInfo);
 		
 		
-		JLabel fechaRecogidaLabel = crearLabelTabla("FECHA RECOGIDA");
+		JLabel fechaRecogidaLabel = crearLabelTabla("Fecha Recogida");
 		String fechaRecogidaStr = reserva.getDiaRecogida();
 		JLabel fechaRecogidaInfo = crearInfoTabla(fechaRecogidaStr);
 		panelCentral.add(fechaRecogidaLabel);
 		panelCentral.add(fechaRecogidaInfo);
 		
 		
-		JLabel horaRecogidaLabel = crearLabelTabla("HORA RECOGIDA");
+		JLabel horaRecogidaLabel = crearLabelTabla("Hora Recogida");
 		String horaRecogidaStr = reserva.getHoraRecogida();
 		JLabel horaRecogidaInfo = crearInfoTabla(horaRecogidaStr);
 		panelCentral.add(horaRecogidaLabel);
 		panelCentral.add(horaRecogidaInfo);
 		
-		JLabel sedeEntregaLabel = crearLabelTabla("SEDE ENTREGA");
+		JLabel sedeEntregaLabel = crearLabelTabla("Sede Entrega");
 		String sedeEntregaStr = reserva.getSedeEntrega();
 		JLabel sedeEntregaInfo = crearInfoTabla(sedeEntregaStr);
 		panelCentral.add(sedeEntregaLabel);
 		panelCentral.add(sedeEntregaInfo);
 		
-		JLabel fechaEntregaLabel = crearLabelTabla("FECHA ENTREGA");
+		JLabel fechaEntregaLabel = crearLabelTabla("Fecha Entrega");
 		String fechaEntregaStr = reserva.getDiaEntrega();
 		JLabel fechaEntregaInfo = crearInfoTabla(fechaEntregaStr);
 		panelCentral.add(fechaEntregaLabel);
 		panelCentral.add(fechaEntregaInfo);
 		
-		JLabel horaEntregaLabel = crearLabelTabla("HORA ENTREGA");
+		JLabel horaEntregaLabel = crearLabelTabla("Hora Entrega");
 		String horaEntregaStr = reserva.getHoraEntrega();
 		JLabel horaEntregaInfo = crearInfoTabla(horaEntregaStr);
 		panelCentral.add(horaEntregaLabel);
 		panelCentral.add(horaEntregaInfo);
 		
+		JLabel seguroLabel = crearLabelTabla("Seguro");
+		Seguro seguro = reserva.getSeguro();
+		String seguroStr;
+		if(seguro == null) {
+			seguroStr = "ninguno";
+		}
+		else {
+			seguroStr = reserva.getSeguro().getNombre();
+		}
+		JLabel seguroInfo = crearInfoTabla(seguroStr);
+		panelCentral.add(seguroLabel);
+		panelCentral.add(seguroInfo);
 		
 		frame.add(panelCentral, BorderLayout.CENTER);
 		
+		JPanel atrasPanel = new JPanel(new BorderLayout());
+        ImageIcon imagenArreglada = new ImageIcon(imageAtras.getImage().getScaledInstance(50,50, Image.SCALE_SMOOTH));
+		botonAtrasConsulta.setIcon(imagenArreglada);
+		botonAtrasConsulta.setFocusable(false);
+		botonAtrasConsulta.setPreferredSize(new Dimension(70,70));
+		botonAtrasConsulta.addActionListener(this);
+		atrasPanel.add(botonAtrasConsulta, BorderLayout.WEST);
+		frame.add(atrasPanel, BorderLayout.SOUTH);
+        
 		frame.getContentPane().revalidate();
 		frame.pack();
 	    frame.repaint(); 

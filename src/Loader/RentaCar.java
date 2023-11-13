@@ -127,6 +127,29 @@ public class RentaCar {
 		return usuario_buscado;
 	}
 	
+	public Seguro encontrarSeguro(String nombre_seguro) {
+		List<Seguro> lista_seguros = this.seguros;
+		Seguro seguro_buscado = null;
+		
+		for(Seguro seguro_iteracion: lista_seguros) {
+			if(seguro_iteracion.getNombre().equals(nombre_seguro)) {
+				seguro_buscado = seguro_iteracion;
+			}
+		}
+		return seguro_buscado;
+	}
+	
+	public Categoria encontrarCategoria(String nombre_categoria) {
+		List<Categoria> lista_categorias = this.categorias;
+		Categoria categoria_buscada = null;
+		for(Categoria categoria_iteracion:lista_categorias) {
+			if(categoria_iteracion.getNombre().equals(nombre_categoria)) {
+				categoria_buscada = categoria_iteracion;
+			}
+		}
+		return categoria_buscada;
+	}
+	
 	public Usuario encontrarUsuario(String username, String password) {
 		// esto busca en la lista general de usuarios y encuentra si un usuario existe o no. Si no retorna null y si si retorna el usuario
 		List<Usuario> lista = this.usuarios;
@@ -222,7 +245,7 @@ public class RentaCar {
 	}
 	
 	public long calcularDiferenciaDias(String fecha1Str, String fecha2Str) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
         
         LocalDate fecha1 = LocalDate.parse(fecha1Str, formatter);
         LocalDate fecha2 = LocalDate.parse(fecha2Str, formatter);
@@ -572,8 +595,5 @@ public class RentaCar {
 		String id = Integer.toString(random.nextInt(9999));
 		return id;
 	}
-	
-	
-	
-	
+
 }

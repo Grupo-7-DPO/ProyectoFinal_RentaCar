@@ -32,10 +32,10 @@ public class ConsolaCliente implements ActionListener{
 	JPanel panel = new JPanel();
 	ImageIcon imageCerrar = new ImageIcon("./imagenes/cerrarSesion.png");
 	
-	public ConsolaCliente(JFrame frame, Usuario usuario_actual, RentaCar renta_carros) {
-		this.frame = frame;
-		this.usuarioActual = usuario_actual;
-		this.rentaCarros = renta_carros;
+	public ConsolaCliente(JFrame frameAnterior, Usuario usuario_actual, RentaCar renta_carros) {
+		frame = frameAnterior;
+		usuarioActual = usuario_actual;
+		rentaCarros = renta_carros;
 		
 		frame.getContentPane().removeAll();
 		frame.repaint();

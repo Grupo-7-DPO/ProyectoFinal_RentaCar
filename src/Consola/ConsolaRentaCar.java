@@ -425,6 +425,8 @@ public class ConsolaRentaCar {
 
 	
 	protected static void crearReserva(boolean especial) {
+		CrearReserva crearReserva = new CrearReserva(renta_carros, usuario_actual, frame, especial);
+		/*
 		String id = renta_carros.crearId();
 		String usuario;
 		if (usuario_actual.getTipo().equals("C")) {
@@ -505,7 +507,7 @@ public class ConsolaRentaCar {
 		}
 		
 		renta_carros.crearReserva(id, usuario, tipo, sede_recogida, fecha_recogida, hora_recogida, sede_entrega, fecha_entrega, hora_entrega, "pagado", seguro);
-		
+		*/
 		
 	}
 	
