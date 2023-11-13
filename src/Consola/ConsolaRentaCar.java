@@ -43,7 +43,6 @@ public class ConsolaRentaCar {
 	    } catch (IOException e) {
 	        System.out.println("Error de I/O: " + e.getMessage());
 	    }
-		System.out.println("Ingresa");
 		login();
 		
 //		if (usuario_actual.getTipo().equals("AG")) {
@@ -62,28 +61,29 @@ public class ConsolaRentaCar {
 		
 	}
 	
-	static void consolaCliente() throws IOException {
-		boolean continuar = true;
-		
-		while(continuar) {  
-			
-			System.out.println("\n0. Cerrar Sesion");
-			System.out.println("1. Crear nueva reserva");
-			System.out.println("2. Verificar tu reserva");
-			String opcion = input("\nSeleccione la opcion que desea");
-			
-			if (opcion.equals("0")){
-				continuar = false;
-				main(null);
-			}
-			else if(opcion.equals("1")) {
-				crearReserva(false);
-			}
-			else if (opcion.equals("2")) {
-				consultarReserva();
-			}
-			
-		}
+	static void consolaCliente(){
+//		boolean continuar = true;
+//		while(continuar) {  
+//			
+//			System.out.println("\n0. Cerrar Sesion");
+//			System.out.println("1. Crear nueva reserva");
+//			System.out.println("2. Verificar tu reserva");
+//			String opcion = input("\nSeleccione la opcion que desea");
+//			
+//			if (opcion.equals("0")){
+//				continuar = false;
+//				
+//			}
+//			else if(opcion.equals("1")) {
+//				crearReserva(false);
+//			}
+//			else if (opcion.equals("2")) {
+//				consultarReserva();
+//			}
+//			
+//		}
+//		
+		ConsolaCliente consolaCliente = new ConsolaCliente(frame, usuario_actual, renta_carros);
 		
 	}
 

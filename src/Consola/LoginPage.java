@@ -43,6 +43,8 @@ public class LoginPage implements ActionListener {
 		this.rentaCar = renta_carros;
 		this.frame = frame;
 		
+		frame.getContentPane().removeAll();
+		frame.repaint();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Nuesta Renta de Carros");
 		frame.setResizable(false);
@@ -141,14 +143,10 @@ public class LoginPage implements ActionListener {
 			}
 		}
 		else if (this.usuario.getTipo().equals("C")) {
-			try {
 				ConsolaRentaCar.consolaCliente();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+				ConsolaRentaCar.setUsuario(this.usuario);
 		}
-		ConsolaRentaCar.setUsuario(usuario);
+		
 	}
 
 	public Usuario getUsuario() {
