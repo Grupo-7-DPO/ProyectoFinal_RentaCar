@@ -257,7 +257,7 @@ public class ConsolaRentaCar {
 			else {
 				System.out.println("Ingrese una opcion valida");
 			}
-		}*/
+		}
 		*/
 	}
 
