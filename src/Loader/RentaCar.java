@@ -8,9 +8,11 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import Model.Categoria;
@@ -37,10 +39,14 @@ public class RentaCar {
 	List<String> nombre_sedes;
 	List<Seguro> seguros;
 	List<Categoria> categorias;
+	HashMap<LocalDate, Integer> historialReservas;
 	
 	public RentaCar(HashMap<String, List<Vehiculo>> tipos_vehiculos, List<Vehiculo> total_vehiculos,
-			List<Empleado> todos_empleados, List<Usuario> usuarios, HashMap<String, Sede> sedes, List<Cliente> clientes, List<Reserva> reservas, List<String> nombre_sedes, List<Seguro> seguros, List<Categoria> categorias) {
+			List<Empleado> todos_empleados, List<Usuario> usuarios, HashMap<String, Sede> sedes, List<Cliente> clientes, 
+			List<Reserva> reservas, List<String> nombre_sedes, List<Seguro> seguros, List<Categoria> categorias,
+			HashMap<LocalDate, Integer> historialReservas2) {
 		
+		this.historialReservas = historialReservas2;
 		this.tipos_vehiculos = tipos_vehiculos;
 		this.total_vehiculos = total_vehiculos;
 		this.todos_empleados = todos_empleados;
@@ -56,6 +62,10 @@ public class RentaCar {
 	//Getters
 	public List<Usuario> getUsuarios(){
 		return this.usuarios;
+	}
+	
+	public HashMap<LocalDate, Integer> getHistorial(){
+		return this.historialReservas;
 	}
 	
 	public List<Categoria> getCategorias(){
@@ -236,7 +246,23 @@ public class RentaCar {
 		return findCar;
 	}
 	
-	
+	public Integer[][] creacionMatrizOcupacion(){
+		Integer[][] matriz = new Integer[31][12];
+		
+		for (int i = 0; i < matriz.length; i++) {
+            Arrays.fill(matriz[i], 0);
+        }
+		
+		for (Map.Entry<LocalDate, Integer> entry : this.historialReservas.entrySet()) {
+            LocalDate date = entry.getKey();
+            int dayOfMonth = date.getDayOfMonth() - 1; 
+            int month = date.getMonthValue() - 1; 
+
+            matriz[dayOfMonth][month] = entry.getValue();
+        }
+		
+		return matriz;
+	}
 	
 	public void crearCliente(String nombre, String contacto, String fecha_nacimiento, String nacionalidad, String imagen_documento, String numero_licencia, String pais_licencia,
 			String fecha_vencimiento_pase, String imagen_pase, String tipo_tarjeta, String numero_tarjeta, String fecha_vencimiento_tarjeta, String username) {
@@ -392,6 +418,7 @@ public class RentaCar {
 		
 		try {
 			writeArchivoReservas();
+			modificarArchivoHistorialReservas(reserva_eliminar);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -531,6 +558,37 @@ public class RentaCar {
 		}
 		
 		br.close();
+	}
+	
+	private void modificarArchivoHistorialReservas(Reserva nueva_reserva) throws IOException {
+		FileWriter file = new FileWriter("./data/historial_reservas.csv", true);
+		BufferedWriter br = new BufferedWriter(file);
+		
+		String id = nueva_reserva.getId();
+		String usuario = nueva_reserva.getUsername();
+		String tipo = nueva_reserva.getTipo().getNombre();
+		String sede_recogida = nueva_reserva.getSedeRecogida();
+		String fecha_recogida = nueva_reserva.getDiaRecogida();
+		String hora_recogida = nueva_reserva.getHoraRecogida();
+		String sede_entrega = nueva_reserva.getSedeEntrega();
+		String fecha_entrega = nueva_reserva.getDiaEntrega();
+		String hora_entrega = nueva_reserva.getHoraEntrega();
+		String pago = nueva_reserva.getPago();
+		String seguro;
+		if (nueva_reserva.getSeguro() == null) {
+			seguro = "null";
+		}
+		else {
+			seguro = nueva_reserva.getSeguro().getNombre();
+		}
+		String carro = nueva_reserva.getCarro().getPlaca();
+		
+		br.write(id + ";" + usuario + ";" + tipo + ";" + sede_recogida + ";" + fecha_recogida + ";"
+				+ hora_recogida + ";" + sede_entrega + ";" + fecha_entrega + ";" + hora_entrega + ";"
+				+ pago + ";" + seguro + ";" + carro);
+		br.newLine();
+		br.close();
+		
 	}
 	
 	public boolean crearVehiculo(String placa, String marca, String modelo, String tipo, String color, String trans, String capacidad, String estado, String sede) throws IOException {

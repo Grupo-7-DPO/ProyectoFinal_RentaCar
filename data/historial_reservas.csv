@@ -1,0 +1,102 @@
+id;user;tipo;sede_recogida;fecha_recogida;hora_recogida;sede_entrega;fecha_entrega;hora_entrega;pago;seguro;carro
+8364;user026;familiar;Sede este;8/05/2023;13:07;Sede norte;14/05/2023;14:11;pagado;todo riesgo;CAR031
+1837;user066;pequeño;Sede oeste;12/06/2023;6:49;Sede oeste;17/06/2023;13:21;pagado;null;CAR094
+9509;user016;económico;Sede sur;31/07/2023;6:08;Sede este;5/08/2023;10:13;pagado;null;CAR046
+7283;user045;mediano;Sede sur;31/12/2023;4:59;Sede oeste;2/01/2024;14:15;pagado;null;CAR091
+7364;user035;familiar;Sede norte;5/11/2023;22:08;Sede sur;12/11/2023;4:20;pagado;null;CAR017
+4571;user036;económico;Sede norte;5/07/2023;7:33;Sede sur;6/07/2023;15:49;pagado;null;CAR001
+6339;user096;económico;Sede norte;23/02/2023;11:10;Sede este;27/02/2023;7:35;pagado;null;CAR065
+7296;user028;pequeño;Sede este;2/03/2023;12:26;Sede norte;11/03/2023;2:00;pagado;sin seguro;CAR062
+6955;user005;lujo;Sede norte;16/10/2023;5:01;Sede norte;24/10/2023;12:55;pagado;;CAR005
+7807;user031;mediano;Sede norte;8/03/2023;11:37;Sede sur;9/03/2023;6:21;pagado;;CAR051
+6422;user072;familiar;Sede sur;20/08/2023;7:23;Sede este;26/08/2023;12:48;pagado;null;CAR028
+5854;user015;lujo;Sede sur;23/01/2023;17:33;Sede este;6/02/2023;10:35;pagado;null;CAR040
+2907;user098;lujo;Sede este;16/08/2023;8:34;Sede este;27/08/2023;0:13;pagado;contra terremotos;CAR086
+2860;user042;familiar;Sede oeste;18/12/2023;9:58;Sede oeste;1/01/2024;19:23;pagado;;CAR054
+5974;user100;familiar;Sede oeste;15/06/2023;22:41;Sede este;25/06/2023;2:11;pagado;null;CAR039
+3076;user005;familiar;Sede sur;9/10/2023;6:24;Sede este;11/10/2023;18:11;pagado;;CAR046
+8302;user031;familiar;Sede oeste;28/12/2023;17:06;Sede sur;29/12/2023;10:19;pagado;contra terremotos;CAR012
+3359;user041;familiar;Sede sur;19/05/2023;15:14;Sede oeste;28/05/2023;18:02;pagado;todo riesgo;CAR043
+4414;user060;mediano;Sede norte;15/03/2023;6:11;Sede sur;23/03/2023;16:30;pagado;null;CAR070
+8583;user013;familiar;Sede sur;26/09/2023;11:04;Sede este;29/09/2023;3:46;pagado;contra terremotos;CAR089
+1797;user018;económico;Sede oeste;13/08/2023;14:55;Sede norte;16/08/2023;17:05;pagado;todo riesgo;CAR052
+8533;user018;mediano;Sede oeste;29/05/2023;4:00;Sede oeste;11/06/2023;6:19;pagado;null;CAR049
+9054;user065;lujo;Sede sur;19/09/2023;19:12;Sede norte;27/09/2023;8:03;pagado;null;CAR029
+7569;user003;familiar;Sede oeste;21/05/2023;16:05;Sede sur;23/05/2023;6:36;pagado;null;CAR021
+9499;user071;mediano;Sede sur;8/01/2023;10:38;Sede oeste;17/01/2023;18:04;pagado;null;CAR091
+5309;user032;mediano;Sede sur;28/07/2023;12:01;Sede norte;9/08/2023;8:16;pagado;contra terremotos;CAR092
+7496;user054;mediano;Sede sur;31/03/2023;17:35;Sede norte;7/04/2023;7:36;pagado;null;CAR090
+5281;user079;mediano;Sede oeste;15/11/2023;2:02;Sede oeste;28/11/2023;5:35;pagado;contra terremotos;CAR031
+8264;user073;económico;Sede oeste;2/08/2023;12:12;Sede sur;16/08/2023;3:40;pagado;null;CAR084
+8309;user090;mediano;Sede sur;2/05/2023;3:31;Sede sur;14/05/2023;7:52;pagado;;CAR090
+1474;user080;familiar;Sede sur;2/06/2023;16:55;Sede oeste;8/06/2023;11:27;pagado;null;CAR024
+9484;user089;mediano;Sede este;22/09/2023;3:02;Sede sur;4/10/2023;10:31;pagado;sin seguro;CAR031
+1719;user061;lujo;Sede este;28/06/2023;6:43;Sede norte;3/07/2023;12:46;pagado;null;CAR025
+7702;user042;pequeño;Sede norte;19/12/2023;11:11;Sede sur;22/12/2023;9:13;pagado;contra terremotos;CAR080
+3581;user073;económico;Sede norte;31/12/2023;18:37;Sede norte;5/01/2024;13:08;pagado;contra terremotos;CAR033
+1935;user059;mediano;Sede sur;27/05/2023;12:51;Sede este;4/06/2023;15:30;pagado;;CAR100
+7493;user058;familiar;Sede norte;9/04/2023;10:44;Sede este;18/04/2023;10:13;pagado;null;CAR080
+4775;user017;mediano;Sede sur;27/02/2023;11:18;Sede este;13/03/2023;0:44;pagado;null;CAR010
+1449;user081;pequeño;Sede norte;29/03/2023;10:20;Sede sur;10/04/2023;23:18;pagado;contra terremotos;CAR076
+1689;user029;pequeño;Sede sur;17/03/2023;0:30;Sede este;22/03/2023;17:41;pagado;sin seguro;CAR005
+7387;user011;económico;Sede este;19/10/2023;21:33;Sede norte;21/10/2023;9:16;pagado;null;CAR088
+2925;user053;familiar;Sede sur;10/06/2023;3:32;Sede norte;18/06/2023;16:19;pagado;;CAR082
+7419;user020;mediano;Sede este;9/08/2023;11:36;Sede este;23/08/2023;19:06;pagado;null;CAR078
+5566;user062;pequeño;Sede sur;22/07/2023;8:56;Sede oeste;25/07/2023;2:37;pagado;null;CAR023
+6106;user011;mediano;Sede este;12/05/2023;4:35;Sede sur;13/05/2023;13:27;pagado;;CAR009
+1663;user027;económico;Sede sur;11/05/2023;13:57;Sede norte;20/05/2023;21:52;pagado;null;CAR062
+7228;user014;económico;Sede norte;7/04/2023;4:53;Sede este;9/04/2023;4:06;pagado;contra terremotos;CAR022
+8821;user026;mediano;Sede oeste;28/04/2023;9:05;Sede este;2/05/2023;1:33;pagado;contra terremotos;CAR015
+6494;user096;económico;Sede norte;17/06/2023;6:38;Sede este;25/06/2023;1:28;pagado;null;CAR005
+2512;user064;mediano;Sede oeste;21/05/2023;12:02;Sede sur;29/05/2023;11:03;pagado;sin seguro;CAR023
+2031;user057;pequeño;Sede oeste;14/09/2023;18:44;Sede norte;22/09/2023;20:25;pagado;null;CAR066
+5959;user087;económico;Sede sur;4/09/2023;12:17;Sede oeste;12/09/2023;1:16;pagado;todo riesgo;CAR013
+2119;user028;pequeño;Sede norte;6/08/2023;10:33;Sede oeste;12/08/2023;7:28;pagado;todo riesgo;CAR100
+6138;user059;económico;Sede este;22/04/2023;0:01;Sede este;28/04/2023;19:43;pagado;;CAR006
+4412;user003;lujo;Sede oeste;17/04/2023;8:06;Sede este;19/04/2023;10:35;pagado;sin seguro;CAR080
+5254;user084;pequeño;Sede sur;20/07/2023;2:26;Sede norte;29/07/2023;15:53;pagado;null;CAR086
+2389;user080;pequeño;Sede oeste;12/10/2023;14:53;Sede sur;17/10/2023;0:48;pagado;sin seguro;CAR003
+3436;user060;pequeño;Sede este;8/05/2023;12:13;Sede norte;9/05/2023;10:11;pagado;sin seguro;CAR063
+5295;user007;económico;Sede este;25/04/2023;16:07;Sede oeste;28/04/2023;11:53;pagado;sin seguro;CAR080
+5691;user073;familiar;Sede este;2/08/2023;14:04;Sede sur;8/08/2023;8:14;pagado;null;CAR021
+2344;user059;mediano;Sede norte;27/05/2023;16:56;Sede oeste;28/05/2023;9:54;pagado;todo riesgo;CAR024
+9987;user053;familiar;Sede oeste;12/08/2023;14:32;Sede este;16/08/2023;15:09;pagado;null;CAR033
+1512;user067;pequeño;Sede sur;28/06/2023;16:36;Sede sur;6/07/2023;10:33;pagado;;CAR069
+9140;user052;familiar;Sede este;11/10/2023;16:03;Sede oeste;17/10/2023;22:59;pagado;contra terremotos;CAR051
+4914;user032;mediano;Sede sur;2/10/2023;11:45;Sede norte;4/10/2023;8:42;pagado;null;CAR071
+7011;user052;mediano;Sede este;9/02/2023;15:39;Sede este;19/02/2023;3:38;pagado;sin seguro;CAR085
+2821;user045;económico;Sede sur;13/01/2023;14:47;Sede norte;25/01/2023;12:18;pagado;;CAR036
+3058;user041;mediano;Sede este;31/03/2023;9:47;Sede norte;12/04/2023;15:47;pagado;;CAR092
+7738;user070;mediano;Sede sur;18/05/2023;7:26;Sede oeste;21/05/2023;18:28;pagado;null;CAR076
+3963;user083;lujo;Sede sur;11/01/2023;11:51;Sede este;12/01/2023;23:56;pagado;null;CAR078
+4798;user016;familiar;Sede sur;15/07/2023;11:10;Sede sur;20/07/2023;4:16;pagado;null;CAR028
+2741;user100;familiar;Sede norte;22/05/2023;23:28;Sede este;3/06/2023;19:44;pagado;null;CAR038
+7018;user090;familiar;Sede sur;23/07/2023;3:47;Sede sur;4/08/2023;10:34;pagado;null;CAR074
+4551;user062;mediano;Sede sur;1/01/2023;13:31;Sede este;4/01/2023;23:41;pagado;contra terremotos;CAR008
+9673;user055;pequeño;Sede este;6/10/2023;11:49;Sede oeste;14/10/2023;22:46;pagado;sin seguro;CAR075
+1929;user055;lujo;Sede sur;12/04/2023;8:20;Sede norte;26/04/2023;18:32;pagado;contra terremotos;CAR032
+1210;user044;familiar;Sede oeste;9/07/2023;19:54;Sede oeste;22/07/2023;17:31;pagado;null;CAR094
+8308;user036;mediano;Sede sur;10/10/2023;23:24;Sede oeste;13/10/2023;14:37;pagado;sin seguro;CAR049
+2039;user100;familiar;Sede sur;10/10/2023;1:57;Sede este;20/10/2023;3:09;pagado;null;CAR010
+5426;user097;lujo;Sede oeste;6/11/2023;5:21;Sede sur;9/11/2023;9:59;pagado;null;CAR067
+4228;user020;mediano;Sede oeste;17/08/2023;18:54;Sede este;23/08/2023;11:53;pagado;todo riesgo;CAR033
+4844;user068;económico;Sede norte;19/05/2023;1:36;Sede oeste;25/05/2023;14:43;pagado;null;CAR067
+7464;user047;económico;Sede oeste;31/03/2023;6:49;Sede oeste;3/04/2023;20:55;pagado;null;CAR020
+1540;user065;pequeño;Sede sur;12/03/2023;6:45;Sede este;17/03/2023;11:36;pagado;contra terremotos;CAR089
+1325;user095;mediano;Sede norte;7/03/2023;7:52;Sede sur;19/03/2023;3:39;pagado;null;CAR021
+5664;user066;lujo;Sede sur;29/03/2023;21:08;Sede este;5/04/2023;2:01;pagado;contra terremotos;CAR039
+5288;user016;familiar;Sede oeste;4/05/2023;23:51;Sede oeste;5/05/2023;23:01;pagado;sin seguro;CAR065
+9757;user011;pequeño;Sede norte;19/01/2023;22:06;Sede sur;31/01/2023;16:37;pagado;todo riesgo;CAR001
+5029;user025;mediano;Sede sur;23/01/2023;18:01;Sede norte;27/01/2023;16:14;pagado;sin seguro;CAR100
+8417;user054;mediano;Sede sur;25/03/2023;9:55;Sede este;28/03/2023;20:56;pagado;null;CAR082
+8321;user050;pequeño;Sede sur;25/10/2023;9:36;Sede oeste;5/11/2023;13:33;pagado;null;CAR002
+8799;user056;mediano;Sede norte;16/08/2023;19:45;Sede sur;29/08/2023;5:41;pagado;null;CAR087
+1194;user093;familiar;Sede sur;6/07/2023;15:44;Sede este;14/07/2023;11:24;pagado;null;CAR015
+9033;user027;mediano;Sede oeste;14/10/2023;2:37;Sede este;15/10/2023;21:55;pagado;sin seguro;CAR087
+1106;user017;familiar;Sede este;15/02/2023;19:34;Sede norte;20/02/2023;7:39;pagado;;CAR026
+9156;user029;mediano;Sede este;8/12/2023;13:51;Sede sur;18/12/2023;23:45;pagado;null;CAR014
+8690;user100;familiar;Sede norte;21/03/2023;9:24;Sede sur;29/03/2023;18:32;pagado;null;CAR074
+4745;user022;lujo;Sede norte;4/03/2023;2:40;Sede oeste;17/03/2023;6:25;pagado;contra terremotos;CAR053
+4116;user076;lujo;Sede este;11/01/2023;18:15;Sede oeste;21/01/2023;19:47;pagado;;CAR036
+4934;user046;económico;Sede norte;6/05/2023;11:32;Sede norte;19/05/2023;12:46;pagado;;CAR068
+7358;m.velasquez;pequeño;Sede norte;2/11/2023;6:00;Sede norte;8/11/2023;13:00;pagado;contra terremotos;LMO223
