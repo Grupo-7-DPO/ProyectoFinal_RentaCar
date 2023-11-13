@@ -45,6 +45,7 @@ public class LoginPage implements ActionListener {
 		
 		frame.getContentPane().removeAll();
 		frame.repaint();
+		frame.setBackground(Color.white);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Nuesta Renta de Carros");
 		frame.setResizable(false);
@@ -118,6 +119,7 @@ public class LoginPage implements ActionListener {
 	}
 	
 	private void usuarioIniciado() {
+		ConsolaRentaCar.setUsuario(this.usuario);
 		if (this.usuario.getTipo().equals("AG")) {
 			try {
 				ConsolaRentaCar.consolaAdminG();
@@ -144,7 +146,6 @@ public class LoginPage implements ActionListener {
 		}
 		else if (this.usuario.getTipo().equals("C")) {
 				ConsolaRentaCar.consolaCliente();
-				ConsolaRentaCar.setUsuario(this.usuario);
 		}
 		
 	}
