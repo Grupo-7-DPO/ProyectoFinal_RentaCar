@@ -170,13 +170,14 @@ public class CrearReserva implements ActionListener{
 			Seguro seguro = rentaCar.encontrarSeguro(seguroStr);
 			long precio = rentaCar.calcularTarifaReserva(fechaRecogidaStr, fechaEntregaStr, tipo, seguro);
 			
-			String message = "El id de tu reserva es " + id + "\nSu precio es de " + precio + "$";
+			String message = "El id de tu reserva es " + id + "\nSu precio total es de " + precio + "$" +
+								"y el valor a cancelar (30%) es de "  + Math.round(precio*0.7 * 100.0) / 100.0 + "$";
 			String title = "Precio de la reserva " + id;
 			JOptionPane.showMessageDialog(null, message,
 					title, JOptionPane.INFORMATION_MESSAGE);
 			
 			rentaCar.crearReserva(id, usuario, tipo, sedeRecogida, fechaRecogidaStr, horaRecogidaStr, sedeEntrega, fechaEntregaStr, horaEntregaStr, "pagado", seguro);
-			String message2 = "Reserva con id " + id + " a nombre de " + usuarioActual.getNombre() + " creada correctamente";
+			String message2 = "Reserva con id " + id + "\na nombre de " + usuarioActual.getNombre() + " creada correctamente";
 			String title2 = "Reserva " + id + " creada";
 			JOptionPane.showMessageDialog(null, message2,
 					title2, JOptionPane.INFORMATION_MESSAGE);
