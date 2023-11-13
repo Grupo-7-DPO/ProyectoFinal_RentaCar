@@ -145,7 +145,6 @@ public class ConsolaRentaCar {
 	
 	static void consolaAdmin(){
 		// TODO Auto-generated method stub
-		/*
 		/*boolean continuar = true;
 		while (continuar) {
 			System.out.println("\n1. Revisar carros del inventario general");

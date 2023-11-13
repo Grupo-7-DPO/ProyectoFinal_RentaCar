@@ -623,7 +623,4 @@ public class RentaCar {
 		String id = Integer.toString(random.nextInt(9999));
 		return id;
 	}
-
-	
-
 }
