@@ -79,8 +79,8 @@ public class RentaCar {
 	}
 	
 	//Setters
-	public boolean elimEmpleado(String username, String password) throws IOException {
-		Usuario user = encontrarUsuario(username,password);
+	public boolean elimEmpleado(String username) throws IOException {
+		Usuario user = encontrarUsuarioConUsername(username);
 		if (!user.equals(null)) {
 			this.usuarios.remove(user);
 			writeArchivoUsuario();
@@ -317,14 +317,17 @@ public class RentaCar {
 		}
 	 }
 	
-	public void crearUsuarioAdminEmpleado(String nombre, String tipo, String username, String password, String sede) {
+	public boolean crearUsuarioAdminEmpleado(String nombre, String tipo, String username, String password, String sede) {
+		if(nombre.equals("")||username.equals("")||password.equals("")||encontrarUsername(username)) {
+			return false;
+		}
 		Empleado empleado = new Empleado(nombre, tipo, username, password, sede);
 		this.todos_empleados.add(empleado);
 		try {
 			modificarArchivoUsuarioEmpleadoAdmin(empleado);
+			return true;
 		} catch (IOException e) {
-			
-			e.printStackTrace();
+			return false;
 		}
 	}
 	
@@ -494,7 +497,14 @@ public class RentaCar {
 			String username = nuevo_usuario.getUser();
 			String password = nuevo_usuario.getPassword();
 			
-			br.write("\n" + nombre + ";" + tipo + ";" + username + ";" + password);
+			if(tipo.equals("A") || tipo.equals("E")) {
+				Empleado emp = encontrarEmpleado(username);
+				String sede = emp.getSede();
+				br.write("\n" + nombre + ";" + tipo + ";" + username + ";" + password + ";" + sede);
+			}
+			else {
+				br.write("\n" + nombre + ";" + tipo + ";" + username + ";" + password);
+			}
 		}
 		
 		br.close();

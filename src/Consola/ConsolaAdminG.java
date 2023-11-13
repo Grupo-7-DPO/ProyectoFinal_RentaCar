@@ -43,18 +43,19 @@ public class ConsolaAdminG {
 		
 		f.getContentPane().removeAll();
 		f.repaint();
-		f.setSize(700,500);
+		f.setPreferredSize(new Dimension(900,765));
 		f.setLayout(new BorderLayout());
         f.setResizable(false);
 		
 		//JTextArea ta=new JTextArea(45,120);  
 	    JPanel p1=new PanelInventario();  
 	    //p1.add(ta);  
-	    JPanel p2=new JPanel();  
-	    JPanel p3=new JPanel();  
+	    JPanel p2=new PanelReservas();  
+	    JPanel p3=new PanelEmpleados();  
+	    //JPanel p4 
 	    JTabbedPane tp=new JTabbedPane();
 	    tp.setFont(new Font("Times New Roman", Font.BOLD, 15));
-	    tp.setSize(300,200);  
+	    tp.setSize(700,500);  
 	    tp.add("Inventario",p1);  
 	    tp.add("Reservas",p2);  
 	    tp.add("Empleados",p3);
@@ -126,13 +127,62 @@ public class ConsolaAdminG {
 	public static void showRemCar() {
 		f.getContentPane().removeAll();
 		f.repaint();
-		f.setSize(700,500);
+		f.setPreferredSize(new Dimension(700,500));
 		f.setLayout(new BorderLayout());
         f.setResizable(false);
         
         PanelRemoveCar showRem = new PanelRemoveCar();
         
         f.add(showRem,BorderLayout.CENTER);
+		f.getContentPane().revalidate(); 
+		f.repaint();
+		f.pack();
+	    f.setVisible(true);
+	}
+	
+	
+	public static void showAddInsurance() {
+		f.getContentPane().removeAll();
+		f.repaint();
+		f.setPreferredSize(new Dimension(700,500));
+		f.setLayout(new BorderLayout());
+        f.setResizable(false);
+        
+        PanelAddInsurance addIns = new PanelAddInsurance();
+
+        f.add(addIns,BorderLayout.CENTER);
+		f.getContentPane().revalidate(); 
+		f.repaint();
+		f.pack();
+	    f.setVisible(true);
+	}
+	
+	public static void showAddEmpleado() {
+		f.getContentPane().removeAll();
+		f.repaint();
+		f.setPreferredSize(new Dimension(700,500));
+		f.setLayout(new BorderLayout());
+        f.setResizable(false);
+        
+        PanelAddEmpleado addEmp = new PanelAddEmpleado();
+
+        f.add(addEmp,BorderLayout.CENTER);
+		f.getContentPane().revalidate(); 
+		f.repaint();
+		f.pack();
+	    f.setVisible(true);
+	}
+	
+	public static void showRemEmpleado() {
+		f.getContentPane().removeAll();
+		f.repaint();
+		f.setPreferredSize(new Dimension(700,500));
+		f.setLayout(new BorderLayout());
+        f.setResizable(false);
+        
+        PanelRemoveEmpleado remEmp = new PanelRemoveEmpleado();
+
+        f.add(remEmp,BorderLayout.CENTER);
 		f.getContentPane().revalidate(); 
 		f.repaint();
 		f.pack();

@@ -7,26 +7,31 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
-import javax.swing.Box;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class PanelRemoveCar extends JPanel implements ActionListener{
+public class PanelRemoveEmpleado extends JPanel implements ActionListener{
+
+	
 	private JLabel bienvenida;
 	private JButton back = new JButton("Back");
 	private JButton send = new JButton("Send");
-	private JTextField placaTF;
+	private JTextField usernameTF = new JTextField();
+
 	
-	public PanelRemoveCar() {
+	public PanelRemoveEmpleado() {
+		
+		String[] sedes = {"Sede norte","Sede sur","Sede occidente"};
+		
 		setLayout(new BorderLayout());
 		
-		bienvenida = new JLabel("Eliminar Vehiculo", SwingConstants.CENTER);
+		bienvenida = new JLabel("Eliminar Empleado", SwingConstants.CENTER);
 		bienvenida.setFont(new Font("Times New Roman", Font.BOLD, 30));
 		bienvenida.setPreferredSize(new Dimension(900,40));
 		bienvenida.setBackground(new Color(0xFAB0B9));
@@ -35,9 +40,8 @@ public class PanelRemoveCar extends JPanel implements ActionListener{
 		
 		JPanel options = new JPanel();
 		
-		JLabel placa = new JLabel("Placa");
-		placa.setFont(new Font("Times New Roman", Font.PLAIN, 25));
-		placaTF = new JTextField();
+		JLabel username = new JLabel("Username");
+		username.setFont(new Font("Times New Roman", Font.PLAIN, 25));
 		
 		send.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		send.setBackground(new Color(0xFF5757));
@@ -48,10 +52,9 @@ public class PanelRemoveCar extends JPanel implements ActionListener{
 		back.setBackground(new Color(0xFAB0B9));
 		back.addActionListener(this);
 		
-		
 		options.setLayout(new GridLayout(0,2,0,20));
-		options.add(placa);
-		options.add(placaTF);
+		options.add(username);
+		options.add(usernameTF);
 		options.add(back);
 		options.add(send);
 		
@@ -65,22 +68,18 @@ public class PanelRemoveCar extends JPanel implements ActionListener{
 		if (e.getSource() == back) {
 			ConsolaRentaCar.consolaAdminG();
 		}
-		else if(e.getSource()==send) {
-			String placa = placaTF.getText();
-			try {
-				boolean ret = ConsolaRentaCar.eliminarVehiculo(placa);
-				if (ret) {
-					placaTF.setText("");
-					JOptionPane.showMessageDialog(this, "Car eliminated succesfully", "Success", JOptionPane.PLAIN_MESSAGE);
-				}
-				else {
-					JOptionPane.showMessageDialog(this, "Error Please Verify Information", "Error", JOptionPane.ERROR_MESSAGE);
-				}
+		else if (e.getSource()==send) {
+			String user = usernameTF.getText();
+			boolean ret = ConsolaRentaCar.eliminarEmpleado(user);
+			if (ret) {
+				usernameTF.setText("");
+				JOptionPane.showMessageDialog(this, "Empleado eliminado correctamente", "Success", JOptionPane.PLAIN_MESSAGE);
 			}
-			catch(IOException e1) {
+			else {
 				JOptionPane.showMessageDialog(this, "Error Please Verify Information", "Error", JOptionPane.ERROR_MESSAGE);
 			}
+			
 		}
 	}
-	
+
 }

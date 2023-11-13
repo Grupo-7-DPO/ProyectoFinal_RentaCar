@@ -19,6 +19,7 @@ public class PanelInventario extends JPanel implements ActionListener{
 	private JButton invDispSede = new JButton ("Inventario Disponible en Sede");
 	private JButton addCar = new JButton("Añadir Carro");
 	private JButton elimCar = new JButton("Eliminar Carro");
+	private JButton addInsurance = new JButton("Crear seguro");
 	private JButton cerrarSesion  = new JButton();
 	private ImageIcon imageCerrar = new ImageIcon("./imagenes/cerrarSesion.png");
 	
@@ -77,6 +78,15 @@ public class PanelInventario extends JPanel implements ActionListener{
 		
 		add(Box.createVerticalStrut(padding));
 		
+		addInsurance.setPreferredSize(new Dimension(widthB,heightB));
+		addInsurance.setAlignmentX(CENTER_ALIGNMENT);
+		addInsurance.setBackground(new Color(0xFAB0B9));
+		addInsurance.setFont(new Font("Times New Roman", Font.BOLD, fontSize));
+		addInsurance.addActionListener(this);
+		add(addInsurance);
+		
+		add(Box.createVerticalStrut(padding));
+		
 		ImageIcon imagenArreglada = new ImageIcon(imageCerrar.getImage().getScaledInstance(50,50, Image.SCALE_SMOOTH));
 		cerrarSesion.setIcon(imagenArreglada);
 		cerrarSesion.setPreferredSize(new Dimension(70,70));
@@ -105,6 +115,15 @@ public class PanelInventario extends JPanel implements ActionListener{
 		}
 		else if(e.getSource() == elimCar) {
 			ConsolaAdminG.showRemCar();
+		}
+		
+		else if(e.getSource() == addInsurance) {
+			ConsolaAdminG.showAddInsurance();
+		}
+		
+		else if(e.getSource() == cerrarSesion) {
+			ConsolaRentaCar.setUsuario(null);
+			ConsolaRentaCar.login();
 		}
 		
 	}

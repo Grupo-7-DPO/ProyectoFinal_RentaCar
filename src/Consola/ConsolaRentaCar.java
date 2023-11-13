@@ -701,4 +701,29 @@ public class ConsolaRentaCar {
 	public static boolean eliminarVehiculo(String placa) throws IOException {
 		return renta_carros.eliminarVehiculo(placa);
 	}
+	
+	public static boolean crearSeguro(String name, int price) {
+		try {
+			renta_carros.crearSeguro(name, price);
+			return true;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			return false;
+		}
+	}
+	
+	public static boolean crearEmpleado(String name, String user, String pass, String sede) {
+		return renta_carros.crearUsuarioAdminEmpleado(name, "E", user, pass, sede);
+	}
+	
+	public static boolean eliminarEmpleado(String user) {
+		try {
+			return renta_carros.elimEmpleado(user);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			return false;
+		}
+	}
+	
+	
 }

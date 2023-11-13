@@ -17,16 +17,19 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class PanelRemoveCar extends JPanel implements ActionListener{
+public class PanelAddInsurance extends JPanel implements ActionListener{
+	
 	private JLabel bienvenida;
 	private JButton back = new JButton("Back");
 	private JButton send = new JButton("Send");
-	private JTextField placaTF;
+	private JTextField nameTF = new JTextField();
+	private JTextField priceTF = new JTextField();
 	
-	public PanelRemoveCar() {
+	public PanelAddInsurance() {
+		
 		setLayout(new BorderLayout());
 		
-		bienvenida = new JLabel("Eliminar Vehiculo", SwingConstants.CENTER);
+		bienvenida = new JLabel("Agregar Seguro", SwingConstants.CENTER);
 		bienvenida.setFont(new Font("Times New Roman", Font.BOLD, 30));
 		bienvenida.setPreferredSize(new Dimension(900,40));
 		bienvenida.setBackground(new Color(0xFAB0B9));
@@ -35,9 +38,12 @@ public class PanelRemoveCar extends JPanel implements ActionListener{
 		
 		JPanel options = new JPanel();
 		
-		JLabel placa = new JLabel("Placa");
-		placa.setFont(new Font("Times New Roman", Font.PLAIN, 25));
-		placaTF = new JTextField();
+		JLabel name = new JLabel("Nombre");
+		name.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+		
+		JLabel price = new JLabel("Precio");
+		price.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+		
 		
 		send.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		send.setBackground(new Color(0xFF5757));
@@ -48,17 +54,17 @@ public class PanelRemoveCar extends JPanel implements ActionListener{
 		back.setBackground(new Color(0xFAB0B9));
 		back.addActionListener(this);
 		
-		
 		options.setLayout(new GridLayout(0,2,0,20));
-		options.add(placa);
-		options.add(placaTF);
+		options.add(name);
+		options.add(nameTF);
+		options.add(price);
+		options.add(priceTF);
 		options.add(back);
 		options.add(send);
 		
 		add(options);
+		
 	}
-	
-	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -66,21 +72,20 @@ public class PanelRemoveCar extends JPanel implements ActionListener{
 			ConsolaRentaCar.consolaAdminG();
 		}
 		else if(e.getSource()==send) {
-			String placa = placaTF.getText();
-			try {
-				boolean ret = ConsolaRentaCar.eliminarVehiculo(placa);
-				if (ret) {
-					placaTF.setText("");
-					JOptionPane.showMessageDialog(this, "Car eliminated succesfully", "Success", JOptionPane.PLAIN_MESSAGE);
+			String name = nameTF.getText();
+			String priceS = priceTF.getText();
+				if (!name.equals("") && !priceS.equals("")) {
+					int price =  Integer.valueOf(priceS);
+					ConsolaRentaCar.crearSeguro(name,price);
+					nameTF.setText("");
+					priceTF.setText("");
+					JOptionPane.showMessageDialog(this, "Seguro creado correctamente", "Success", JOptionPane.PLAIN_MESSAGE);
 				}
 				else {
 					JOptionPane.showMessageDialog(this, "Error Please Verify Information", "Error", JOptionPane.ERROR_MESSAGE);
 				}
-			}
-			catch(IOException e1) {
-				JOptionPane.showMessageDialog(this, "Error Please Verify Information", "Error", JOptionPane.ERROR_MESSAGE);
-			}
 		}
+		
 	}
-	
+
 }
