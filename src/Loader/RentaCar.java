@@ -246,7 +246,7 @@ public class RentaCar {
 		return findCar;
 	}
 	
-	public Integer[][] creacionMatrizOcupacion(){
+	public Integer[][] creacionMatrizOcupacion(String sede){
 		Integer[][] matriz = new Integer[31][12];
 		
 		for (int i = 0; i < matriz.length; i++) {

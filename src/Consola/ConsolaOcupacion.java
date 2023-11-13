@@ -25,12 +25,13 @@ public class ConsolaOcupacion implements ActionListener{
 	RentaCar rentaCar;
 	Usuario usuarioActual;
 	
-	JLabel titulo = new JLabel("Ocupación por Meses", SwingConstants.CENTER);
+	
 	
 	JButton atrasButton = new JButton();
 	ImageIcon imageAtras = new ImageIcon("./imagenes/boton_atras.png");
 	
-	public ConsolaOcupacion(RentaCar renta_carros, JFrame frameAnterior, Usuario usuario_actual) {
+	public ConsolaOcupacion(String sede,RentaCar renta_carros, JFrame frameAnterior, Usuario usuario_actual) {
+		JLabel titulo = new JLabel("Ocupación por Meses en " + sede , SwingConstants.CENTER);
 		frame = frameAnterior;
 		usuarioActual = usuario_actual;
 		rentaCar = renta_carros;
@@ -48,7 +49,7 @@ public class ConsolaOcupacion implements ActionListener{
 		titulo.setFont(new Font("Times New Roman", Font.BOLD, 35));
 		frame.add(titulo, BorderLayout.NORTH);
 		
-		Integer[][] matriz = rentaCar.creacionMatrizOcupacion();
+		Integer[][] matriz = rentaCar.creacionMatrizOcupacion(sede);
 		
 		JPanel panelCentral = new JPanel(new BorderLayout());
 		panelCentral.setBackground(new Color(0xFAB0B9));

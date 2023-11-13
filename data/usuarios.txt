@@ -1,6 +1,7 @@
 nombre;apellido;tipo;usuario;contraseña;sede
 admin;AG;admin;123
 ad;AG;ad;123
+a;A;ang;123;Sede norte
 emp;E;emp;123;Sede norte
 cliente;C;cli;123
 Mario Ordoñez;AG;m.ordoñez;contraseña*

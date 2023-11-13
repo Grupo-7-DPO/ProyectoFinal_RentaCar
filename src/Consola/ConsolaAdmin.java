@@ -3,27 +3,19 @@ package Consola;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
-import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
 import Loader.RentaCar;
 import Model.Usuario;
 
-public class ConsolaAdminG {
+public class ConsolaAdmin {
 	private static JFrame f;
 	private Usuario user;
 	private static RentaCar rent;
@@ -35,7 +27,7 @@ public class ConsolaAdminG {
 	
 	
 	
-	public ConsolaAdminG(JFrame frame, Usuario usuario_actual, RentaCar renta_carros)
+	public ConsolaAdmin(JFrame frame, Usuario usuario_actual, RentaCar renta_carros)
 	{
 		this.f = frame;
 		this.user = usuario_actual;
@@ -48,10 +40,8 @@ public class ConsolaAdminG {
         f.setResizable(false);
 		
 		//JTextArea ta=new JTextArea(45,120);  
-	    JPanel p1=new PanelInventario();  
-	    //p1.add(ta);  
+	    JPanel p1=new PanelInventario(true);  
 	    JPanel p2=new PanelReservas();  
-	    JPanel p3=new PanelEmpleados();
 	    JPanel p4 = new PanelOcupacion();
 	    //JPanel p4 
 	    JTabbedPane tp=new JTabbedPane();
@@ -59,10 +49,9 @@ public class ConsolaAdminG {
 	    tp.setSize(700,500);  
 	    tp.add("Inventario",p1);  
 	    tp.add("Reservas",p2);  
-	    tp.add("Empleados",p3);
 	    tp.add("Ocupacion",p4);
 
-	    bienvenida = new JLabel("Bienvenido Admin General", SwingConstants.CENTER);
+	    bienvenida = new JLabel("Bienvenido Admin", SwingConstants.CENTER);
 		bienvenida.setFont(new Font("Times New Roman", Font.BOLD, 30));
 		bienvenida.setPreferredSize(new Dimension(900,40));
 		bienvenida.setBackground(new Color(0xFF5757));
@@ -110,54 +99,7 @@ public class ConsolaAdminG {
 		
 	}
 	
-	public static void showAddCar() {
-		f.getContentPane().removeAll();
-		f.repaint();
-		f.setSize(700,500);
-		f.setLayout(new BorderLayout());
-        f.setResizable(false);
-        
-        PanelAddCar showAdd = new PanelAddCar();
-        
-        f.add(showAdd,BorderLayout.CENTER);
-		f.getContentPane().revalidate(); 
-		f.repaint();
-		f.pack();
-	    f.setVisible(true);
-	}
 	
-	public static void showRemCar() {
-		f.getContentPane().removeAll();
-		f.repaint();
-		f.setPreferredSize(new Dimension(700,500));
-		f.setLayout(new BorderLayout());
-        f.setResizable(false);
-        
-        PanelRemoveCar showRem = new PanelRemoveCar();
-        
-        f.add(showRem,BorderLayout.CENTER);
-		f.getContentPane().revalidate(); 
-		f.repaint();
-		f.pack();
-	    f.setVisible(true);
-	}
-	
-	
-	public static void showAddInsurance() {
-		f.getContentPane().removeAll();
-		f.repaint();
-		f.setPreferredSize(new Dimension(700,500));
-		f.setLayout(new BorderLayout());
-        f.setResizable(false);
-        
-        PanelAddInsurance addIns = new PanelAddInsurance();
-
-        f.add(addIns,BorderLayout.CENTER);
-		f.getContentPane().revalidate(); 
-		f.repaint();
-		f.pack();
-	    f.setVisible(true);
-	}
 	
 	public static void showAddEmpleado() {
 		f.getContentPane().removeAll();
@@ -175,19 +117,5 @@ public class ConsolaAdminG {
 	    f.setVisible(true);
 	}
 	
-	public static void showRemEmpleado() {
-		f.getContentPane().removeAll();
-		f.repaint();
-		f.setPreferredSize(new Dimension(700,500));
-		f.setLayout(new BorderLayout());
-        f.setResizable(false);
-        
-        PanelRemoveEmpleado remEmp = new PanelRemoveEmpleado();
-
-        f.add(remEmp,BorderLayout.CENTER);
-		f.getContentPane().revalidate(); 
-		f.repaint();
-		f.pack();
-	    f.setVisible(true);
-	}
+	
 }

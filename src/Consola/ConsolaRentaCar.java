@@ -145,6 +145,7 @@ public class ConsolaRentaCar {
 	
 	static void consolaAdmin(){
 		// TODO Auto-generated method stub
+		ConsolaAdmin consolaAdmin = new ConsolaAdmin(frame, usuario_actual, renta_carros); 
 		/*boolean continuar = true;
 		while (continuar) {
 			System.out.println("\n1. Revisar carros del inventario general");
@@ -626,8 +627,8 @@ public class ConsolaRentaCar {
 		LoginPage loginPage = new LoginPage(renta_carros, frame);
 	}
 	
-	protected static void verOcupacion() {
-		ConsolaOcupacion ocupacion = new ConsolaOcupacion(renta_carros, frame, usuario_actual);
+	public static void verOcupacion(String sede) {
+		ConsolaOcupacion ocupacion = new ConsolaOcupacion(sede,renta_carros, frame, usuario_actual);
 	}
 	
 	private static Usuario crearUsuarioCliente() {
