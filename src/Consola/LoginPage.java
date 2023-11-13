@@ -135,7 +135,6 @@ public class LoginPage implements ActionListener {
 		else if (this.usuario.getTipo().equals("C")) {
 				ConsolaRentaCar.consolaCliente();
 		}
-		
 	}
 
 	public Usuario getUsuario() {

@@ -202,6 +202,16 @@ public class RentaCar {
 		return se_encontro;
 	}
 	
+	public Empleado encontrarEmpleado(String username) {
+		Empleado empleadoBuscado = null;
+		for(Empleado empleadoIteracion:this.todos_empleados) {
+			if(empleadoIteracion.getUser().equals(username)) {
+				empleadoBuscado = empleadoIteracion;
+			}
+		}
+		return empleadoBuscado;
+	}
+	
 	public Vehiculo encontrarVehiculo(String placa) {
 		Vehiculo findCar = null;
 		List<Vehiculo> cars = this.total_vehiculos;
@@ -595,5 +605,7 @@ public class RentaCar {
 		String id = Integer.toString(random.nextInt(9999));
 		return id;
 	}
+
+	
 
 }

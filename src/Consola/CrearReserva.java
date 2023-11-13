@@ -36,7 +36,7 @@ public class CrearReserva implements ActionListener{
 	JFrame frame;
 	RentaCar rentaCar;
 	Usuario usuarioActual;
-	boolean especial;
+	boolean reservaEspecial;
 	
 	
 	JLabel titulo = new JLabel("Crear Nueva Reserva", SwingConstants.CENTER);
@@ -58,6 +58,7 @@ public class CrearReserva implements ActionListener{
 		frame = frameAntiguo;
 		rentaCar = renta_carros;
 		usuarioActual = usuario_actual;
+		reservaEspecial = especial;
 		
 		frame.getContentPane().removeAll();
 		frame.repaint();
@@ -154,10 +155,33 @@ public class CrearReserva implements ActionListener{
 			if(usuarioActual.getTipo().equals("C")) {
 				ConsolaRentaCar.consolaCliente();
 			}
+			else if(usuarioActual.getTipo().equals("E")) {
+				ConsolaRentaCar.consolaEmpleado();
+			}
+			else if(usuarioActual.getTipo().equals("A")) {
+				ConsolaRentaCar.consolaAdmin();
+			}
+			else if(usuarioActual.getTipo().equals("AG")) {
+				ConsolaRentaCar.consolaAdminG();
+			}
 		}
 		else if (e.getSource() == crearReservaButton) {
 			String id = rentaCar.crearId();
-			String usuario = usuarioActual.getUser();
+			Usuario usuario = null;
+			if(usuarioActual.getTipo().equals("C") | reservaEspecial) {
+				usuario = usuarioActual;
+			}
+			else {
+				while(usuario == null) {
+					String nombre = JOptionPane.showInputDialog(null, "¿A nombre de quien estará la reserva?", "Creacion de Reserva", JOptionPane.QUESTION_MESSAGE);
+					usuario = rentaCar.encontrarUsuarioConNombre(nombre);
+					if (usuario == null) {
+						JOptionPane.showMessageDialog(null, "Error, usuario no encontrado",
+								"Usuario no encontrado", JOptionPane.ERROR_MESSAGE);
+					}
+				}
+			}
+			
 			String tipoStr = opcionesCategoria.getSelectedItem().toString();
 			Categoria tipo = rentaCar.encontrarCategoria(tipoStr);
 			String sedeRecogida = opcionesSedeRecogida.getSelectedItem().toString();
@@ -169,15 +193,24 @@ public class CrearReserva implements ActionListener{
 			String seguroStr = seguro.getSelectedItem().toString();
 			Seguro seguro = rentaCar.encontrarSeguro(seguroStr);
 			long precio = rentaCar.calcularTarifaReserva(fechaRecogidaStr, fechaEntregaStr, tipo, seguro);
+			String message;
+			String title;
 			
-			String message = "El id de tu reserva es " + id + "\nSu precio total es de " + precio + "$" +
-								"y el valor a cancelar (30%) es de "  + Math.round(precio*0.7 * 100.0) / 100.0 + "$";
-			String title = "Precio de la reserva " + id;
+			if(usuario.getTipo().equals("C")) {
+				 message = "El id de tu reserva es " + id + "\nSu precio total es de " + precio + "$ " +
+						"y el valor a cancelar (30%) es de "  + Math.round(precio*0.3 * 100.0) / 100.0 + "$";
+				 title = "Precio de la reserva " + id;
+			}
+			else {
+				 message = "El id de tu reserva especial es " + id;
+				 title = "ID Reserva Especial";
+			}
+			
 			JOptionPane.showMessageDialog(null, message,
 					title, JOptionPane.INFORMATION_MESSAGE);
 			
-			rentaCar.crearReserva(id, usuario, tipo, sedeRecogida, fechaRecogidaStr, horaRecogidaStr, sedeEntrega, fechaEntregaStr, horaEntregaStr, "pagado", seguro);
-			String message2 = "Reserva con id " + id + "\na nombre de " + usuarioActual.getNombre() + " creada correctamente";
+			rentaCar.crearReserva(id, usuario.getUser(), tipo, sedeRecogida, fechaRecogidaStr, horaRecogidaStr, sedeEntrega, fechaEntregaStr, horaEntregaStr, "pagado", seguro);
+			String message2 = "Reserva con id " + id + "\na nombre de " + usuario.getNombre() + " creada correctamente";
 			String title2 = "Reserva " + id + " creada";
 			JOptionPane.showMessageDialog(null, message2,
 					title2, JOptionPane.INFORMATION_MESSAGE);

@@ -61,7 +61,7 @@ public class ConsolaRentaCar {
 		
 	}
 	
-	static void consolaCliente(){
+	protected static void consolaCliente(){
 //		boolean continuar = true;
 //		while(continuar) {  
 //			
@@ -87,7 +87,9 @@ public class ConsolaRentaCar {
 		
 	}
 
-	static void consolaEmpleado(){
+	protected static void consolaEmpleado(){
+		ConsolaEmpleado consolaEmpleado = new ConsolaEmpleado(frame, usuario_actual, renta_carros);
+		
 		/*
 		boolean continuar = true;
 		
@@ -511,7 +513,9 @@ public class ConsolaRentaCar {
 		
 	}
 	
-	private static void comenzarReserva(String sede_empleado) {
+	protected static void comenzarReserva(String sede_empleado) {
+		ComenzarReserva comenzarReserva = new ComenzarReserva(sede_empleado,frame, renta_carros, usuario_actual);
+		/*
 		String id_reserva = input("Escribe el id de la reserva");
 		String nombre = input("Escribe a nombre de quien está la reserva");
 		
@@ -548,11 +552,15 @@ public class ConsolaRentaCar {
 		else {
 			System.out.println("ERROR: No existe una reserva con id " + id_reserva + " a nombre de " + nombre);
 		}
-		
+		*/
 		
 	}
 	
-	private static void recibirCarroReservado() {
+	
+	protected static void recibirCarroReservado() {
+		RecibirCarroReservado recibirCarro = new RecibirCarroReservado(frame, renta_carros,usuario_actual);
+		
+		/*
 		String id = input("Escriba el id de la reserva");
 		Reserva reserva = renta_carros.encontrarReserva(id);
 		String placa = reserva.getCarro().getPlaca();
@@ -560,12 +568,17 @@ public class ConsolaRentaCar {
 		
 		System.out.println("\nReserva cerrada correctamente");
 		System.out.println("Carro " + placa + " puesto en limpieza correctamente");
-		
+		*/
 	}
 	
-	private static void cambiarEstadoCarro(String estado, String placa) {
+	protected static void cambiarEstadoCarro() {
+		
+		CambiarEstadoCarro cambiarEstado = new CambiarEstadoCarro(frame, renta_carros, usuario_actual);
+		
+		/*
 		renta_carros.cambiarEstadoCarro(estado, placa);
 		System.out.println("\nCarro " + placa + " puesto en " + estado + " correctamente");
+		*/
 	}
 	
 	protected static void consultarReserva() {

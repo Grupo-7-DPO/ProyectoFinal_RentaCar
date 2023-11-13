@@ -1,6 +1,8 @@
 id;user;tipo;sede_recogida;fecha_recogida;hora_recogida;sede_entrega;fecha_entrega;hora_entrega;pago;seguro;carro
 7292;Papaia23;lujo;Sede norte;10/12/2023;13:00;Sede sur;12/12/2023;13:00;pagado;todo riesgo;null
-1674;f.paezp2;lujo;Sede norte;14/10/2023;11:00;Sede norte;15/10/2023;12:00;pagado;contra terremotos;null
 6779;admin;van;Sede sur;26/09/2023;13:00;Sede occidente;28/09/2023;13:00;pagado;null;null
 345;m.velasquez;lujo;Sede norte;12/11/2023;06:00;Sede norte;15/11/2023;18:00;pagado;contra terremotos;null
 7358;m.velasquez;pequeño;Sede norte;2/11/2023;06:00;Sede norte;8/11/2023;13:00;pagado;contra terremotos;null
+6422;m.velasquez;pequeño;Sede norte;8/11/2023;06:00;Sede norte;17/11/2023;06:00;pagado;null;null
+5016;j.mecanico;pequeño;Sede norte;8/11/2023;06:00;Sede occidente;9/11/2023;06:00;pagado;null;null
+1674;f.paezp2;lujo;Sede norte;14/10/2023;11:00;Sede norte;15/10/2023;12:00;pagado;contra terremotos;LMO223
