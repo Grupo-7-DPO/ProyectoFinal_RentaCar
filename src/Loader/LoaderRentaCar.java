@@ -3,6 +3,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
@@ -21,8 +23,9 @@ import Model.Usuario;
 
 public class LoaderRentaCar {
 
-	public static RentaCar cargar_archivos(String archivo_automoviles, String archivo_clientes, String archivo_sedes, String archivo_usuarios, String archivo_reservas, String archivo_seguros, String archivo_categorias) throws IOException, FileNotFoundException{
+	public static RentaCar cargar_archivos(String archivo_automoviles, String archivo_clientes, String archivo_sedes, String archivo_usuarios, String archivo_reservas, String archivo_seguros, String archivo_categorias, String archivoHistorial) throws IOException, FileNotFoundException{
 		HashMap <String, List<Vehiculo>> tipos_vehiculos = new HashMap<>();
+		HashMap<LocalDate, Integer> historialReservas = new HashMap<>();
 		List<String> nombre_sedes = new ArrayList<>();
 		List<Vehiculo> total_vehiculos = new ArrayList<>();
 		List<Empleado> todos_empleados = new ArrayList<>();
@@ -214,6 +217,27 @@ public class LoaderRentaCar {
 			linea_rs = br_reservas.readLine();
 		}
 		
+		BufferedReader br_historial = new BufferedReader(new FileReader(archivoHistorial));
+		br_historial.readLine();
+		String linea_his = br_historial.readLine();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+		while(linea_his != null) {
+			String[] partes_his = linea_his.split(";");
+			String fecha_recogida = partes_his[4];
+			LocalDate fecha = LocalDate.parse(fecha_recogida, formatter);
+			
+			if(historialReservas.containsKey(fecha)) {
+				Integer valor = historialReservas.get(fecha);
+				valor++;
+				historialReservas.put(fecha, valor);
+			}
+			else {
+				historialReservas.put(fecha, 1);
+			}
+			linea_his = br_historial.readLine();
+		}
+		
+		br_historial.close();
 		br_categoria.close();
 		br_seguros.close();
 		br_reservas.close();
@@ -222,7 +246,7 @@ public class LoaderRentaCar {
 		br_empleados.close();
 		br_vehiculos.close();
 		
-		RentaCar renta_car = new RentaCar(tipos_vehiculos, total_vehiculos, todos_empleados, usuarios, sedes, clientes, reservas, nombre_sedes, seguros, categorias);
+		RentaCar renta_car = new RentaCar(tipos_vehiculos, total_vehiculos, todos_empleados, usuarios, sedes, clientes, reservas, nombre_sedes, seguros, categorias, historialReservas);
 		return renta_car;
 	}
 

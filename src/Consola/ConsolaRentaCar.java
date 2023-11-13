@@ -619,13 +619,16 @@ public class ConsolaRentaCar {
 	}
 	
 	private static void cargarArchivos() throws FileNotFoundException, IOException {
-		renta_carros = LoaderRentaCar.cargar_archivos("./data/automoviles.txt", "./data/clientes.txt", "./data/sedes.txt", "./data/usuarios.txt", "./data/reservas.txt", "./data/seguros.txt", "./data/categorias.txt");
+		renta_carros = LoaderRentaCar.cargar_archivos("./data/automoviles.txt", "./data/clientes.txt", "./data/sedes.txt", "./data/usuarios.txt", "./data/reservas.txt", "./data/seguros.txt", "./data/categorias.txt", "./data/historial_reservas.csv");
 	}
 	
 	protected static void login() {
 		LoginPage loginPage = new LoginPage(renta_carros, frame);
 	}
 	
+	protected static void verOcupacion() {
+		ConsolaOcupacion ocupacion = new ConsolaOcupacion(renta_carros, frame, usuario_actual);
+	}
 	
 	private static Usuario crearUsuarioCliente() {
 		boolean user_valido = true;
