@@ -94,6 +94,7 @@ public class RentaCar {
 		return total_vehiculos;
 	}
 	
+	
 	public List<Vehiculo> getInventarioDisponible(){
 		List<Vehiculo> invDispo = new ArrayList<>(total_vehiculos);
 		for (Vehiculo car : total_vehiculos)
@@ -114,6 +115,17 @@ public class RentaCar {
 		return invDispo;
 	}
 	
+	public String[][] getTableInventario(List<Vehiculo> inventario){
+
+		List<String[]> data = new ArrayList<String[]>();
+		for (Vehiculo car : inventario) {
+			data.add(car.toList());
+		}
+		String [][] cars = new String[data.size()][];
+		cars = data.toArray(cars);
+		return cars;
+	}
+	
 
 	public Usuario encontrarUsuarioConNombre(String nombre) {
 		List<Usuario> lista = this.usuarios;
@@ -125,6 +137,29 @@ public class RentaCar {
 			}
 		}
 		return usuario_buscado;
+	}
+	
+	public Seguro encontrarSeguro(String nombre_seguro) {
+		List<Seguro> lista_seguros = this.seguros;
+		Seguro seguro_buscado = null;
+		
+		for(Seguro seguro_iteracion: lista_seguros) {
+			if(seguro_iteracion.getNombre().equals(nombre_seguro)) {
+				seguro_buscado = seguro_iteracion;
+			}
+		}
+		return seguro_buscado;
+	}
+	
+	public Categoria encontrarCategoria(String nombre_categoria) {
+		List<Categoria> lista_categorias = this.categorias;
+		Categoria categoria_buscada = null;
+		for(Categoria categoria_iteracion:lista_categorias) {
+			if(categoria_iteracion.getNombre().equals(nombre_categoria)) {
+				categoria_buscada = categoria_iteracion;
+			}
+		}
+		return categoria_buscada;
 	}
 	
 	public Usuario encontrarUsuario(String username, String password) {
@@ -179,6 +214,16 @@ public class RentaCar {
 		return se_encontro;
 	}
 	
+	public Empleado encontrarEmpleado(String username) {
+		Empleado empleadoBuscado = null;
+		for(Empleado empleadoIteracion:this.todos_empleados) {
+			if(empleadoIteracion.getUser().equals(username)) {
+				empleadoBuscado = empleadoIteracion;
+			}
+		}
+		return empleadoBuscado;
+	}
+	
 	public Vehiculo encontrarVehiculo(String placa) {
 		Vehiculo findCar = null;
 		List<Vehiculo> cars = this.total_vehiculos;
@@ -222,7 +267,7 @@ public class RentaCar {
 	}
 	
 	public long calcularDiferenciaDias(String fecha1Str, String fecha2Str) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
         
         LocalDate fecha1 = LocalDate.parse(fecha1Str, formatter);
         LocalDate fecha2 = LocalDate.parse(fecha2Str, formatter);
@@ -489,6 +534,9 @@ public class RentaCar {
 	}
 	
 	public boolean crearVehiculo(String placa, String marca, String modelo, String tipo, String color, String trans, String capacidad, String estado, String sede) throws IOException {
+		if(placa.equals("")||marca.equals("")||modelo.equals("")||tipo.equals("")||color.equals("")||trans.equals("")||capacidad.equals("")||estado.equals("")||sede.equals("")) {
+			return false;
+		}
 		Vehiculo newCar = new Vehiculo(placa,marca,modelo,tipo,color,trans,capacidad,estado,sede);
 		Sede site = sedes.get(sede);
 		if (!site.equals(null))
@@ -504,6 +552,9 @@ public class RentaCar {
 	
 	public boolean eliminarVehiculo(String placa) throws IOException {
 		Vehiculo elimCar = encontrarVehiculo(placa);
+		if(placa.equals("")||elimCar==null) {
+			return false;
+		}
 		String sede = elimCar.getSede();
 		Sede site = sedes.get(sede);
 		if (!elimCar.equals(null)&&!site.equals(null)) {
@@ -572,8 +623,7 @@ public class RentaCar {
 		String id = Integer.toString(random.nextInt(9999));
 		return id;
 	}
+
 	
-	
-	
-	
+
 }

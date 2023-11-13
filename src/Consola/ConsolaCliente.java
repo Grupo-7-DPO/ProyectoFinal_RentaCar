@@ -32,10 +32,10 @@ public class ConsolaCliente implements ActionListener{
 	JPanel panel = new JPanel();
 	ImageIcon imageCerrar = new ImageIcon("./imagenes/cerrarSesion.png");
 	
-	public ConsolaCliente(JFrame frame, Usuario usuario_actual, RentaCar renta_carros) {
-		this.frame = frame;
-		this.usuarioActual = usuario_actual;
-		this.rentaCarros = renta_carros;
+	public ConsolaCliente(JFrame frameAnterior, Usuario usuario_actual, RentaCar renta_carros) {
+		frame = frameAnterior;
+		usuarioActual = usuario_actual;
+		rentaCarros = renta_carros;
 		
 		frame.getContentPane().removeAll();
 		frame.repaint();
@@ -55,6 +55,7 @@ public class ConsolaCliente implements ActionListener{
 		reserva.setPreferredSize(new Dimension(600,40));
 		
 		nuevaReserva.setPreferredSize(new Dimension(600,40));
+		nuevaReserva.setFocusable(false);
 		nuevaReserva.setBackground(new Color(0xFF5757));
 		nuevaReserva.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		nuevaReserva.addActionListener(this);
@@ -64,6 +65,7 @@ public class ConsolaCliente implements ActionListener{
 		JPanel consultar = new JPanel();
 		consultar.setPreferredSize(new Dimension(600,40));
 		consultarReserva.setPreferredSize(new Dimension(600,40));
+		consultarReserva.setFocusable(false);
 		consultarReserva.setBackground(new Color(0xFAB0B9));
 		consultarReserva.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		consultarReserva.addActionListener(this);
@@ -76,6 +78,7 @@ public class ConsolaCliente implements ActionListener{
 		cerrar.setLayout(new BorderLayout());
 		ImageIcon imagenArreglada = new ImageIcon(imageCerrar.getImage().getScaledInstance(50,50, Image.SCALE_SMOOTH));
 		cerrarSesion.setIcon(imagenArreglada);
+		cerrarSesion.setFocusable(false);
 		cerrarSesion.setPreferredSize(new Dimension(70,70));
 		cerrarSesion.addActionListener(this);
 		cerrar.add(cerrarSesion, BorderLayout.EAST);
@@ -89,8 +92,16 @@ public class ConsolaCliente implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
+		if(e.getSource() == cerrarSesion) {
+			ConsolaRentaCar.setUsuario(null);
+			ConsolaRentaCar.login();
+		}
+		else if(e.getSource()==nuevaReserva){
+			ConsolaRentaCar.crearReserva(false);
+		}
+		else if (e.getSource()==consultarReserva) {
+			ConsolaRentaCar.consultarReserva();
+		}
 	}
 
 }

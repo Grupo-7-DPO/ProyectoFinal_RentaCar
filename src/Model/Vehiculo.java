@@ -32,6 +32,11 @@ public class Vehiculo {
 	public String getCar() {
 		return placa +" "+ tipo + " "+ capacidad +" "+ marca +" " + modelo+" "+ estado ;
 	}
+	
+	public String[] toList() {
+		String[] car = {placa,tipo,capacidad,marca,modelo,estado};
+		return car;
+	}
 
 	public String getPlaca() {
 		// TODO Auto-generated method stub

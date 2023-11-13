@@ -12,9 +12,11 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -37,6 +39,7 @@ public class LoginPage implements ActionListener {
 	JLabel usernameLabel = new JLabel("Usuario:");
 	JLabel passwordLabel = new JLabel("Contraseña:");
 	JPanel panelLogin = new JPanel();
+	ImageIcon icon = new ImageIcon("./imagenes/Icono.png");
 	
 	
 	LoginPage(RentaCar renta_carros, JFrame frame){
@@ -44,6 +47,7 @@ public class LoginPage implements ActionListener {
 		this.frame = frame;
 		
 		frame.getContentPane().removeAll();
+		frame.setIconImage(icon.getImage());
 		frame.repaint();
 		frame.setBackground(Color.white);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -51,10 +55,12 @@ public class LoginPage implements ActionListener {
 		frame.setResizable(false);
 		frame.setSize(700, 500);
 		frame.setLayout(new BorderLayout());
+		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
 		
 		title.setPreferredSize(new Dimension(900,70));
 		title.setBackground(new Color(0xFF5757));
+		title.setForeground(Color.BLACK);
 		title.setOpaque(true);
 		title.setFont(new Font("Times New Roman", Font.BOLD, 30));
 		frame.add(title, BorderLayout.NORTH);
@@ -84,12 +90,17 @@ public class LoginPage implements ActionListener {
 		
 		loginButton.setPreferredSize(new Dimension(200,50));
 		loginButton.setBackground(new Color(0xFF5757));
+		loginButton.setForeground(Color.BLACK);
 		loginButton.addActionListener(this);
 		loginButton.setFocusable(false);
 		loginButton.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		panelLogin.add(loginButton);
 		
 		frame.add(panelLogin, BorderLayout.CENTER);
+		
+		frame.getContentPane().revalidate();
+	    frame.repaint(); 
+	    frame.setVisible(true);
 		
 	}
 
@@ -102,17 +113,9 @@ public class LoginPage implements ActionListener {
 			if (this.usuario == null) {
 				passwordText.setText("");
 				loginText.setText("");
-				JLabel message = new JLabel("Usuario o Password Incorrectos");
-				message.setPreferredSize(new Dimension(900,70));
-				message.setForeground(Color.red);
-				message.setFont(new Font("Times New Roman", Font.BOLD, 12));
-				panelLogin.add(message);
+				JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos", "Error Inicio de Sesion", JOptionPane.ERROR_MESSAGE);
 			}
 			else {
-				JLabel message = new JLabel("Bienvenido " + this.usuario.getNombre());
-				message.setForeground(Color.red);
-				message.setFont(new Font("Times New Roman", Font.BOLD, 12));
-				panelLogin.add(message);
 				usuarioIniciado();
 			}
 		}
@@ -121,33 +124,17 @@ public class LoginPage implements ActionListener {
 	private void usuarioIniciado() {
 		ConsolaRentaCar.setUsuario(this.usuario);
 		if (this.usuario.getTipo().equals("AG")) {
-			try {
-				ConsolaRentaCar.consolaAdminG();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			ConsolaRentaCar.consolaAdminG();
 		}
 		else if (this.usuario.getTipo().equals("A")) {
-			try {
-				ConsolaRentaCar.consolaAdmin();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			ConsolaRentaCar.consolaAdmin();
 		}
 		else if (this.usuario.getTipo().equals("E")) {
-			try {
-				ConsolaRentaCar.consolaEmpleado();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			ConsolaRentaCar.consolaEmpleado();
 		}
 		else if (this.usuario.getTipo().equals("C")) {
 				ConsolaRentaCar.consolaCliente();
 		}
-		
 	}
 
 	public Usuario getUsuario() {

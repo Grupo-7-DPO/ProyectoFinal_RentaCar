@@ -7,7 +7,9 @@ Mario Ordoñez;AG;m.ordoñez;contraseña*
 Ignacio Chaparro;A;i.chaparro;hola1234;Sede norte
 Santiago Arenas;A;s.arenas3;odioaqui;Sede norte
 Samuel Amaya;A;s.amaya4;hola1234*;Sede occidente
-Juan Baron;E;j.baron;futbol321;Sede norte
+Juan Baron;E;j.baron;123456;Sede norte
+Juan Prueba Empleado;E;usuario;empleado;Sede occidente
+Juan Mecanico;E;j.mecanico;123456;Sede norte
 Mateo Velasquez;C;m.velasquez;derecha**
 Simon Paez;C;s.paez;hol@123
 Samuel Amaya;C;Papaia23;Yoperreosola
