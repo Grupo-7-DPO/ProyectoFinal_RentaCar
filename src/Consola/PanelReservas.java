@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+
 public class PanelReservas extends JPanel implements ActionListener{
 	
 	JLabel bienvenida;

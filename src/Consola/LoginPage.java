@@ -32,6 +32,7 @@ public class LoginPage implements ActionListener {
 	Usuario usuario;
 	
 	JButton loginButton = new JButton("LOGIN");
+	JButton crearButton = new JButton("CREAR CUENTA");
 	JTextField loginText = new JTextField(15);
 	JPasswordField passwordText = new JPasswordField(15);
 	JLabel title = new JLabel("¡Bienvenido a Nuestra Renta de Carros!", SwingConstants.CENTER);
