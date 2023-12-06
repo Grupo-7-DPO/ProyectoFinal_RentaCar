@@ -2,3 +2,4 @@ id;user;tipo;sede_recogida;fecha_recogida;hora_recogida;sede_entrega;fecha_entre
 6779;admin;van;Sede sur;26/09/2023;13:00;Sede occidente;28/09/2023;13:00;pagado;null;null
 345;m.velasquez;lujo;Sede norte;12/11/2023;06:00;Sede norte;15/11/2023;18:00;pagado;contra terremotos;null
 5016;j.mecanico;pequeño;Sede norte;8/11/2023;06:00;Sede occidente;9/11/2023;06:00;pagado;null;null
+8521;f.paezp2;pequeño;Sede norte;6/12/2023;06:00;Sede norte;14/12/2023;06:00;pagado;contra terremotos;null

@@ -1,4 +1,4 @@
-nombre;apellido;tipo;usuario;contraseña;sede
+nombre apellido;tipo;usuario;contraseña;sede
 admin;AG;admin;123
 ad;AG;ad;123
 a;A;ang;123;Sede norte

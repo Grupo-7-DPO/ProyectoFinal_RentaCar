@@ -19,6 +19,7 @@ import Model.Categoria;
 import Model.Cliente;
 import Model.Empleado;
 import Model.LicenciaConduccion;
+import Model.Renta;
 import Model.Reserva;
 import Model.Sede;
 import Model.Seguro;
@@ -27,7 +28,7 @@ import Model.Usuario;
 import Model.Vehiculo;
 import Model.Admin;
 
-public class RentaCar {
+public class RentaCar implements Renta{
 
 	HashMap <String, List<Vehiculo>> tipos_vehiculos;
 	List<Vehiculo> total_vehiculos;
@@ -57,6 +58,22 @@ public class RentaCar {
 		this.nombre_sedes = nombre_sedes;
 		this.seguros = seguros;
 		this.categorias = categorias;
+	}
+
+	public RentaCar(HashMap<String, List<Vehiculo>> tipos_vehiculos, List<Vehiculo> total_vehiculos,
+			List<Usuario> usuarios, HashMap<String, Sede> sedes, List<Cliente> clientes,
+			List<Reserva> reservas, List<String> nombre_sedes, List<Seguro> seguros, List<Categoria> categorias) {
+		
+		this.tipos_vehiculos = tipos_vehiculos;
+		this.total_vehiculos = total_vehiculos;
+		this.usuarios = usuarios;
+		this.sedes = sedes;
+		this.clientes = clientes;
+		this.reservas = reservas;
+		this.nombre_sedes = nombre_sedes;
+		this.seguros = seguros;
+		this.categorias = categorias;
+		
 	}
 
 	//Getters

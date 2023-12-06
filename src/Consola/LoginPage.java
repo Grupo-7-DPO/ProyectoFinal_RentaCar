@@ -23,12 +23,14 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import Loader.RentaCar;
+import Loader.RentaCliente;
+import Model.Renta;
 import Model.Usuario;
 
 public class LoginPage implements ActionListener {
 	
 	JFrame frame;
-	RentaCar rentaCar;
+	Renta rentaCar;
 	Usuario usuario;
 	
 	JButton loginButton = new JButton("LOGIN");
@@ -43,7 +45,7 @@ public class LoginPage implements ActionListener {
 	ImageIcon icon = new ImageIcon("./imagenes/Icono.png");
 	
 	
-	LoginPage(RentaCar renta_carros, JFrame frame){
+	public LoginPage(Renta renta_carros, JFrame frame){
 		this.rentaCar = renta_carros;
 		this.frame = frame;
 		
@@ -134,7 +136,7 @@ public class LoginPage implements ActionListener {
 			ConsolaRentaCar.consolaEmpleado();
 		}
 		else if (this.usuario.getTipo().equals("C")) {
-				ConsolaRentaCar.consolaCliente();
+			ConsolaRentaCar.consolaCliente();
 		}
 	}
 

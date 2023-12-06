@@ -4,10 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -17,7 +19,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import ConsolaClientes.ConsolaClientesMain;
 import Loader.RentaCar;
+import Loader.RentaCliente;
+import Model.Renta;
 import Model.Usuario;
 
 public class ConsolaCliente implements ActionListener{
@@ -28,6 +33,7 @@ public class ConsolaCliente implements ActionListener{
 	JLabel bienvenida;
 	JButton nuevaReserva = new JButton("Nueva Reserva");
 	JButton consultarReserva = new JButton("Consultar Reserva");
+	JButton consultarDisponibilidad = new JButton("Consultar Disponibilidad");
 	JButton cerrarSesion  = new JButton();
 	JPanel panel = new JPanel();
 	ImageIcon imageCerrar = new ImageIcon("./imagenes/cerrarSesion.png");
@@ -48,29 +54,33 @@ public class ConsolaCliente implements ActionListener{
 		bienvenida.setPreferredSize(new Dimension(700,100));
 		frame.add(bienvenida, BorderLayout.NORTH);
 		
-		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-		panel.add(Box.createVerticalStrut(60));
+		panel.setLayout(new GridLayout(3,1,20,20));
+		panel.setBorder(BorderFactory.createLineBorder(new Color(0xFAB0B9), 30));
 		
-		JPanel reserva = new JPanel();
-		reserva.setPreferredSize(new Dimension(600,40));
-		
-		nuevaReserva.setPreferredSize(new Dimension(600,40));
 		nuevaReserva.setFocusable(false);
 		nuevaReserva.setBackground(new Color(0xFF5757));
 		nuevaReserva.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		nuevaReserva.addActionListener(this);
-		reserva.add(nuevaReserva);
-		panel.add(reserva);
+		panel.add(nuevaReserva);
 		
-		JPanel consultar = new JPanel();
-		consultar.setPreferredSize(new Dimension(600,40));
-		consultarReserva.setPreferredSize(new Dimension(600,40));
 		consultarReserva.setFocusable(false);
 		consultarReserva.setBackground(new Color(0xFAB0B9));
 		consultarReserva.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		consultarReserva.addActionListener(this);
-		consultar.add(consultarReserva);
-		panel.add(consultar);
+		panel.add(consultarReserva);
+		
+		if (rentaCarros instanceof RentaCliente) {
+			consultarDisponibilidad.setFocusable(false);
+			consultarDisponibilidad.setBackground(new Color(0xFF5757));
+			consultarDisponibilidad.setFont(new Font("Times New Roman", Font.BOLD, 20));
+			consultarDisponibilidad.addActionListener(this);
+			panel.add(consultarDisponibilidad);
+		}
+		else {
+			JLabel label = new JLabel("¡¡Te invitamos a usar nuesta app para clientes!!", SwingConstants.CENTER);
+			label.setFont(new Font("Times New Roman", Font.BOLD, 20));
+			panel.add(label);
+		}
 		
 		frame.add(panel, BorderLayout.CENTER);
 		
@@ -101,6 +111,9 @@ public class ConsolaCliente implements ActionListener{
 		}
 		else if (e.getSource()==consultarReserva) {
 			ConsolaRentaCar.consultarReserva();
+		}
+		else if (e.getSource() == consultarDisponibilidad) {
+			ConsolaClientesMain.consultarDisponibilidad();
 		}
 	}
 

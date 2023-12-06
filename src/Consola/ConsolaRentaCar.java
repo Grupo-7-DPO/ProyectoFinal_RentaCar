@@ -17,17 +17,18 @@ import Loader.RentaCar;
 import Model.Categoria;
 import Model.Cliente;
 import Model.LicenciaConduccion;
+import Model.Renta;
 import Model.Reserva;
 import Model.Seguro;
 import Model.TarjetaCredito;
 import Model.Usuario;
 import Model.Vehiculo;
 
-public class ConsolaRentaCar {
+public class ConsolaRentaCar{
 
-	private static RentaCar renta_carros;
-	private static Usuario usuario_actual;
-	private static JFrame frame = new JFrame();
+	protected static RentaCar renta_carros;
+	protected static Usuario usuario_actual;
+	protected static JFrame frame = new JFrame();
 	
 	public static void main(String[] args) throws IOException {
 		
