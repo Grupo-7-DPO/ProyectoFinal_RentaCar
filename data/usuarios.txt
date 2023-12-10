@@ -17,3 +17,5 @@ Samuel Amaya;C;Papaia23;Yoperreosola
 Sherk;C;SoySherk;Fionateamo
 Diana Rodriguez;C;d.rodriguez;sancarlos87
 Felipe Páez;C;f.paezp2;123456
+Jairo Chaparro;C;j.chap;123456
+Diana Rodriguez;C;d.rodr;1234

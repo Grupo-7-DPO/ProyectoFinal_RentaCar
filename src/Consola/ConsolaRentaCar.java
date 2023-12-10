@@ -105,8 +105,9 @@ public class ConsolaRentaCar{
 		ConsolaOcupacion ocupacion = new ConsolaOcupacion(sede,renta_carros, frame, usuario_actual);
 	}
 	
-	private static Usuario crearUsuarioCliente() {
-		boolean user_valido = true;
+	protected static void crearUsuarioCliente() {
+		new CrearUsuarioCliente(frame, renta_carros);
+		/*boolean user_valido = true;
 		
 		String nombre = input("\nEscribe tu nombre completo");
 		String tipo = "C";
@@ -125,16 +126,17 @@ public class ConsolaRentaCar{
 		crearCliente(nombre, username);
 		System.out.println("\n¡¡Cuenta creada correctamente!!\n");
 		Usuario nuevo_usuario = renta_carros.encontrarUsuario(username, password);
-		return nuevo_usuario;
+		return nuevo_usuario;*/
 	}
 
-	private static void crearCliente(String nombre, String username) {
-		String contacto = input("\nEscribe tu numero de contacto");
+	protected static void crearCliente(String nombre, String username, String tipo, String password) {
+		new CrearCliente(frame, renta_carros, nombre, username, tipo, password);
+		/*String contacto = input("\nEscribe tu numero de contacto");
 		String fecha_nacimiento = input("\nEscribe tu fecha de nacimiento(dd/mm/aaaa)");
 		String nacionalidad = input("\nEscribe tu nacionalidad");
 		String imagen_documento = input("\nIngresa la imagen tu documento de identidad en formato .png (nombrearchivo.png)");
-		String numero_licencia = input("\nIngresa el numero de tu licencia");
-		String pais_licencia = input("\nIngresa el pais de tu licencia");
+	/	String numero_licencia = input("\nIngresa el numero de tu licencia");
+	/	String pais_licencia = input("\nIngresa el pais de tu licencia");
 		String fecha_vencimiento_pase = input("\nIngresa la fecha de vencimiento de tu licencia de conduccion(dd/mm/aaaa)");
 		String imagen_pase = input("\nIngresa la imagen de tu licencia en formato .png(nombrearchivo.png)");
 		String tipo_tarjeta = input("\nIngresa el tipo de tu tarjeta de credito(visa, mastercard,etc.)");
@@ -143,7 +145,7 @@ public class ConsolaRentaCar{
 		String fecha_vencimiento_tarjeta = input("\nIngresa la fecha de vencimiento de tu tarjeta de credito(mm/aaaa)");
 		
 		renta_carros.crearCliente(nombre, contacto, fecha_nacimiento, nacionalidad, imagen_documento, numero_licencia, pais_licencia,
-									fecha_vencimiento_pase, imagen_pase, tipo_tarjeta, numero_tarjeta, fecha_vencimiento_tarjeta, username);
+									fecha_vencimiento_pase, imagen_pase, tipo_tarjeta, numero_tarjeta, fecha_vencimiento_tarjeta, username);*/
 	}
 
 

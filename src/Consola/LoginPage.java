@@ -93,11 +93,19 @@ public class LoginPage implements ActionListener {
 		
 		loginButton.setPreferredSize(new Dimension(200,50));
 		loginButton.setBackground(new Color(0xFF5757));
-		loginButton.setForeground(Color.BLACK);
+		loginButton.setForeground(Color.WHITE);
 		loginButton.addActionListener(this);
 		loginButton.setFocusable(false);
 		loginButton.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		panelLogin.add(loginButton);
+		
+		crearButton.setPreferredSize(new Dimension(200,50));
+		crearButton.setBackground(new Color(0x266099));
+		crearButton.setForeground(Color.WHITE);
+		crearButton.addActionListener(this);
+		crearButton.setFocusable(false);
+		crearButton.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		panelLogin.add(crearButton);
 		
 		frame.add(panelLogin, BorderLayout.CENTER);
 		
@@ -121,6 +129,9 @@ public class LoginPage implements ActionListener {
 			else {
 				usuarioIniciado();
 			}
+		}
+		else if (e.getSource() == crearButton) {
+			ConsolaRentaCar.crearUsuarioCliente();
 		}
 	}
 	

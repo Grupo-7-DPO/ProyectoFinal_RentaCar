@@ -6,3 +6,5 @@ Sherk Papasito;3489657105;10/09/2000;Colombiano;si;01458795485;si;01458795485;Co
 Diana Rodriguez;1234567890;28/03/1995;Colombiana;cedula_diana.png;123456562310;cedula_diana.png;123456562310;Colombia;23/08/2030;pase_diana.png;visa;12345667892510;09/2027;d.rodriguez
 Santiago Arenas;3185604813;26/09/2003;Colombiano;foto.png;1005296614;foto.png;1005296614;Colombia;20/10/2034;licencia.png;visa;99662245220;09/2025;s.arenasr
 Felipe Páez;3118092204;24/08/2004;colombiano;pasepaez.png;1234567890;pasepaez.png;1234567890;Colombia;24/12/2031;imagenlic.png;visa;545897643368976;02/2024;f.paezp2
+Jairo Chaparro;1234567;17/08/2000;Colombiano;CedulaPrueba.png;123456789;CedulaPrueba.png;123456789;Colombia;24/12/2031;LicenciaPrueba.png;Visa;1213456789;09/2026;j.chap
+Diana Rodriguez;123456789;19/12/1997;Colombiana;CedulaPrueba.png;123456789;CedulaPrueba.png;123456789;Colombia;21/12/2028;LicenciaPrueba.png;Visa;123456789;09/2025;d.rodr
