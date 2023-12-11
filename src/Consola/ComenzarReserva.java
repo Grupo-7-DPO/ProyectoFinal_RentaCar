@@ -1,6 +1,14 @@
 package Consola;
 
 import java.awt.BorderLayout;
+
+import java.io.FileNotFoundException;  
+import java.io.FileOutputStream;  
+import com.itextpdf.text.Document;  
+import com.itextpdf.text.DocumentException;  
+import com.itextpdf.text.Paragraph;  
+import com.itextpdf.text.pdf.PdfWriter;  
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -125,6 +133,34 @@ public class ComenzarReserva implements ActionListener {
 	}
 
 
+	private void generateReceipt(String id, String nombre, double precio) {
+		Document doc = new Document();  
+		try  
+		{  
+		//generate a PDF at the specified location  
+		PdfWriter writer = PdfWriter.getInstance(doc, new FileOutputStream("./receipts/receipt.pdf"));  
+		System.out.println("PDF created.");  
+		//opens the PDF  
+		doc.open();  
+		//adds paragraph to the PDF file  
+		doc.add(new Paragraph("Recibo Reserva: " + id));  
+		doc.add(new Paragraph("Nombre: " + nombre));
+		doc.add(new Paragraph("Saldo a pagar: " + precio + "$"));
+		//close the PDF file  
+		doc.close();  
+		//closes the writer  
+		writer.close();  
+		}   
+		catch (DocumentException e)  
+		{  
+		e.printStackTrace();  
+		}   
+		catch (FileNotFoundException e)  
+		{  
+		e.printStackTrace();  
+		}  
+		
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -168,7 +204,7 @@ public class ComenzarReserva implements ActionListener {
 						String title2 = "Carro Asignado a la reserva " + id;
 						JOptionPane.showMessageDialog(null, message2,
 								title2, JOptionPane.INFORMATION_MESSAGE);
-						
+						generateReceipt(id,nombre, Math.round(precio*0.7 * 100.0) / 100.0 );
 						rentaCar.cambiarEstadoCarro("reservado", carro_asignado.getPlaca());
 					}
 					else {

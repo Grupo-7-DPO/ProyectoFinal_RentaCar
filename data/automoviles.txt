@@ -14,3 +14,4 @@ JLK872;volkswagen;voyage;pequeño;rojo;automatico;5;disponible;Sede occidente
 EBS342;nissan;kicks;suv;negro;manual;7;disponible;Sede sur
 RGT561;ford;fiesta;económico;verde;manual;5;limpieza;Sede norte
 LMO223;toyota;rav4;todoterreno;blanco;automatico;5;limpieza;Sede norte
+UDW438;mazda;cx4;suv;negro;automatico;4;disponible;Sede norte
